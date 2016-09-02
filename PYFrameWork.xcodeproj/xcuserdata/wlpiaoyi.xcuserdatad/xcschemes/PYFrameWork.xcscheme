@@ -48,6 +48,16 @@
                ReferencedContainer = "container:PYFrameWork.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "15E406AD1D2F8CBD00EF1E5A"
+               BuildableName = "PYFrameWork.frameworkTests.xctest"
+               BlueprintName = "PYFrameWork.frameworkTests"
+               ReferencedContainer = "container:PYFrameWork.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "PYUtileManager.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    PYUtileManagerOrientationData *data = [PYUtileManagerOrientationData new];
+    data.shouldAutorotate = YES;
+    data.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
+    data.preferredInterfaceOrientationForPresentation = UIInterfaceOrientationPortrait;
+    [PYUtileManager setViewControllerOrientationData:data];
+    [PYUtileManager setViewControllerNavigationbarData:@[[PYUtileManagerNavigationbarData defaut]]];
+    [PYUtileManager setViewControllertBarButtonItemData:@[[PYUtileManagerBarButtonItemData defaut]]];
     return YES;
 }
 
