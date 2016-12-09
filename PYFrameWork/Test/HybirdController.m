@@ -7,20 +7,27 @@
 //
 
 #import "HybirdController.h"
-#import "PYHybirdView.h"
-#import <Utile/PYViewAutolayoutCenter.h>
+#import "PYWebView.h"
+#import "pyutilea.h"
+#import "pyinterflowa.h"
 
 @interface HybirdController ()
-@property (nonatomic, strong) PYHybirdView * hybirdView;
+@property (weak, nonatomic) IBOutlet PYWebView *webView;
 @end
 
 @implementation HybirdController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.hybirdView = [PYHybirdView new];
-    [self.view addSubview:self.hybirdView];
-    [PYViewAutolayoutCenter persistConstraint:self.hybirdView relationmargins:UIEdgeInsetsMake(0, 0, 0, 0) relationToItems:PYEdgeInsetsItemNull()];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.72:8080/index.html"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:0]];
+    [((PYWebView *)self.webView) addJavascriptInterface:self name:@"vc"];
+}
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+-(char *) getchars:(char *) b{
+    return "adfasdfasdfads";
 }
 
 - (void)didReceiveMemoryWarning {

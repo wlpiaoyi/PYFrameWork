@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PYUtileManager.h"
+#import "PYParams.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [PYParams loadSheetParamsData];
+    [PYParams loadDialogParamsData];
+    [PYParams loadTopbarParamsData];
     PYUtileManagerOrientationData *data = [PYUtileManagerOrientationData new];
     data.shouldAutorotate = YES;
     data.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown;

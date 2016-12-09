@@ -29,11 +29,9 @@
 //    RootViewController * vc1  = [storyboard instantiateViewControllerWithIdentifier:@"hybird"];
 //    vc1.flag = self.navigationController.viewControllers.count > 2;
 //    [self.navigationController pushViewController:vc1 animated:YES];
-    [self performSegueWithIdentifier:@"hybird" sender:nil];;
+    [self performSegueWithIdentifier:@"wo cao" sender:nil];;
 }
 - (IBAction)onClick:(id)sender {
-    
-//    [((PYManagerController*)[UIApplication sharedApplication].keyWindow.rootViewController) showRootController:.25];
     [((PYManagerController*)[UIApplication sharedApplication].keyWindow.rootViewController) hiddenRootController:.25];
     [((PYManagerController*)[UIApplication sharedApplication].keyWindow.rootViewController) showHeadController:.25];
 }

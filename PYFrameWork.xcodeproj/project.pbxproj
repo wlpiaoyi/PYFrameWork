@@ -13,60 +13,50 @@
 		15043B5F1D0FDF91001CAC49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15043B5D1D0FDF91001CAC49 /* Main.storyboard */; };
 		15043B611D0FDF91001CAC49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15043B601D0FDF91001CAC49 /* Assets.xcassets */; };
 		15043B641D0FDF91001CAC49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15043B621D0FDF91001CAC49 /* LaunchScreen.storyboard */; };
-		15043B6F1D0FDF91001CAC49 /* PYFrameWorkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15043B6E1D0FDF91001CAC49 /* PYFrameWorkTests.m */; };
-		15043B7A1D0FDF91001CAC49 /* PYFrameWorkUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15043B791D0FDF91001CAC49 /* PYFrameWorkUITests.m */; };
-		15043B9E1D0FE2AB001CAC49 /* PYManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15043B9D1D0FE2AB001CAC49 /* PYManagerController.m */; };
-		1509D3D91D1D12130063E4DC /* PYUtileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1509D3D81D1D12130063E4DC /* PYUtileManager.m */; };
-		152149F51D1BB8A200EC3496 /* PYManagerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 152149F41D1BB8A200EC3496 /* PYManagerData.m */; };
-		157D125A1D50EBB500CEBBBA /* hybird.js in Resources */ = {isa = PBXBuildFile; fileRef = 157D12591D50EBB500CEBBBA /* hybird.js */; };
-		158499BB1D507F8500C866B9 /* PYInterchange.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 158499BA1D507F8500C866B9 /* PYInterchange.framework */; };
+		1583E1531DFA966100AD48EA /* libpyinterflowa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1583E1511DFA966100AD48EA /* libpyinterflowa.a */; };
+		1583E1541DFA966100AD48EA /* libpyutilea.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1583E1521DFA966100AD48EA /* libpyutilea.a */; };
+		1583E1A91DFAA41100AD48EA /* hybird.js in Resources */ = {isa = PBXBuildFile; fileRef = 1583E19D1DFAA41100AD48EA /* hybird.js */; };
+		1583E1AA1DFAA41100AD48EA /* PYHybirdUtile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E19F1DFAA41100AD48EA /* PYHybirdUtile.m */; };
+		1583E1AB1DFAA41100AD48EA /* PYWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E1A11DFAA41100AD48EA /* PYWebView.m */; };
+		1583E1AC1DFAA41100AD48EA /* PYManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E1A41DFAA41100AD48EA /* PYManagerController.m */; };
+		1583E1AD1DFAA41100AD48EA /* PYManagerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E1A61DFAA41100AD48EA /* PYManagerData.m */; };
+		1583E1AE1DFAA41100AD48EA /* PYUtileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E1A81DFAA41100AD48EA /* PYUtileManager.m */; };
+		1583E1B81DFAB0C900AD48EA /* pyframeworka.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1583E1B51DFAB0C900AD48EA /* pyframeworka.h */; };
+		1583E1BC1DFAB0E200AD48EA /* PYHybirdUtile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E19F1DFAA41100AD48EA /* PYHybirdUtile.m */; };
+		1583E1BD1DFAB0E200AD48EA /* PYWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E1A11DFAA41100AD48EA /* PYWebView.m */; };
+		1583E1BE1DFAB0E200AD48EA /* PYManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E1A41DFAA41100AD48EA /* PYManagerController.m */; };
+		1583E1BF1DFAB0E200AD48EA /* PYManagerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E1A61DFAA41100AD48EA /* PYManagerData.m */; };
+		1583E1C01DFAB0E200AD48EA /* PYUtileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1583E1A81DFAA41100AD48EA /* PYUtileManager.m */; };
+		1583E1C11DFAB0F100AD48EA /* PYHybirdUtile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1583E19E1DFAA41100AD48EA /* PYHybirdUtile.h */; };
+		1583E1C21DFAB0F100AD48EA /* PYWebView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1583E1A01DFAA41100AD48EA /* PYWebView.h */; };
+		1583E1C31DFAB0F100AD48EA /* PYManagerController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1583E1A31DFAA41100AD48EA /* PYManagerController.h */; };
+		1583E1C41DFAB0F100AD48EA /* PYManagerData.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1583E1A51DFAA41100AD48EA /* PYManagerData.h */; };
+		1583E1C51DFAB0F100AD48EA /* PYUtileManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1583E1A71DFAA41100AD48EA /* PYUtileManager.h */; };
+		1583E1C61DFAB10400AD48EA /* hybird.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1583E19D1DFAA41100AD48EA /* hybird.js */; };
 		1589BD9B1D1125F600B03D87 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1589BD9A1D1125F600B03D87 /* RootViewController.m */; };
 		1589BD9E1D11260200B03D87 /* HeadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1589BD9D1D11260200B03D87 /* HeadViewController.m */; };
 		1589BDA11D1126B200B03D87 /* MangerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1589BDA01D1126B200B03D87 /* MangerViewController.m */; };
-		159BAB2D1D14011000A2D93B /* Utile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159BAB2C1D14011000A2D93B /* Utile.framework */; };
-		15E406A81D2F8CBD00EF1E5A /* PYFrameWork.framework.h in Headers */ = {isa = PBXBuildFile; fileRef = 15E406A71D2F8CBD00EF1E5A /* PYFrameWork.framework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15E406AF1D2F8CBD00EF1E5A /* PYFrameWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E406A51D2F8CBD00EF1E5A /* PYFrameWork.framework */; };
-		15E406B61D2F8CBD00EF1E5A /* PYFrameWork_frameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 15E406B51D2F8CBD00EF1E5A /* PYFrameWork_frameworkTests.m */; };
-		15E406C31D2F8D3400EF1E5A /* Utile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159BAB2C1D14011000A2D93B /* Utile.framework */; };
-		15E406C41D2F8D5400EF1E5A /* PYManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15043B9D1D0FE2AB001CAC49 /* PYManagerController.m */; };
-		15E406C51D2F8D5400EF1E5A /* PYManagerData.m in Sources */ = {isa = PBXBuildFile; fileRef = 152149F41D1BB8A200EC3496 /* PYManagerData.m */; };
-		15E406C61D2F8D5400EF1E5A /* PYUtileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1509D3D81D1D12130063E4DC /* PYUtileManager.m */; };
-		15E406C71D2F8D6600EF1E5A /* PYManagerController.h in Headers */ = {isa = PBXBuildFile; fileRef = 15043B9C1D0FE2AB001CAC49 /* PYManagerController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15E406C81D2F8D6600EF1E5A /* PYManagerData.h in Headers */ = {isa = PBXBuildFile; fileRef = 152149F31D1BB8A200EC3496 /* PYManagerData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15E406C91D2F8D6600EF1E5A /* PYUtileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 1509D3D71D1D12130063E4DC /* PYUtileManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15FFA3521D3F3BC200D5335D /* PYHybirdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FFA3511D3F3BC200D5335D /* PYHybirdView.m */; };
+		159FF4081D98CF9F00B46A73 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 159FF4071D98CF9F00B46A73 /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		15043B6B1D0FDF91001CAC49 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 15043B491D0FDF91001CAC49 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 15043B501D0FDF91001CAC49;
-			remoteInfo = PYFrameWork;
+/* Begin PBXCopyFilesBuildPhase section */
+		1583E1B11DFAB0C900AD48EA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				1583E1C61DFAB10400AD48EA /* hybird.js in CopyFiles */,
+				1583E1C11DFAB0F100AD48EA /* PYHybirdUtile.h in CopyFiles */,
+				1583E1C21DFAB0F100AD48EA /* PYWebView.h in CopyFiles */,
+				1583E1C31DFAB0F100AD48EA /* PYManagerController.h in CopyFiles */,
+				1583E1C41DFAB0F100AD48EA /* PYManagerData.h in CopyFiles */,
+				1583E1C51DFAB0F100AD48EA /* PYUtileManager.h in CopyFiles */,
+				1583E1B81DFAB0C900AD48EA /* pyframeworka.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15043B761D0FDF91001CAC49 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 15043B491D0FDF91001CAC49 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 15043B501D0FDF91001CAC49;
-			remoteInfo = PYFrameWork;
-		};
-		15E406B01D2F8CBD00EF1E5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 15043B491D0FDF91001CAC49 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 15E406A41D2F8CBD00EF1E5A;
-			remoteInfo = PYFrameWork.framework;
-		};
-		15E406B21D2F8CBD00EF1E5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 15043B491D0FDF91001CAC49 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 15043B501D0FDF91001CAC49;
-			remoteInfo = PYFrameWork;
-		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		15011EA11D4AF3FC00FE4DEF /* HybirdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HybirdController.h; sourceTree = "<group>"; };
@@ -79,35 +69,75 @@
 		15043B601D0FDF91001CAC49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15043B631D0FDF91001CAC49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15043B651D0FDF91001CAC49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15043B6A1D0FDF91001CAC49 /* PYFrameWorkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PYFrameWorkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15043B6E1D0FDF91001CAC49 /* PYFrameWorkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYFrameWorkTests.m; sourceTree = "<group>"; };
 		15043B701D0FDF91001CAC49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15043B751D0FDF91001CAC49 /* PYFrameWorkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PYFrameWorkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15043B791D0FDF91001CAC49 /* PYFrameWorkUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYFrameWorkUITests.m; sourceTree = "<group>"; };
 		15043B7B1D0FDF91001CAC49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15043B9C1D0FE2AB001CAC49 /* PYManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYManagerController.h; sourceTree = "<group>"; };
-		15043B9D1D0FE2AB001CAC49 /* PYManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYManagerController.m; sourceTree = "<group>"; };
-		1509D3D71D1D12130063E4DC /* PYUtileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYUtileManager.h; sourceTree = "<group>"; };
-		1509D3D81D1D12130063E4DC /* PYUtileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYUtileManager.m; sourceTree = "<group>"; };
-		152149F31D1BB8A200EC3496 /* PYManagerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYManagerData.h; sourceTree = "<group>"; };
-		152149F41D1BB8A200EC3496 /* PYManagerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYManagerData.m; sourceTree = "<group>"; };
-		157D12591D50EBB500CEBBBA /* hybird.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = hybird.js; sourceTree = "<group>"; };
-		158499BA1D507F8500C866B9 /* PYInterchange.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PYInterchange.framework; sourceTree = "<group>"; };
+		1583E1291DFA965700AD48EA /* pyinterflowa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pyinterflowa.h; sourceTree = "<group>"; };
+		1583E12A1DFA965700AD48EA /* PYParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYParams.h; sourceTree = "<group>"; };
+		1583E12B1DFA965700AD48EA /* UIView+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Dialog.h"; sourceTree = "<group>"; };
+		1583E12C1DFA965700AD48EA /* UIView+Popup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Popup.h"; sourceTree = "<group>"; };
+		1583E12D1DFA965700AD48EA /* UIView+Remove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Remove.h"; sourceTree = "<group>"; };
+		1583E12E1DFA965700AD48EA /* UIView+Sheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sheet.h"; sourceTree = "<group>"; };
+		1583E12F1DFA965700AD48EA /* UIView+Topbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Topbar.h"; sourceTree = "<group>"; };
+		1583E1511DFA966100AD48EA /* libpyinterflowa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpyinterflowa.a; sourceTree = "<group>"; };
+		1583E1521DFA966100AD48EA /* libpyutilea.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpyutilea.a; sourceTree = "<group>"; };
+		1583E17B1DFAA0E500AD48EA /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
+		1583E17C1DFAA0E500AD48EA /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		1583E17D1DFAA0E500AD48EA /* NSArray+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Expand.h"; sourceTree = "<group>"; };
+		1583E17E1DFAA0E500AD48EA /* NSData+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Expand.h"; sourceTree = "<group>"; };
+		1583E17F1DFAA0E500AD48EA /* NSDate+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Expand.h"; sourceTree = "<group>"; };
+		1583E1801DFAA0E500AD48EA /* NSDictionary+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Expand.h"; sourceTree = "<group>"; };
+		1583E1811DFAA0E500AD48EA /* NSNumber+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Expand.h"; sourceTree = "<group>"; };
+		1583E1821DFAA0E500AD48EA /* NSObject+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Expand.h"; sourceTree = "<group>"; };
+		1583E1831DFAA0E500AD48EA /* NSObject+Hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Hook.h"; sourceTree = "<group>"; };
+		1583E1841DFAA0E500AD48EA /* NSString+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Expand.h"; sourceTree = "<group>"; };
+		1583E1851DFAA0E500AD48EA /* PYGraphicsDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYGraphicsDraw.h; sourceTree = "<group>"; };
+		1583E1861DFAA0E500AD48EA /* PYGraphicsThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYGraphicsThumb.h; sourceTree = "<group>"; };
+		1583E1871DFAA0E500AD48EA /* PYHook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYHook.h; sourceTree = "<group>"; };
+		1583E1881DFAA0E500AD48EA /* PYInvoke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYInvoke.h; sourceTree = "<group>"; };
+		1583E1891DFAA0E500AD48EA /* PYKeyboardNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYKeyboardNotification.h; sourceTree = "<group>"; };
+		1583E18A1DFAA0E500AD48EA /* PYMotionNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYMotionNotification.h; sourceTree = "<group>"; };
+		1583E18B1DFAA0E500AD48EA /* PYOrientationNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYOrientationNotification.h; sourceTree = "<group>"; };
+		1583E18C1DFAA0E500AD48EA /* PYReachabilityNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYReachabilityNotification.h; sourceTree = "<group>"; };
+		1583E18D1DFAA0E500AD48EA /* PYUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYUncaughtExceptionHandler.h; sourceTree = "<group>"; };
+		1583E18E1DFAA0E500AD48EA /* PYUtile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYUtile.h; sourceTree = "<group>"; };
+		1583E18F1DFAA0E500AD48EA /* pyutilea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pyutilea.h; sourceTree = "<group>"; };
+		1583E1901DFAA0E500AD48EA /* PYViewAutolayoutCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYViewAutolayoutCenter.h; sourceTree = "<group>"; };
+		1583E1911DFAA0E500AD48EA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		1583E1921DFAA0E500AD48EA /* UIColor+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expand.h"; sourceTree = "<group>"; };
+		1583E1931DFAA0E500AD48EA /* UIImage+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Expand.h"; sourceTree = "<group>"; };
+		1583E1941DFAA0E500AD48EA /* UILable+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILable+Expand.h"; sourceTree = "<group>"; };
+		1583E1951DFAA0E500AD48EA /* UIResponder+Hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Hook.h"; sourceTree = "<group>"; };
+		1583E1961DFAA0E500AD48EA /* UIView+Expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Expand.h"; sourceTree = "<group>"; };
+		1583E1971DFAA0E500AD48EA /* UIView+Hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Hook.h"; sourceTree = "<group>"; };
+		1583E1981DFAA0E500AD48EA /* UIViewController+Hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Hook.h"; sourceTree = "<group>"; };
+		1583E1991DFAA0E500AD48EA /* UIViewController+HookOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HookOrientation.h"; sourceTree = "<group>"; };
+		1583E19A1DFAA0E500AD48EA /* UIViewController+HookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HookView.h"; sourceTree = "<group>"; };
+		1583E19D1DFAA41100AD48EA /* hybird.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = hybird.js; sourceTree = "<group>"; };
+		1583E19E1DFAA41100AD48EA /* PYHybirdUtile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYHybirdUtile.h; sourceTree = "<group>"; };
+		1583E19F1DFAA41100AD48EA /* PYHybirdUtile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYHybirdUtile.m; sourceTree = "<group>"; };
+		1583E1A01DFAA41100AD48EA /* PYWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYWebView.h; sourceTree = "<group>"; };
+		1583E1A11DFAA41100AD48EA /* PYWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYWebView.m; sourceTree = "<group>"; };
+		1583E1A31DFAA41100AD48EA /* PYManagerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYManagerController.h; sourceTree = "<group>"; };
+		1583E1A41DFAA41100AD48EA /* PYManagerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYManagerController.m; sourceTree = "<group>"; };
+		1583E1A51DFAA41100AD48EA /* PYManagerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYManagerData.h; sourceTree = "<group>"; };
+		1583E1A61DFAA41100AD48EA /* PYManagerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYManagerData.m; sourceTree = "<group>"; };
+		1583E1A71DFAA41100AD48EA /* PYUtileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYUtileManager.h; sourceTree = "<group>"; };
+		1583E1A81DFAA41100AD48EA /* PYUtileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYUtileManager.m; sourceTree = "<group>"; };
+		1583E1B31DFAB0C900AD48EA /* libpyframeworka.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpyframeworka.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1583E1B51DFAB0C900AD48EA /* pyframeworka.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pyframeworka.h; sourceTree = "<group>"; };
 		1589BD991D1125F600B03D87 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		1589BD9A1D1125F600B03D87 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		1589BD9C1D11260200B03D87 /* HeadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadViewController.h; sourceTree = "<group>"; };
 		1589BD9D1D11260200B03D87 /* HeadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadViewController.m; sourceTree = "<group>"; };
 		1589BD9F1D1126B200B03D87 /* MangerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangerViewController.h; sourceTree = "<group>"; };
 		1589BDA01D1126B200B03D87 /* MangerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangerViewController.m; sourceTree = "<group>"; };
-		159BAB2C1D14011000A2D93B /* Utile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Utile.framework; sourceTree = "<group>"; };
-		15E406A51D2F8CBD00EF1E5A /* PYFrameWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PYFrameWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		159FF4071D98CF9F00B46A73 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		15E406A71D2F8CBD00EF1E5A /* PYFrameWork.framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYFrameWork.framework.h; sourceTree = "<group>"; };
 		15E406A91D2F8CBD00EF1E5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15E406AE1D2F8CBD00EF1E5A /* PYFrameWork.frameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PYFrameWork.frameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15E406B51D2F8CBD00EF1E5A /* PYFrameWork_frameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYFrameWork_frameworkTests.m; sourceTree = "<group>"; };
 		15E406B71D2F8CBD00EF1E5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15FFA3501D3F3BC200D5335D /* PYHybirdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYHybirdView.h; sourceTree = "<group>"; };
-		15FFA3511D3F3BC200D5335D /* PYHybirdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYHybirdView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,38 +145,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				158499BB1D507F8500C866B9 /* PYInterchange.framework in Frameworks */,
-				159BAB2D1D14011000A2D93B /* Utile.framework in Frameworks */,
+				1583E1531DFA966100AD48EA /* libpyinterflowa.a in Frameworks */,
+				1583E1541DFA966100AD48EA /* libpyutilea.a in Frameworks */,
+				159FF4081D98CF9F00B46A73 /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15043B671D0FDF91001CAC49 /* Frameworks */ = {
+		1583E1B01DFAB0C900AD48EA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15043B721D0FDF91001CAC49 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15E406A11D2F8CBD00EF1E5A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				15E406C31D2F8D3400EF1E5A /* Utile.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15E406AB1D2F8CBD00EF1E5A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				15E406AF1D2F8CBD00EF1E5A /* PYFrameWork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,14 +164,15 @@
 		15043B481D0FDF91001CAC49 = {
 			isa = PBXGroup;
 			children = (
-				158499BA1D507F8500C866B9 /* PYInterchange.framework */,
-				159BAB2C1D14011000A2D93B /* Utile.framework */,
+				1583E1271DFA965700AD48EA /* include */,
 				15043B531D0FDF91001CAC49 /* PYFrameWork */,
 				15043B6D1D0FDF91001CAC49 /* PYFrameWorkTests */,
 				15043B781D0FDF91001CAC49 /* PYFrameWorkUITests */,
 				15E406A61D2F8CBD00EF1E5A /* PYFrameWork.framework */,
 				15E406B41D2F8CBD00EF1E5A /* PYFrameWork.frameworkTests */,
+				1583E1B41DFAB0C900AD48EA /* pyframeworka */,
 				15043B521D0FDF91001CAC49 /* Products */,
+				159FF4061D98CF9F00B46A73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,10 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				15043B511D0FDF91001CAC49 /* PYFrameWork.app */,
-				15043B6A1D0FDF91001CAC49 /* PYFrameWorkTests.xctest */,
-				15043B751D0FDF91001CAC49 /* PYFrameWorkUITests.xctest */,
-				15E406A51D2F8CBD00EF1E5A /* PYFrameWork.framework */,
-				15E406AE1D2F8CBD00EF1E5A /* PYFrameWork.frameworkTests.xctest */,
+				1583E1B31DFAB0C900AD48EA /* libpyframeworka.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,9 +188,8 @@
 		15043B531D0FDF91001CAC49 /* PYFrameWork */ = {
 			isa = PBXGroup;
 			children = (
-				15FFA34F1D3F3A8900D5335D /* Hybird */,
+				1583E19B1DFAA41100AD48EA /* Source */,
 				1589BD981D1125E900B03D87 /* Test */,
-				15043B9B1D0FE282001CAC49 /* ManagerController */,
 				15043B571D0FDF91001CAC49 /* AppDelegate.h */,
 				15043B581D0FDF91001CAC49 /* AppDelegate.m */,
 				15043B5D1D0FDF91001CAC49 /* Main.storyboard */,
@@ -222,17 +227,108 @@
 			path = PYFrameWorkUITests;
 			sourceTree = "<group>";
 		};
-		15043B9B1D0FE282001CAC49 /* ManagerController */ = {
+		1583E1271DFA965700AD48EA /* include */ = {
 			isa = PBXGroup;
 			children = (
-				15043B9C1D0FE2AB001CAC49 /* PYManagerController.h */,
-				15043B9D1D0FE2AB001CAC49 /* PYManagerController.m */,
-				152149F31D1BB8A200EC3496 /* PYManagerData.h */,
-				152149F41D1BB8A200EC3496 /* PYManagerData.m */,
-				1509D3D71D1D12130063E4DC /* PYUtileManager.h */,
-				1509D3D81D1D12130063E4DC /* PYUtileManager.m */,
+				1583E17A1DFAA0E500AD48EA /* pyutilea */,
+				1583E1281DFA965700AD48EA /* pyinterflowa */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		1583E1281DFA965700AD48EA /* pyinterflowa */ = {
+			isa = PBXGroup;
+			children = (
+				1583E1291DFA965700AD48EA /* pyinterflowa.h */,
+				1583E12A1DFA965700AD48EA /* PYParams.h */,
+				1583E12B1DFA965700AD48EA /* UIView+Dialog.h */,
+				1583E12C1DFA965700AD48EA /* UIView+Popup.h */,
+				1583E12D1DFA965700AD48EA /* UIView+Remove.h */,
+				1583E12E1DFA965700AD48EA /* UIView+Sheet.h */,
+				1583E12F1DFA965700AD48EA /* UIView+Topbar.h */,
+			);
+			path = pyinterflowa;
+			sourceTree = "<group>";
+		};
+		1583E17A1DFAA0E500AD48EA /* pyutilea */ = {
+			isa = PBXGroup;
+			children = (
+				1583E17B1DFAA0E500AD48EA /* EXTScope.h */,
+				1583E17C1DFAA0E500AD48EA /* metamacros.h */,
+				1583E17D1DFAA0E500AD48EA /* NSArray+Expand.h */,
+				1583E17E1DFAA0E500AD48EA /* NSData+Expand.h */,
+				1583E17F1DFAA0E500AD48EA /* NSDate+Expand.h */,
+				1583E1801DFAA0E500AD48EA /* NSDictionary+Expand.h */,
+				1583E1811DFAA0E500AD48EA /* NSNumber+Expand.h */,
+				1583E1821DFAA0E500AD48EA /* NSObject+Expand.h */,
+				1583E1831DFAA0E500AD48EA /* NSObject+Hook.h */,
+				1583E1841DFAA0E500AD48EA /* NSString+Expand.h */,
+				1583E1851DFAA0E500AD48EA /* PYGraphicsDraw.h */,
+				1583E1861DFAA0E500AD48EA /* PYGraphicsThumb.h */,
+				1583E1871DFAA0E500AD48EA /* PYHook.h */,
+				1583E1881DFAA0E500AD48EA /* PYInvoke.h */,
+				1583E1891DFAA0E500AD48EA /* PYKeyboardNotification.h */,
+				1583E18A1DFAA0E500AD48EA /* PYMotionNotification.h */,
+				1583E18B1DFAA0E500AD48EA /* PYOrientationNotification.h */,
+				1583E18C1DFAA0E500AD48EA /* PYReachabilityNotification.h */,
+				1583E18D1DFAA0E500AD48EA /* PYUncaughtExceptionHandler.h */,
+				1583E18E1DFAA0E500AD48EA /* PYUtile.h */,
+				1583E18F1DFAA0E500AD48EA /* pyutilea.h */,
+				1583E1901DFAA0E500AD48EA /* PYViewAutolayoutCenter.h */,
+				1583E1911DFAA0E500AD48EA /* Reachability.h */,
+				1583E1921DFAA0E500AD48EA /* UIColor+Expand.h */,
+				1583E1931DFAA0E500AD48EA /* UIImage+Expand.h */,
+				1583E1941DFAA0E500AD48EA /* UILable+Expand.h */,
+				1583E1951DFAA0E500AD48EA /* UIResponder+Hook.h */,
+				1583E1961DFAA0E500AD48EA /* UIView+Expand.h */,
+				1583E1971DFAA0E500AD48EA /* UIView+Hook.h */,
+				1583E1981DFAA0E500AD48EA /* UIViewController+Hook.h */,
+				1583E1991DFAA0E500AD48EA /* UIViewController+HookOrientation.h */,
+				1583E19A1DFAA0E500AD48EA /* UIViewController+HookView.h */,
+			);
+			path = pyutilea;
+			sourceTree = "<group>";
+		};
+		1583E19B1DFAA41100AD48EA /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1583E19C1DFAA41100AD48EA /* Hybird */,
+				1583E1A21DFAA41100AD48EA /* ManagerController */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		1583E19C1DFAA41100AD48EA /* Hybird */ = {
+			isa = PBXGroup;
+			children = (
+				1583E19D1DFAA41100AD48EA /* hybird.js */,
+				1583E19E1DFAA41100AD48EA /* PYHybirdUtile.h */,
+				1583E19F1DFAA41100AD48EA /* PYHybirdUtile.m */,
+				1583E1A01DFAA41100AD48EA /* PYWebView.h */,
+				1583E1A11DFAA41100AD48EA /* PYWebView.m */,
+			);
+			path = Hybird;
+			sourceTree = "<group>";
+		};
+		1583E1A21DFAA41100AD48EA /* ManagerController */ = {
+			isa = PBXGroup;
+			children = (
+				1583E1A31DFAA41100AD48EA /* PYManagerController.h */,
+				1583E1A41DFAA41100AD48EA /* PYManagerController.m */,
+				1583E1A51DFAA41100AD48EA /* PYManagerData.h */,
+				1583E1A61DFAA41100AD48EA /* PYManagerData.m */,
+				1583E1A71DFAA41100AD48EA /* PYUtileManager.h */,
+				1583E1A81DFAA41100AD48EA /* PYUtileManager.m */,
 			);
 			path = ManagerController;
+			sourceTree = "<group>";
+		};
+		1583E1B41DFAB0C900AD48EA /* pyframeworka */ = {
+			isa = PBXGroup;
+			children = (
+				1583E1B51DFAB0C900AD48EA /* pyframeworka.h */,
+			);
+			path = pyframeworka;
 			sourceTree = "<group>";
 		};
 		1589BD981D1125E900B03D87 /* Test */ = {
@@ -248,6 +344,16 @@
 				15011EA21D4AF3FC00FE4DEF /* HybirdController.m */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		159FF4061D98CF9F00B46A73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1583E1511DFA966100AD48EA /* libpyinterflowa.a */,
+				1583E1521DFA966100AD48EA /* libpyutilea.a */,
+				159FF4071D98CF9F00B46A73 /* JavaScriptCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		15E406A61D2F8CBD00EF1E5A /* PYFrameWork.framework */ = {
@@ -268,31 +374,7 @@
 			path = PYFrameWork.frameworkTests;
 			sourceTree = "<group>";
 		};
-		15FFA34F1D3F3A8900D5335D /* Hybird */ = {
-			isa = PBXGroup;
-			children = (
-				15FFA3501D3F3BC200D5335D /* PYHybirdView.h */,
-				15FFA3511D3F3BC200D5335D /* PYHybirdView.m */,
-				157D12591D50EBB500CEBBBA /* hybird.js */,
-			);
-			path = Hybird;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		15E406A21D2F8CBD00EF1E5A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				15E406A81D2F8CBD00EF1E5A /* PYFrameWork.framework.h in Headers */,
-				15E406C71D2F8D6600EF1E5A /* PYManagerController.h in Headers */,
-				15E406C81D2F8D6600EF1E5A /* PYManagerData.h in Headers */,
-				15E406C91D2F8D6600EF1E5A /* PYUtileManager.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		15043B501D0FDF91001CAC49 /* PYFrameWork */ = {
@@ -312,78 +394,22 @@
 			productReference = 15043B511D0FDF91001CAC49 /* PYFrameWork.app */;
 			productType = "com.apple.product-type.application";
 		};
-		15043B691D0FDF91001CAC49 /* PYFrameWorkTests */ = {
+		1583E1B21DFAB0C900AD48EA /* pyframeworka */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 15043B811D0FDF91001CAC49 /* Build configuration list for PBXNativeTarget "PYFrameWorkTests" */;
+			buildConfigurationList = 1583E1B91DFAB0C900AD48EA /* Build configuration list for PBXNativeTarget "pyframeworka" */;
 			buildPhases = (
-				15043B661D0FDF91001CAC49 /* Sources */,
-				15043B671D0FDF91001CAC49 /* Frameworks */,
-				15043B681D0FDF91001CAC49 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				15043B6C1D0FDF91001CAC49 /* PBXTargetDependency */,
-			);
-			name = PYFrameWorkTests;
-			productName = PYFrameWorkTests;
-			productReference = 15043B6A1D0FDF91001CAC49 /* PYFrameWorkTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		15043B741D0FDF91001CAC49 /* PYFrameWorkUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 15043B841D0FDF91001CAC49 /* Build configuration list for PBXNativeTarget "PYFrameWorkUITests" */;
-			buildPhases = (
-				15043B711D0FDF91001CAC49 /* Sources */,
-				15043B721D0FDF91001CAC49 /* Frameworks */,
-				15043B731D0FDF91001CAC49 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				15043B771D0FDF91001CAC49 /* PBXTargetDependency */,
-			);
-			name = PYFrameWorkUITests;
-			productName = PYFrameWorkUITests;
-			productReference = 15043B751D0FDF91001CAC49 /* PYFrameWorkUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		15E406A41D2F8CBD00EF1E5A /* PYFrameWork.framework */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 15E406BC1D2F8CBD00EF1E5A /* Build configuration list for PBXNativeTarget "PYFrameWork.framework" */;
-			buildPhases = (
-				15E406A01D2F8CBD00EF1E5A /* Sources */,
-				15E406A11D2F8CBD00EF1E5A /* Frameworks */,
-				15E406A21D2F8CBD00EF1E5A /* Headers */,
-				15E406A31D2F8CBD00EF1E5A /* Resources */,
+				1583E1AF1DFAB0C900AD48EA /* Sources */,
+				1583E1B01DFAB0C900AD48EA /* Frameworks */,
+				1583E1B11DFAB0C900AD48EA /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = PYFrameWork.framework;
-			productName = PYFrameWork.framework;
-			productReference = 15E406A51D2F8CBD00EF1E5A /* PYFrameWork.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		15E406AD1D2F8CBD00EF1E5A /* PYFrameWork.frameworkTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 15E406C01D2F8CBD00EF1E5A /* Build configuration list for PBXNativeTarget "PYFrameWork.frameworkTests" */;
-			buildPhases = (
-				15E406AA1D2F8CBD00EF1E5A /* Sources */,
-				15E406AB1D2F8CBD00EF1E5A /* Frameworks */,
-				15E406AC1D2F8CBD00EF1E5A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				15E406B11D2F8CBD00EF1E5A /* PBXTargetDependency */,
-				15E406B31D2F8CBD00EF1E5A /* PBXTargetDependency */,
-			);
-			name = PYFrameWork.frameworkTests;
-			productName = PYFrameWork.frameworkTests;
-			productReference = 15E406AE1D2F8CBD00EF1E5A /* PYFrameWork.frameworkTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = pyframeworka;
+			productName = pyframeworka;
+			productReference = 1583E1B31DFAB0C900AD48EA /* libpyframeworka.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -398,21 +424,10 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = S4NUSJ3KDJ;
 					};
-					15043B691D0FDF91001CAC49 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 15043B501D0FDF91001CAC49;
-					};
-					15043B741D0FDF91001CAC49 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 15043B501D0FDF91001CAC49;
-					};
-					15E406A41D2F8CBD00EF1E5A = {
-						CreatedOnToolsVersion = 7.3.1;
+					1583E1B21DFAB0C900AD48EA = {
+						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = S4NUSJ3KDJ;
-					};
-					15E406AD1D2F8CBD00EF1E5A = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 15043B501D0FDF91001CAC49;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -430,10 +445,7 @@
 			projectRoot = "";
 			targets = (
 				15043B501D0FDF91001CAC49 /* PYFrameWork */,
-				15043B691D0FDF91001CAC49 /* PYFrameWorkTests */,
-				15043B741D0FDF91001CAC49 /* PYFrameWorkUITests */,
-				15E406A41D2F8CBD00EF1E5A /* PYFrameWork.framework */,
-				15E406AD1D2F8CBD00EF1E5A /* PYFrameWork.frameworkTests */,
+				1583E1B21DFAB0C900AD48EA /* pyframeworka */,
 			);
 		};
 /* End PBXProject section */
@@ -445,36 +457,8 @@
 			files = (
 				15043B641D0FDF91001CAC49 /* LaunchScreen.storyboard in Resources */,
 				15043B611D0FDF91001CAC49 /* Assets.xcassets in Resources */,
-				157D125A1D50EBB500CEBBBA /* hybird.js in Resources */,
+				1583E1A91DFAA41100AD48EA /* hybird.js in Resources */,
 				15043B5F1D0FDF91001CAC49 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15043B681D0FDF91001CAC49 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15043B731D0FDF91001CAC49 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15E406A31D2F8CBD00EF1E5A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15E406AC1D2F8CBD00EF1E5A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,77 +469,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1509D3D91D1D12130063E4DC /* PYUtileManager.m in Sources */,
+				1583E1AE1DFAA41100AD48EA /* PYUtileManager.m in Sources */,
+				1583E1AB1DFAA41100AD48EA /* PYWebView.m in Sources */,
+				1583E1AC1DFAA41100AD48EA /* PYManagerController.m in Sources */,
 				1589BDA11D1126B200B03D87 /* MangerViewController.m in Sources */,
 				1589BD9E1D11260200B03D87 /* HeadViewController.m in Sources */,
+				1583E1AD1DFAA41100AD48EA /* PYManagerData.m in Sources */,
 				15043B591D0FDF91001CAC49 /* AppDelegate.m in Sources */,
-				15FFA3521D3F3BC200D5335D /* PYHybirdView.m in Sources */,
+				1583E1AA1DFAA41100AD48EA /* PYHybirdUtile.m in Sources */,
 				15011EA31D4AF3FC00FE4DEF /* HybirdController.m in Sources */,
 				1589BD9B1D1125F600B03D87 /* RootViewController.m in Sources */,
-				152149F51D1BB8A200EC3496 /* PYManagerData.m in Sources */,
 				15043B561D0FDF91001CAC49 /* main.m in Sources */,
-				15043B9E1D0FE2AB001CAC49 /* PYManagerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		15043B661D0FDF91001CAC49 /* Sources */ = {
+		1583E1AF1DFAB0C900AD48EA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15043B6F1D0FDF91001CAC49 /* PYFrameWorkTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15043B711D0FDF91001CAC49 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				15043B7A1D0FDF91001CAC49 /* PYFrameWorkUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15E406A01D2F8CBD00EF1E5A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				15E406C41D2F8D5400EF1E5A /* PYManagerController.m in Sources */,
-				15E406C51D2F8D5400EF1E5A /* PYManagerData.m in Sources */,
-				15E406C61D2F8D5400EF1E5A /* PYUtileManager.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		15E406AA1D2F8CBD00EF1E5A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				15E406B61D2F8CBD00EF1E5A /* PYFrameWork_frameworkTests.m in Sources */,
+				1583E1BC1DFAB0E200AD48EA /* PYHybirdUtile.m in Sources */,
+				1583E1BD1DFAB0E200AD48EA /* PYWebView.m in Sources */,
+				1583E1BE1DFAB0E200AD48EA /* PYManagerController.m in Sources */,
+				1583E1BF1DFAB0E200AD48EA /* PYManagerData.m in Sources */,
+				1583E1C01DFAB0E200AD48EA /* PYUtileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		15043B6C1D0FDF91001CAC49 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 15043B501D0FDF91001CAC49 /* PYFrameWork */;
-			targetProxy = 15043B6B1D0FDF91001CAC49 /* PBXContainerItemProxy */;
-		};
-		15043B771D0FDF91001CAC49 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 15043B501D0FDF91001CAC49 /* PYFrameWork */;
-			targetProxy = 15043B761D0FDF91001CAC49 /* PBXContainerItemProxy */;
-		};
-		15E406B11D2F8CBD00EF1E5A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 15E406A41D2F8CBD00EF1E5A /* PYFrameWork.framework */;
-			targetProxy = 15E406B01D2F8CBD00EF1E5A /* PBXContainerItemProxy */;
-		};
-		15E406B31D2F8CBD00EF1E5A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 15043B501D0FDF91001CAC49 /* PYFrameWork */;
-			targetProxy = 15E406B21D2F8CBD00EF1E5A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		15043B5D1D0FDF91001CAC49 /* Main.storyboard */ = {
@@ -674,6 +614,10 @@
 				INFOPLIST_FILE = PYFrameWork/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = wlpiaoyi.PYFrameWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -694,6 +638,10 @@
 				INFOPLIST_FILE = PYFrameWork/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = wlpiaoyi.PYFrameWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -701,127 +649,31 @@
 			};
 			name = Release;
 		};
-		15043B821D0FDF91001CAC49 /* Debug */ = {
+		1583E1BA1DFAB0C900AD48EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PYFrameWorkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wlpiaoyi.PYFrameWorkTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PYFrameWork.app/PYFrameWork";
-			};
-			name = Debug;
-		};
-		15043B831D0FDF91001CAC49 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = PYFrameWorkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wlpiaoyi.PYFrameWorkTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PYFrameWork.app/PYFrameWork";
-			};
-			name = Release;
-		};
-		15043B851D0FDF91001CAC49 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PYFrameWorkUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wlpiaoyi.PYFrameWorkUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PYFrameWork;
-			};
-			name = Debug;
-		};
-		15043B861D0FDF91001CAC49 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PYFrameWorkUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = wlpiaoyi.PYFrameWorkUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PYFrameWork;
-			};
-			name = Release;
-		};
-		15E406BD1D2F8CBD00EF1E5A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = PYFrameWork.framework/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = S4NUSJ3KDJ;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "wlpiaoyi.PYFrameWork-framework";
-				PRODUCT_NAME = PYFrameWork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		15E406BE1D2F8CBD00EF1E5A /* Release */ = {
+		1583E1BB1DFAB0C900AD48EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				INFOPLIST_FILE = PYFrameWork.framework/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = S4NUSJ3KDJ;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "wlpiaoyi.PYFrameWork-framework";
-				PRODUCT_NAME = PYFrameWork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		15E406C11D2F8CBD00EF1E5A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PYFrameWork.frameworkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "wlpiaoyi.PYFrameWork-frameworkTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PYFrameWork.app/PYFrameWork";
-			};
-			name = Debug;
-		};
-		15E406C21D2F8CBD00EF1E5A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PYFrameWork.frameworkTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "wlpiaoyi.PYFrameWork-frameworkTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PYFrameWork.app/PYFrameWork";
 			};
 			name = Release;
 		};
@@ -846,41 +698,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		15043B811D0FDF91001CAC49 /* Build configuration list for PBXNativeTarget "PYFrameWorkTests" */ = {
+		1583E1B91DFAB0C900AD48EA /* Build configuration list for PBXNativeTarget "pyframeworka" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				15043B821D0FDF91001CAC49 /* Debug */,
-				15043B831D0FDF91001CAC49 /* Release */,
+				1583E1BA1DFAB0C900AD48EA /* Debug */,
+				1583E1BB1DFAB0C900AD48EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		15043B841D0FDF91001CAC49 /* Build configuration list for PBXNativeTarget "PYFrameWorkUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				15043B851D0FDF91001CAC49 /* Debug */,
-				15043B861D0FDF91001CAC49 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		15E406BC1D2F8CBD00EF1E5A /* Build configuration list for PBXNativeTarget "PYFrameWork.framework" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				15E406BD1D2F8CBD00EF1E5A /* Debug */,
-				15E406BE1D2F8CBD00EF1E5A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		15E406C01D2F8CBD00EF1E5A /* Build configuration list for PBXNativeTarget "PYFrameWork.frameworkTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				15E406C11D2F8CBD00EF1E5A /* Debug */,
-				15E406C21D2F8CBD00EF1E5A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
