@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://192.168.1.72:8080/index.html"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:0]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:0]];
     [((PYWebView *)self.webView) addJavascriptInterface:self name:@"vc"];
 }
 -(void) viewDidAppear:(BOOL)animated{

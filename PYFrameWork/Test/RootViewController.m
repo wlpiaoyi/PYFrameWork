@@ -40,6 +40,13 @@
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     RootViewController * vc1  = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
     vc1.flag = self.navigationController.viewControllers.count > 2;
+    PYManagerController * rv = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if(vc1.flag){
+        [rv hiddenHeadController:0];
+    }else{
+        [rv showHeadController:0];
+        [rv showRootController:0];
+    }
     [self.navigationController pushViewController:vc1 animated:YES];
     
 }

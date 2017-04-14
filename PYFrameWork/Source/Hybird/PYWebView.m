@@ -9,6 +9,7 @@
 #import "PYWebView.h"
 #import "PYHybirdUtile.h"
 
+#import <JavaScriptCore/JavaScriptCore.h>
 #import <objc/runtime.h>
 #import <WebKit/WebKit.h>
 #import "pyutilea.h"

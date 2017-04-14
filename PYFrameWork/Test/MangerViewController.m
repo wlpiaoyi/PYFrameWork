@@ -23,8 +23,8 @@
     HeadViewController * vc2  = [storyboard instantiateViewControllerWithIdentifier:@"HeadViewController"];
     self.managerData.rootController = vc1;
     self.managerData.headController = vc2;
-    self.managerData.enumStyle = PYManagerSpecialConrollerStyle;
-//    [self showHeadController:0];
+    self.managerData.enumStyle = PYManagerNormalConrollerStyle;
+    [self showHeadController:0];
     [self showRootController:0];
 }
 -(void) viewWillAppear:(BOOL)animated{

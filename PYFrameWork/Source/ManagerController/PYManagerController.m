@@ -74,8 +74,8 @@
     self.viewGestureRecognizer.delegate = self;
     [PYViewAutolayoutCenter persistConstraint:self.viewGestureRecognizer relationmargins:UIEdgeInsetsMake(0, 0, 0, 0) relationToItems:PYEdgeInsetsItemNull()];
     
-    [self.viewGestureRecognizer addSubview:self.managerData.headView];
     [self.viewGestureRecognizer addSubview:self.managerData.rootView];
+    [self.viewGestureRecognizer addSubview:self.managerData.headView];
     sizePre = CGSizeZero;
 }
 -(void) initParams{
@@ -126,11 +126,11 @@
     
     switch (self.managerData.enumStyle) {
         case PYManagerNormalConrollerStyle:{
-            [self.view bringSubviewToFront:self.managerData.headView];
+            [self.viewGestureRecognizer bringSubviewToFront:self.managerData.headView];
         }
         break;
         case PYManagerSpecialConrollerStyle:{
-            [self.view bringSubviewToFront:self.managerData.rootView];
+            [self.viewGestureRecognizer bringSubviewToFront:self.managerData.rootView];
         }
         break;
         default:
@@ -200,11 +200,11 @@
     if (self.managerData.rootView.superview == self.view) {
         switch (self.managerData.enumStyle) {
             case PYManagerNormalConrollerStyle:{
-                [self.view bringSubviewToFront:self.managerData.headView];
+                [self.viewGestureRecognizer bringSubviewToFront:self.managerData.headView];
             }
             break;
             case PYManagerSpecialConrollerStyle:{
-                [self.view bringSubviewToFront:self.managerData.rootView];
+                [self.viewGestureRecognizer bringSubviewToFront:self.managerData.rootView];
             }
             break;
             default:

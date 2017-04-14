@@ -10,6 +10,15 @@
 #import "PYUtileManager.h"
 #import "PYParams.h"
 
+#import <JavaScriptCore/JavaScriptCore.h>
+
+//#import "JSContext.h"
+//#import "JSValue.h"
+//#import "JSManagedValue.h"
+//#import "JSVirtualMachine.h"
+//#import "JSExport.h"
+
+
 @interface AppDelegate ()
 
 @end
@@ -18,7 +27,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+//    JSContext *context = [[JSContext alloc] init];
+//    [context evaluateScript:@"var arr = [21, 7 , 'iderzheng.com'];"];
+//    context = [[JSContext alloc] initWithVirtualMachine:<#(JSVirtualMachine *)#>];
     [PYParams loadSheetParamsData];
     [PYParams loadDialogParamsData];
     [PYParams loadTopbarParamsData];
