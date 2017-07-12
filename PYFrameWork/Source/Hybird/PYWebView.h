@@ -15,7 +15,7 @@
 -(nullable id) loadHTMLString:(nonnull NSString *)HTMLString;
 -(nullable id) loadFileURL:(nonnull NSURL *)URL;
 -(nullable id) loadFileURL:(nonnull NSURL *)URL allowingReadAccessToURL:(nullable NSURL *)readAccessURL;
-//<==加载web
+///<=加载web
 -(void) addJavascriptInterface:(nonnull NSObject *) interface name:(nullable NSString *) name;
 -(void) removeJavascriptInterfaceWithName:(nullable NSString *) name;
 @end
