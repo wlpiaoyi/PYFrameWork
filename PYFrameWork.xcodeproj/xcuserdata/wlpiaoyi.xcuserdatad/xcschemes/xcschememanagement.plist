@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>PYFrameWork.xcscheme</key>
+		<key>PYFramework.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -17,32 +17,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>15043B501D0FDF91001CAC49</key>
+		<key>150C6DC51F47E68600731FC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15043B691D0FDF91001CAC49</key>
+		<key>150C6DDE1F47E68600731FC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>15043B741D0FDF91001CAC49</key>
+		<key>150C6DE91F47E68700731FC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1583E1B21DFAB0C900AD48EA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>15E406A41D2F8CBD00EF1E5A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>15E406AD1D2F8CBD00EF1E5A</key>
+		<key>150C6EC41F4A95AE00731FC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

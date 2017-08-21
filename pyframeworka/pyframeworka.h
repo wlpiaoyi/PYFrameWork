@@ -2,12 +2,13 @@
 //  pyframeworka.h
 //  pyframeworka
 //
-//  Created by wlpiaoyi on 2016/12/9.
-//  Copyright © 2016年 wlpiaoyi. All rights reserved.
+//  Created by wlpiaoyi on 2017/8/21.
+//  Copyright © 2017年 wlpiaoyi. All rights reserved.
 //
 
-#import "PYHybirdUtile.h"
-#import "PYWebView.h"
-#import "PYUtileManager.h"
-#import "PYManagerData.h"
-#import "PYUtileManager.h"
+#import <Foundation/Foundation.h>
+
+#import "PYFwnmParam.h"
+#import "PYFrameworkUtile.h"
+#import "PYFwnmController.h"
+#import "PYFrameworkController.h"

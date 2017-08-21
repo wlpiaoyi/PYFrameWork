@@ -1,18 +1,18 @@
 //
-//  PYFrameWorkTests.m
-//  PYFrameWorkTests
+//  PYFrameworkTests.m
+//  PYFrameworkTests
 //
-//  Created by wlpiaoyi on 16/6/14.
-//  Copyright © 2016年 wlpiaoyi. All rights reserved.
+//  Created by wlpiaoyi on 2017/8/19.
+//  Copyright © 2017年 wlpiaoyi. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface PYFrameWorkTests : XCTestCase
+@interface PYFrameworkTests : XCTestCase
 
 @end
 
-@implementation PYFrameWorkTests
+@implementation PYFrameworkTests
 
 - (void)setUp {
     [super setUp];

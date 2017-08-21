@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0810"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1583E1B21DFAB0C900AD48EA"
+               BlueprintIdentifier = "150C6EC41F4A95AE00731FC7"
                BuildableName = "libpyframeworka.a"
                BlueprintName = "pyframeworka"
-               ReferencedContainer = "container:PYFrameWork.xcodeproj">
+               ReferencedContainer = "container:PYFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,10 +45,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1583E1B21DFAB0C900AD48EA"
+            BlueprintIdentifier = "150C6EC41F4A95AE00731FC7"
             BuildableName = "libpyframeworka.a"
             BlueprintName = "pyframeworka"
-            ReferencedContainer = "container:PYFrameWork.xcodeproj">
+            ReferencedContainer = "container:PYFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -63,10 +63,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1583E1B21DFAB0C900AD48EA"
+            BlueprintIdentifier = "150C6EC41F4A95AE00731FC7"
             BuildableName = "libpyframeworka.a"
             BlueprintName = "pyframeworka"
-            ReferencedContainer = "container:PYFrameWork.xcodeproj">
+            ReferencedContainer = "container:PYFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

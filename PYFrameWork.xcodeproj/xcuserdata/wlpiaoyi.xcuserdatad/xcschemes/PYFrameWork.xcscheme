@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0830"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15043B501D0FDF91001CAC49"
-               BuildableName = "PYFrameWork.app"
-               BlueprintName = "PYFrameWork"
-               ReferencedContainer = "container:PYFrameWork.xcodeproj">
+               BlueprintIdentifier = "150C6DC51F47E68600731FC7"
+               BuildableName = "PYFramework.app"
+               BlueprintName = "PYFramework"
+               ReferencedContainer = "container:PYFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,40 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15043B691D0FDF91001CAC49"
-               BuildableName = "PYFrameWorkTests.xctest"
-               BlueprintName = "PYFrameWorkTests"
-               ReferencedContainer = "container:PYFrameWork.xcodeproj">
+               BlueprintIdentifier = "150C6DDE1F47E68600731FC7"
+               BuildableName = "PYFrameworkTests.xctest"
+               BlueprintName = "PYFrameworkTests"
+               ReferencedContainer = "container:PYFramework.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15043B741D0FDF91001CAC49"
-               BuildableName = "PYFrameWorkUITests.xctest"
-               BlueprintName = "PYFrameWorkUITests"
-               ReferencedContainer = "container:PYFrameWork.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15E406AD1D2F8CBD00EF1E5A"
-               BuildableName = "PYFrameWork.frameworkTests.xctest"
-               BlueprintName = "PYFrameWork.frameworkTests"
-               ReferencedContainer = "container:PYFrameWork.xcodeproj">
+               BlueprintIdentifier = "150C6DE91F47E68700731FC7"
+               BuildableName = "PYFrameworkUITests.xctest"
+               BlueprintName = "PYFrameworkUITests"
+               ReferencedContainer = "container:PYFramework.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15043B501D0FDF91001CAC49"
-            BuildableName = "PYFrameWork.app"
-            BlueprintName = "PYFrameWork"
-            ReferencedContainer = "container:PYFrameWork.xcodeproj">
+            BlueprintIdentifier = "150C6DC51F47E68600731FC7"
+            BuildableName = "PYFramework.app"
+            BlueprintName = "PYFramework"
+            ReferencedContainer = "container:PYFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -85,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15043B501D0FDF91001CAC49"
-            BuildableName = "PYFrameWork.app"
-            BlueprintName = "PYFrameWork"
-            ReferencedContainer = "container:PYFrameWork.xcodeproj">
+            BlueprintIdentifier = "150C6DC51F47E68600731FC7"
+            BuildableName = "PYFramework.app"
+            BlueprintName = "PYFramework"
+            ReferencedContainer = "container:PYFramework.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -104,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15043B501D0FDF91001CAC49"
-            BuildableName = "PYFrameWork.app"
-            BlueprintName = "PYFrameWork"
-            ReferencedContainer = "container:PYFrameWork.xcodeproj">
+            BlueprintIdentifier = "150C6DC51F47E68600731FC7"
+            BuildableName = "PYFramework.app"
+            BlueprintName = "PYFramework"
+            ReferencedContainer = "container:PYFramework.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

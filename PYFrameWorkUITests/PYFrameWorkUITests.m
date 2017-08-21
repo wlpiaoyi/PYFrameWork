@@ -1,18 +1,18 @@
 //
-//  PYFrameWorkUITests.m
-//  PYFrameWorkUITests
+//  PYFrameworkUITests.m
+//  PYFrameworkUITests
 //
-//  Created by wlpiaoyi on 16/6/14.
-//  Copyright © 2016年 wlpiaoyi. All rights reserved.
+//  Created by wlpiaoyi on 2017/8/19.
+//  Copyright © 2017年 wlpiaoyi. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface PYFrameWorkUITests : XCTestCase
+@interface PYFrameworkUITests : XCTestCase
 
 @end
 
-@implementation PYFrameWorkUITests
+@implementation PYFrameworkUITests
 
 - (void)setUp {
     [super setUp];
