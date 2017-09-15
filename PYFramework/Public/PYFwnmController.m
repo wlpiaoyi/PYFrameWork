@@ -13,10 +13,29 @@
 #import "PYFwnmParam.h"
 #import "PYFwnmMenuController.h"
 
+@interface UIResponderHookBaseDelegateFWC : NSObject<UIResponderHookBaseDelegate>
+PYPNANN NSMutableDictionary * mdict;
+-(void) beforeExcuteDeallocWithTarget:(nonnull NSObject *) target;
+@end
+
+@implementation UIResponderHookBaseDelegateFWC
+
+-(void) beforeExcuteDeallocWithTarget:(nonnull NSObject *) target;{
+    if(![target conformsToProtocol:@protocol(PYFrameworkNormalTag)]) return;
+    [self.mdict removeObjectForKey:@(target.hash)];
+}
+
+@end
+UIResponderHookBaseDelegateFWC * xUIResponderHookBaseDelegateFWC;
 @interface UIViewcontrollerHookViewDelegateFWC : NSObject<UIViewcontrollerHookViewDelegate>
 PYPNSNN NSMutableDictionary * mdict;
 @end
 @implementation UIViewcontrollerHookViewDelegateFWC
++(void) initialize{
+    [UIResponder hookWithMethodNames:nil];
+    xUIResponderHookBaseDelegateFWC = [UIResponderHookBaseDelegateFWC new];
+    [[UIViewController delegateBase] addObject:xUIResponderHookBaseDelegateFWC];
+}
 -(instancetype) init{
     self = [super init];
     self.mdict = [NSMutableDictionary new];
@@ -35,17 +54,20 @@ PYPNSNN NSMutableDictionary * mdict;
         case 0:
             break;
         case 1:{
-            [wrv refreshChildControllerWithShow:PYFrameworkAllShow delayTime:0.25];
+            if(wrv.frameworkShow != PYFrameworkAllShow)
+                [wrv refreshChildControllerWithShow:PYFrameworkAllShow delayTime:0.25];
         }
             break;
         default:{
-            [wrv refreshChildControllerWithShow:PYFrameworkRootShow delayTime:0.25];
+            if(wrv.frameworkShow != PYFrameworkRootShow)
+                [wrv refreshChildControllerWithShow:PYFrameworkRootShow delayTime:0.25];
         }
             break;
     }
 }
 -(void) afterExcuteViewWillAppearWithTarget:(nonnull UIViewController *) target{
     if(![target conformsToProtocol:@protocol(PYFrameworkNormalTag)]) return;
+    if(!target.navigationController) return;
     if(!self.mdict[@(target.hash)]
        || (self.mdict[@(target.hash)]
            && ((NSNumber *)self.mdict[@(target.hash)]).boolValue
@@ -57,8 +79,11 @@ PYPNSNN NSMutableDictionary * mdict;
 }
 -(void) afterExcuteViewDidDisappearWithTarget:(nonnull UIViewController *) target{
     if(![target conformsToProtocol:@protocol(PYFrameworkNormalTag)]) return;
-//    [self.mdict removeObjectForKey:@(target.hash)];
-    self.mdict[@(target.navigationController.viewControllers.lastObject.hash)] = @(YES);
+    if(!target.navigationController){
+        [self.mdict removeObjectForKey:@(target.hash)];
+    }else{
+        self.mdict[@(target.navigationController.viewControllers.lastObject.hash)] = @(YES);
+    }
     [UIViewcontrollerHookViewDelegateFWC REFRESHMENU];
 }
 
@@ -103,35 +128,44 @@ static UIViewcontrollerHookViewDelegateFWC * xUIViewcontrollerHookViewDelegateFW
     }];
     PYFwnmMenuController * mv = [PYFwnmMenuController new];
     self.menuController = mv;
-//#ifdef DEBUG
-//    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//    UIViewController * rv  = [storyboard instantiateViewControllerWithIdentifier:@"rv"];
-//    self.rootController = rv;
-//    [self refreshChildControllerWithShow:PYFrameworkAllShow delayTime:0];
-//    NSDictionary * style1 = @{
-//                              PYFwnmMenuIdentify:@"err",
-//                              PYFwnmMenuTitle:@"menu1",
-//                              PYFwnmMenuTitleFont:[UIFont systemFontOfSize:24],
-//                              PYFwnmMenuTitleNormalColor:[UIColor yellowColor],
-//                              PYFwnmMenuTitleHigthlightColor:[UIColor greenColor],
-//                              PYFwnmMenuImageNormal:[UIImage imageNamed:@"bill.png"],
-//                              PYFwnmMenuImageHigthlight:[UIImage imageNamed:@"bill_pre.png"]
-//                             };
-//    NSDictionary * style2 = @{
-//                              PYFwnmMenuIdentify:@"adsfa",
-//                              PYFwnmMenuTitle:@"menu2",
-//                              PYFwnmMenuTitleFont:[UIFont systemFontOfSize:24],
-//                              PYFwnmMenuTitleNormalColor:[UIColor yellowColor],
-//                              PYFwnmMenuTitleHigthlightColor:[UIColor greenColor],
-//                              PYFwnmMenuImageNormal:[UIImage imageNamed:@"me.png"],
-//                              PYFwnmMenuImageHigthlight:[UIImage imageNamed:@"me_pre.png"]
-//                             };
-//    [self setDictButtonStyle:@[style1, style2]];
-//    [self setColorSeletedBg:[UIColor orangeColor]];
-//    [self setBlockOnclickMenu:^BOOL (id _Nullable menuIdentify){
-//        return YES;
-//    }];
-//#endif
+#ifdef DEBUG
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UIViewController * rv  = [storyboard instantiateViewControllerWithIdentifier:@"rv"];
+    self.rootController = rv;
+    [self refreshChildControllerWithShow:PYFrameworkAllShow delayTime:0];
+    NSDictionary * style1 = @{
+                              PYFwnmMenuIdentify:@"err",
+                              PYFwnmMenuTitle:@"menu1",
+                              PYFwnmMenuTitleFontNormal:[UIFont systemFontOfSize:24],
+                              PYFwnmMenuTitleColorNormal:[UIColor yellowColor],
+                              PYFwnmMenuTitleColorHigthlight:[UIColor redColor],
+                              PYFwnmMenuTitleColorSelected:[UIColor greenColor],
+                              PYFwnmMenuImageNormal:[UIImage imageNamed:@"bill.png"],
+                              PYFwnmMenuImageHigthlight:[UIImage imageNamed:@"bill_pre.png"],
+                              PYFwnmMenuImageSelected:[UIImage imageNamed:@"bill_pre.png"]
+                             };
+    NSDictionary * style2 = @{
+                              PYFwnmMenuIdentify:@"adsfa",
+                              PYFwnmMenuTitle:@"menu2",
+                              PYFwnmMenuTitleFontNormal:[UIFont systemFontOfSize:24],
+                              PYFwnmMenuTitleColorNormal:[UIColor yellowColor],
+                              PYFwnmMenuTitleColorHigthlight:[UIColor redColor],
+                              PYFwnmMenuTitleColorSelected:[UIColor greenColor],
+                              PYFwnmMenuImageNormal:[UIImage imageNamed:@"me.png"],
+                              PYFwnmMenuImageHigthlight:[UIImage imageNamed:@"me_pre.png"],
+                              PYFwnmMenuImageSelected:[UIImage imageNamed:@"me_pre.png"]
+                             };
+    [self setMenuStyle:@[style1, style2]];
+    [self setColorSeletedBg:[UIColor orangeColor]];
+    [self setBlockOnclickMenu:^BOOL (id _Nullable menuIdentify){
+        @strongify(self);
+        UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        UIViewController * rv  = [storyboard instantiateViewControllerWithIdentifier:@"rv"];
+        self.rootController = rv;
+        [self refreshChildControllerWithShow:PYFrameworkAllShow delayTime:0];
+        return YES;
+    }];
+#endif
 }
 -(void) setMenuIdentify:(id)menuIdentify{
     if(self.blockOnclickMenu){
@@ -144,9 +178,9 @@ static UIViewcontrollerHookViewDelegateFWC * xUIViewcontrollerHookViewDelegateFW
     _colorSeletedBg = colorSeletedBg;
     ((PYFwnmMenuController*)self.menuController).colorSeletedBg = _colorSeletedBg;
 }
--(void) setDictButtonStyle:(NSArray<NSDictionary *> *)dictButtonStyle{
-    _dictButtonStyle = dictButtonStyle;
-    ((PYFwnmMenuController*)self.menuController).dictButtonStyle = _dictButtonStyle;
+-(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle{
+    _menuStyle = menuStyle;
+    ((PYFwnmMenuController*)self.menuController).menuStyle = _menuStyle;
 }
 -(void) setBlockOnclickMenu:(BOOL (^)(id _Nullable))blockOnclickMenu{
     _blockOnclickMenu = blockOnclickMenu;

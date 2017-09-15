@@ -46,9 +46,8 @@
 @property (nonatomic, strong, nullable) UIColor * tintColor;
 @property (nonatomic, strong, nullable) UIColor * backgroundColor;
 @property (nonatomic, strong, nullable) UIImage * backgroundImage;
-
-@property (nonatomic, assign)UIBarPosition  barPosition;
-@property (nonatomic, assign)UIBarMetrics barMetrics;
+@property (nonatomic, strong, nullable) UIImage * lineButtomImage;
+@property (nonatomic, assign) UIBarMetrics barMetrics;
 
 @property (nonatomic, assign)UIStatusBarStyle statusBarStyle;
 +(nullable instancetype) defaut;
@@ -58,6 +57,10 @@
 
 
 @interface PYFrameworkUtile : NSObject
+/**
+ 创建上下结构的文字图片结构
+ */
++(nonnull UIImage *) createImageWithTitle:(nonnull NSString *) title font:(nonnull UIFont *) font color:(nonnull UIColor *) color image:(nonnull UIImage *) image offH:(CGFloat) offH;
 /**
  旋转默认设置
  */
@@ -74,7 +77,6 @@
  设置导航栏按钮样式
  */
 +(void) setBarButtonItemStyle:(nonnull UIBarButtonItem *) barButtonItem managerBarButtonItemData:(nonnull PYFrameworkUtileBarButtonItem *) managerBarButtonItemData;
-
 /**
  设置导航栏样式
  */

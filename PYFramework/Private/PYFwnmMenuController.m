@@ -9,7 +9,9 @@
 #import "PYFwnmMenuController.h"
 #import "pyutilea.h"
 #import "PYSelectorBarView.h"
-#import "PYFwnmParam.h"
+#import "PYFrameworkUtile.h"
+
+
 @interface PYFwnmMemuButton:UIButton
 PYPNSNN id identify;
 @end
@@ -30,21 +32,33 @@ PYPNSNN PYSelectorBarView *  menus;
     _colorSeletedBg = colorSeletedBg;
     self.menus.selectorColor = _colorSeletedBg;
 }
--(void) setDictButtonStyle:(NSArray<NSDictionary *> *)dictButtonStyle{
-    _dictButtonStyle = dictButtonStyle;
+-(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle{
+    _menuStyle = menuStyle;
     NSMutableArray * buttons = [NSMutableArray new];
-    for (NSDictionary * style in dictButtonStyle) {
+    for (NSDictionary * style in menuStyle) {
         NSString * title = style[PYFwnmMenuTitle];
-        UIFont * font = style[PYFwnmMenuTitleFont];
-        UIColor * color = style[PYFwnmMenuTitleNormalColor];
+        UIFont * font = style[PYFwnmMenuTitleFontNormal];
+        UIColor * color = style[PYFwnmMenuTitleColorNormal];
         UIImage * image = style[PYFwnmMenuImageNormal];
-        UIImage * imageNormal = [PYFwnmMenuController createImageWithTitle:title font:font color:color image:image offH:5];
-         color = style[PYFwnmMenuTitleHigthlightColor];
-         image = style[PYFwnmMenuImageHigthlight];
-        UIImage * imageSelected = [PYFwnmMenuController createImageWithTitle:title font:font color:color image:image offH:5];
+        UIImage * imageNormal = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5];
+        if(style[PYFwnmMenuTitleFontHigthlight]) font = style[PYFwnmMenuTitleFontHigthlight];
+        if(style[PYFwnmMenuTitleColorHigthlight]) color = style[PYFwnmMenuTitleColorHigthlight];
+        if(style[PYFwnmMenuImageHigthlight]) image = style[PYFwnmMenuImageHigthlight];
+        UIImage * imageHigthlight = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5];
+        if(style[PYFwnmMenuTitleFontSelected]) font = style[PYFwnmMenuTitleFontSelected];
+        if(style[PYFwnmMenuTitleColorSelected]) color = style[PYFwnmMenuTitleColorSelected];
+        if(style[PYFwnmMenuImageSelected]) image = style[PYFwnmMenuImageSelected];
+        UIImage * imageSelected = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5];
         PYFwnmMemuButton * button = [PYFwnmMemuButton buttonWithType:UIButtonTypeCustom];
         [button setImage:imageNormal forState:UIControlStateNormal];
+        [button setImage:imageHigthlight forState:UIControlStateHighlighted];
         [button setImage:imageSelected forState:UIControlStateSelected];
+        imageNormal = style[PYFwnmMenuBGImageNormal];
+        imageHigthlight = style[PYFwnmMenuBGImageHigthlight];
+        imageSelected = style[PYFwnmMenuBGImageSelected];
+        if(imageNormal) [button setBackgroundImage:imageNormal forState:UIControlStateNormal];
+        if(imageHigthlight) [button setBackgroundImage:imageHigthlight forState:UIControlStateHighlighted];
+        if(imageSelected) [button setBackgroundImage:imageSelected forState:UIControlStateSelected];
         button.identify = style[PYFwnmMenuIdentify];
         [buttons addObject:button];
     }
@@ -70,27 +84,6 @@ PYPNSNN PYSelectorBarView *  menus;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-+(UIImage *) createImageWithTitle:(NSString *) title font:(UIFont *) font color:(UIColor *) color image:(UIImage *) image offH:(CGFloat) offH{
-    
-    NSAttributedString * attribute = [[NSAttributedString alloc] initWithString:title attributes:@{(NSString *)kCTForegroundColorAttributeName:color,(NSString *)kCTFontAttributeName:font}];
-    CGSize tSize = [PYUtile getBoundSizeWithAttributeTxt:attribute size:CGSizeMake(999, [PYUtile getFontHeightWithSize:font.pointSize fontName:font.fontName])];
-    UIImage * tImage = [UIImage imageWithSize:tSize blockDraw:^(CGContextRef  _Nonnull context, CGRect rect) {
-        [PYGraphicsDraw drawTextWithContext:context attribute:attribute rect:CGRectMake(0, 0, 400, 400) y:rect.size.height scaleFlag:YES];
-    }];
-    
-    tSize = CGSizeMake(tImage.size.width/2, tImage.size.height/2);
-    tImage = [tImage setImageSize:tSize];
-    
-    tSize = tImage.size;
-    CGSize tS = CGSizeMake(MAX(tSize.width, image.size.width), tSize.height + offH + image.size.height);
-    UIGraphicsBeginImageContextWithOptions(tS, NO, 2);
-    [tImage drawInRect:CGRectMake((tS.width - tSize.width)/2, 0, tImage.size.width, tImage.size.height)];
-    [image drawInRect:CGRectMake((tS.width - image.size.width)/2, tSize.height + offH, image.size.width, image.size.height)];
-    image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
 }
 
 /*

@@ -67,12 +67,22 @@
     
     return image;
 }
+-(void) viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
 - (void)onClicked {
     NSMutableString * str = [NSMutableString stringWithUTF8String:"vc"];
     [str appendString:@(self.navigationController.viewControllers.count).stringValue];
     [self performSegueWithIdentifier:str sender:nil];
 }
-
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+- (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id <UIContentContainer>)containe{
+    [super systemLayoutFittingSizeDidChangeForChildContentContainer:containe];
+}
+-(void) dealloc{
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

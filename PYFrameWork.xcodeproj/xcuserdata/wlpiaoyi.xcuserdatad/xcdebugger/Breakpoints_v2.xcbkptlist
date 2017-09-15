@@ -9,14 +9,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PYFramework/Public/PYFrameworkUtile.m"
-            timestampString = "524988892.064764"
+            filePath = "../PYUtile/PYUtile/Source/Hook/UIResponder+Hook.m"
+            timestampString = "525669329.680004"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
-            landmarkName = "-afterExcuteDidRotateFromInterfaceOrientation:target:"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "+hookWithMethodNames:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "PYFramework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Datas/wlpiaoyi/Document/Developer/iOS/PYUtile/PYUtile/Source/Hook/UIResponder+Hook.m"
+                  timestampString = "525669397.965734"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "PYFramework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Datas/wlpiaoyi/Document/Developer/iOS/PYUtile/PYUtile/Source/Hook/UIResponder+Hook.m"
+                  timestampString = "525669397.967137"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -25,46 +57,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PYFramework/Public/PYFrameworkUtile.m"
-            timestampString = "524990291.974487"
+            filePath = "../PYUtile/PYUtile/Source/Hook/UIResponder+Hook.m"
+            timestampString = "525669349.456631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "+isSameOrientationInParentForTargetController:"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "+hookWithMethodNames:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PYFramework/Public/PYFrameworkUtile.m"
-            timestampString = "524990293.878875"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "+isSameOrientationInParentForTargetController:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PYFramework/Public/PYFrameworkUtile.m"
-            timestampString = "524990295.638677"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
-            landmarkName = "+isSameOrientationInParentForTargetController:"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[UIResponder(Hook) hookWithMethodNames:]"
+                  moduleName = "PYFramework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Datas/wlpiaoyi/Document/Developer/iOS/PYUtile/PYUtile/Source/Hook/UIResponder+Hook.m"
+                  timestampString = "525669397.973974"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41+[UIResponder(Hook) hookWithMethodNames:]_block_invoke"
+                  moduleName = "PYFramework"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Datas/wlpiaoyi/Document/Developer/iOS/PYUtile/PYUtile/Source/Hook/UIResponder+Hook.m"
+                  timestampString = "525669397.975972"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -42,6 +42,30 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
     [UINavigationController hookMethodWithName:@"preferredStatusBarStyle"];
 }
 /**
+ 创建上下结构的文字图片结构
+ */
++(UIImage *) createImageWithTitle:(NSString *) title font:(UIFont *) font color:(UIColor *) color image:(UIImage *) image offH:(CGFloat) offH{
+    
+    NSAttributedString * attribute = [[NSAttributedString alloc] initWithString:title attributes:@{(NSString *)kCTForegroundColorAttributeName:color,(NSString *)kCTFontAttributeName:font}];
+    CGSize tSize = [PYUtile getBoundSizeWithAttributeTxt:attribute size:CGSizeMake(999, [PYUtile getFontHeightWithSize:font.pointSize fontName:font.fontName])];
+    UIImage * tImage = [UIImage imageWithSize:tSize blockDraw:^(CGContextRef  _Nonnull context, CGRect rect) {
+        [PYGraphicsDraw drawTextWithContext:context attribute:attribute rect:CGRectMake(0, 0, 400, 400) y:rect.size.height scaleFlag:YES];
+    }];
+    
+    tSize = CGSizeMake(tImage.size.width/2, tImage.size.height/2);
+    tImage = [tImage setImageSize:tSize];
+    
+    tSize = tImage.size;
+    CGSize tS = CGSizeMake(MAX(tSize.width, image.size.width), tSize.height + offH + image.size.height);
+    UIGraphicsBeginImageContextWithOptions(tS, NO, 2);
+    [tImage drawInRect:CGRectMake((tS.width - tSize.width)/2, 0, tImage.size.width, tImage.size.height)];
+    [image drawInRect:CGRectMake((tS.width - image.size.width)/2, tSize.height + offH, image.size.width, image.size.height)];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+/**
  旋转默认设置
  */
 +(void) setViewControllerOrientationData:(nullable PYFrameworkUtileOrientation *) frameworkOrientation{
@@ -106,6 +130,7 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
     }
     
     [barButtonItem setTitleTextAttributes:titleTextAttributes forState:managerBarButtonItemData.currentState];
+    
 }
 
 /**
@@ -113,9 +138,8 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
  */
 +(void) setNavigationBarStyle:(nonnull UINavigationBar *) navigationBar managerNavigationbarData:(nonnull PYFrameworkUtileNavigationbar *) managerNavigationbarData{
 
-    
     NSMutableDictionary *titleTextAttributes = [NSMutableDictionary dictionaryWithDictionary:[navigationBar titleTextAttributes]];
-    
+
     NSShadow *shadow = titleTextAttributes[NSShadowAttributeName];
     if (!shadow) {
         shadow = [[NSShadow alloc] init];
@@ -146,8 +170,9 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
     if (managerNavigationbarData.backgroundColor) {
         [navigationBar setBackgroundColor:managerNavigationbarData.backgroundColor];
     }else if (managerNavigationbarData.backgroundImage) {
-        [navigationBar setBackgroundImage:managerNavigationbarData.backgroundImage forBarPosition:managerNavigationbarData.barPosition barMetrics:managerNavigationbarData.barMetrics];
+        [navigationBar setBackgroundImage:managerNavigationbarData.backgroundImage forBarMetrics:managerNavigationbarData.barMetrics];
     }
+    if(managerNavigationbarData.lineButtomImage)navigationBar.shadowImage = managerNavigationbarData.lineButtomImage;
 }
 
 +(BOOL) isSameOrientationInParentForTargetController:(nonnull UIViewController *) targetController{
@@ -194,10 +219,6 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
 
 -(void) afterExcuteViewWillAppearWithTarget:(UIViewController *)target{
     
-    if (target.childViewControllers.count) {
-        return;
-    }
-    
     if([target conformsToProtocol:@protocol(PYFrameworkOrientationTag)]){
         UIInterfaceOrientation interfaceOrientation = [PYOrientationNotification instanceSingle].interfaceOrientation;
         if (![PYOrientationNotification isSupportInterfaceOrientation:interfaceOrientation targetController:target]) {
@@ -210,38 +231,45 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
         }
     }
     
-    if([target conformsToProtocol:@protocol(PYFrameworkNavigationTag)]){
-        UINavigationBar *navigationBar;
-        UINavigationItem *navigationItem = target.navigationItem;
-        if (target.navigationController) {
-            navigationBar = target.navigationController.navigationBar;
-        }else if([target respondsToSelector:@selector(navigationBar)]){
+    if([target isKindOfClass:[UINavigationController class]]){
+        UINavigationBar *navigationBar = ((UINavigationController *) target).navigationBar;
+        if(navigationBar)
+            for (PYFrameworkUtileNavigationbar * data in self.managerNavigationbarDatas) {
+                [PYFrameworkUtile setNavigationBarStyle:navigationBar managerNavigationbarData:data];
+            }
+    }else{
+        UINavigationBar *navigationBar = nil;
+        if([target respondsToSelector:@selector(navigationBar)]){
             navigationBar = [target performSelector:@selector(navigationBar)];
         }
         if(navigationBar)
             for (PYFrameworkUtileNavigationbar * data in self.managerNavigationbarDatas) {
                 [PYFrameworkUtile setNavigationBarStyle:navigationBar managerNavigationbarData:data];
             }
-        void (^block) (UIViewcontrollerHookViewDelegateImp * imp, UIBarButtonItem * barButtonItem) = ^ (UIViewcontrollerHookViewDelegateImp * imp, UIBarButtonItem * barButtonItem){
-            for (PYFrameworkUtileBarButtonItem * data in imp.managerBarButtonItemDatas) {
-                [PYFrameworkUtile setBarButtonItemStyle:barButtonItem managerBarButtonItemData:data];
-            }
-        };
         
-        if(navigationItem.backBarButtonItem){
-            block(self, navigationItem.backBarButtonItem);
-        }
-        if(navigationItem.leftBarButtonItems){
-            for (UIBarButtonItem * barButtonItem in navigationItem.leftBarButtonItems) {
-                block(self, barButtonItem);
+        UINavigationItem *navigationItem = target.navigationItem;
+        if(navigationItem){
+            void (^block) (UIViewcontrollerHookViewDelegateImp * imp, UIBarButtonItem * barButtonItem) = ^ (UIViewcontrollerHookViewDelegateImp * imp, UIBarButtonItem * barButtonItem){
+                for (PYFrameworkUtileBarButtonItem * data in imp.managerBarButtonItemDatas) {
+                    [PYFrameworkUtile setBarButtonItemStyle:barButtonItem managerBarButtonItemData:data];
+                }
+            };
+            if(navigationItem.backBarButtonItem){
+                block(self, navigationItem.backBarButtonItem);
             }
-        }
-        if(navigationItem.rightBarButtonItems){
-            for (UIBarButtonItem * barButtonItem in navigationItem.rightBarButtonItems) {
-                block(self, barButtonItem);
+            if(navigationItem.leftBarButtonItems){
+                for (UIBarButtonItem * barButtonItem in navigationItem.leftBarButtonItems) {
+                    block(self, barButtonItem);
+                }
+            }
+            if(navigationItem.rightBarButtonItems){
+                for (UIBarButtonItem * barButtonItem in navigationItem.rightBarButtonItems) {
+                    block(self, barButtonItem);
+                }
             }
         }
     }
+    
 }
 
 -(void) afterExcuteViewDidAppearWithTarget:(nonnull UIViewController *) target{
@@ -263,7 +291,7 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
     }
     
     UIStatusBarStyle statusBarStyle = self.managerNavigationbarDatas.count ? self.managerNavigationbarDatas.firstObject.statusBarStyle : UIStatusBarStyleDefault;
-    [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle animated:YES];
+    
     return statusBarStyle;
 }
 
@@ -334,17 +362,17 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
     if (self = [super init]) {
         self.shadowOffset = CGSizeZero;
         self.shadowBlurRadius = CGFLOAT_MIN;
-        self.barPosition = UIBarPositionTop;
         self.barMetrics =  UIBarMetricsDefault;
         self.statusBarStyle = UIStatusBarStyleLightContent;
+        self.lineButtomImage = nil;
     }
     return self;
 }
 +(instancetype) defaut{
     PYFrameworkUtileNavigationbar  * data = [PYFrameworkUtileNavigationbar new];
-    data.shadowOffset = CGSizeMake(1, 1);
-    data.shadowBlurRadius = .5;
-    data.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.3];
+    data.shadowOffset = CGSizeMake(0, 0);
+    data.shadowBlurRadius = 0;
+    data.shadowColor = [UIColor clearColor];
     data.nameColor = [UIColor whiteColor];
     data.nameFont = [UIFont systemFontOfSize:20];
     data.tintColor = [UIColor whiteColor];
@@ -365,9 +393,9 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
 }
 +(instancetype) defaut{
     PYFrameworkUtileBarButtonItem  * data = [PYFrameworkUtileBarButtonItem new];
-    data.shadowOffset = CGSizeMake(1, 1);
-    data.shadowBlurRadius = .5;
-    data.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.3];
+    data.shadowOffset = CGSizeMake(0, 0);
+    data.shadowBlurRadius = 0;
+    data.shadowColor = [UIColor clearColor];
     data.nameColor = [UIColor whiteColor];
     data.nameFont = [UIFont systemFontOfSize:12];
     return data;

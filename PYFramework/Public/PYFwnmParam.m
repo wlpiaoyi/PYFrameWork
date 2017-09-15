@@ -8,13 +8,23 @@
 
 #import "PYFwnmParam.h"
 
-NSString * _Nonnull PYFwnmMenuIdentify = @"keyId";
-NSString * _Nonnull PYFwnmMenuTitle = @"adfa0";
-NSString * _Nonnull PYFwnmMenuTitleFont = @"adfa1";
-NSString * _Nonnull PYFwnmMenuTitleNormalColor = @"adfad2";
-NSString * _Nonnull PYFwnmMenuTitleHigthlightColor = @"adfadsf3";
-NSString * _Nonnull PYFwnmMenuImageNormal = @"dusd";
-NSString * _Nonnull PYFwnmMenuImageHigthlight = @"ddidh";
-NSString * _Nonnull PYFwnmMenuTarget = @"addd4";
-NSString * _Nonnull PYFwnmMenuAction = @"adf5";
+
+NSString * _Nonnull PYFwnmMenuIdentify = @"{Identify}";
+NSString * _Nonnull PYFwnmMenuTitle = @"{Title}";
+
+NSString * _Nonnull PYFwnmMenuTitleFontNormal = @"{TitleFontNormal}";
+NSString * _Nonnull PYFwnmMenuTitleFontHigthlight = @"{TitleFontHigthlight}";
+NSString * _Nonnull PYFwnmMenuTitleFontSelected = @"{TitleFontSelected}";
+
+NSString * _Nonnull PYFwnmMenuTitleColorNormal = @"{TitleColorNormal}";
+NSString * _Nonnull PYFwnmMenuTitleColorHigthlight = @"{TitleColorHigthlight}";
+NSString * _Nonnull PYFwnmMenuTitleColorSelected = @"{TitleColorSelected}";
+
+NSString * _Nonnull PYFwnmMenuImageNormal = @"{ImageNormal}";
+NSString * _Nonnull PYFwnmMenuImageHigthlight = @"{ImageHigthlight}";
+NSString * _Nonnull PYFwnmMenuImageSelected = @"{ImageSelected}";
+
+NSString * _Nonnull PYFwnmMenuBGImageNormal = @"{BGImageNormal}";
+NSString * _Nonnull PYFwnmMenuBGImageHigthlight = @"{BGImageHigthlight}";
+NSString * _Nonnull PYFwnmMenuBGImageSelected = @"{BGImageSelected}";
 

@@ -72,6 +72,8 @@ PYSOULDLAYOUTP
             [_menuView layoutIfNeeded];
         } completion:^(BOOL finished) {
             _isRootAnimated = false;
+            [_rootView layoutIfNeeded];
+            [_menuView layoutIfNeeded];
         }];
     }else{
         _isRootAnimated = false;
@@ -159,11 +161,21 @@ PYSOULDLAYOUTP
     if(vc) return [vc  didRotateFromInterfaceOrientation:fromInterfaceOrientation];
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id <UIContentContainer>)container{
+    [super preferredContentSizeDidChangeForChildContentContainer:container];
+}
+- (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id <UIContentContainer>)containe{
+    [super systemLayoutFittingSizeDidChangeForChildContentContainer:containe];
+}
 #pragma Orientations <==
 
 PYSOULDLAYOUTVMSTART
     [self excuteBlockLayout];
 PYSOULDLAYOUTMEND
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

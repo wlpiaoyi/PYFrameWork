@@ -17,19 +17,31 @@ typedef enum _PYFrameworkShow{
     PYFrameworkAllShow = PYFrameworkMenuShow | PYFrameworkRootShow
 } PYFrameworkShow;
 
+
 extern NSString * _Nonnull PYFwnmMenuIdentify;
 extern NSString * _Nonnull PYFwnmMenuTitle;
-extern NSString * _Nonnull PYFwnmMenuTitleFont;
-extern NSString * _Nonnull PYFwnmMenuTitleNormalColor;
-extern NSString * _Nonnull PYFwnmMenuTitleHigthlightColor;
+
+extern NSString * _Nonnull PYFwnmMenuTitleFontNormal;
+extern NSString * _Nonnull PYFwnmMenuTitleFontHigthlight;
+extern NSString * _Nonnull PYFwnmMenuTitleFontSelected;
+
+extern NSString * _Nonnull PYFwnmMenuTitleColorNormal;
+extern NSString * _Nonnull PYFwnmMenuTitleColorHigthlight;
+extern NSString * _Nonnull PYFwnmMenuTitleColorSelected;
+
 extern NSString * _Nonnull PYFwnmMenuImageNormal;
 extern NSString * _Nonnull PYFwnmMenuImageHigthlight;
+extern NSString * _Nonnull PYFwnmMenuImageSelected;
+
+extern NSString * _Nonnull PYFwnmMenuBGImageNormal;
+extern NSString * _Nonnull PYFwnmMenuBGImageHigthlight;
+extern NSString * _Nonnull PYFwnmMenuBGImageSelected;
+
 
 
 @protocol PYFrameworkNormalTag <NSObject> @end
-@protocol PYFrameworkNavigationTag <NSObject> @end
 @protocol PYFrameworkOrientationTag <NSObject> @end
 @protocol PYFrameworkAttemptRotationTag <NSObject> @end
-@protocol PYFrameworkAllTag <PYFrameworkNormalTag, PYFrameworkNavigationTag, PYFrameworkOrientationTag, PYFrameworkAttemptRotationTag> @end
+@protocol PYFrameworkAllTag <PYFrameworkNormalTag, PYFrameworkOrientationTag, PYFrameworkAttemptRotationTag> @end
 
 

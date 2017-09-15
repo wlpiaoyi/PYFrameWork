@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "PYFwnmParam.h"
+
 @interface PYFwnmMenuController : UIViewController
 @property (nonatomic, strong, nullable) UIColor * colorSeletedBg;
-@property (nonatomic, strong, nullable) NSArray<NSDictionary *> * dictButtonStyle;
+@property (nonatomic, strong, nullable) NSArray<NSDictionary *> * menuStyle;
 @property (nonatomic, copy, nullable) BOOL (^blockOnclickMenu)(id _Nullable menuIdentify);
 -(void) setSelectedMenuWithIdentify:(nonnull id) identify;
 @end
