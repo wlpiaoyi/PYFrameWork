@@ -12,11 +12,11 @@
 #import "UIView+Expand.h"
 
 @interface PYFrameworkController ()
-PYPNSNN UIView * rootView;
-PYPNSNN UIView * menuView;
-PYPNSNN NSArray<NSLayoutConstraint *> * lcRoots;
-PYPNSNN NSArray<NSLayoutConstraint *> * lcMenus;
-PYSOULDLAYOUTP
+kPNSNN UIView * rootView;
+kPNSNN UIView * menuView;
+kPNSNN NSArray<NSLayoutConstraint *> * lcRoots;
+kPNSNN NSArray<NSLayoutConstraint *> * lcMenus;
+kSOULDLAYOUTP
 @end
 
 @implementation PYFrameworkController
@@ -172,9 +172,9 @@ PYSOULDLAYOUTP
 }
 #pragma Orientations <==
 
-PYSOULDLAYOUTVMSTART
+kSOULDLAYOUTVMSTART
     [self excuteBlockLayout];
-PYSOULDLAYOUTMEND
+kSOULDLAYOUTMEND
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

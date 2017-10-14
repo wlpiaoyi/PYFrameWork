@@ -14,7 +14,7 @@
 #import "PYFwnmMenuController.h"
 
 @interface UIResponderHookBaseDelegateFWC : NSObject<UIResponderHookBaseDelegate>
-PYPNANN NSMutableDictionary * mdict;
+kPNANN NSMutableDictionary * mdict;
 -(void) beforeExcuteDeallocWithTarget:(nonnull NSObject *) target;
 @end
 
@@ -28,7 +28,7 @@ PYPNANN NSMutableDictionary * mdict;
 @end
 UIResponderHookBaseDelegateFWC * xUIResponderHookBaseDelegateFWC;
 @interface UIViewcontrollerHookViewDelegateFWC : NSObject<UIViewcontrollerHookViewDelegate>
-PYPNSNN NSMutableDictionary * mdict;
+kPNSNN NSMutableDictionary * mdict;
 @end
 @implementation UIViewcontrollerHookViewDelegateFWC
 +(void) initialize{

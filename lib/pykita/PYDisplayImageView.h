@@ -1,14 +1,16 @@
 //
 //  PYDisplayImageView.h
-//  PYNetwork
+//  PYKit
 //
-//  Created by wlpiaoyi on 2017/4/18.
+//  Created by wlpiaoyi on 2017/9/4.
 //  Copyright © 2017年 wlpiaoyi. All rights reserved.
 //
 
-#import "PYAsyImageView.h"
-
+#import <UIKit/UIKit.h>
+#import "PYUtile.h"
 @interface PYDisplayImageView : UIView
-PYPNSNA NSString * imgUrl;
--(void) showDefualt;
+//默认的imageView是PYAsyImageView
+kPNSNA UIImageView * imageView;
+kPNA NSUInteger maxMultiple;
+-(void) synchronizedImageSize;
 @end

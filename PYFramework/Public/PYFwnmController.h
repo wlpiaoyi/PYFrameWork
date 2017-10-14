@@ -11,9 +11,9 @@
 #import "PYFwnmParam.h"
 
 @interface PYFwnmController : PYFrameworkController
-PYPNA CGFloat menuHeight;
-PYPNSNN id menuIdentify;
-PYPNSNA UIColor * colorSeletedBg;
-PYPNSNA NSArray<NSDictionary *> * menuStyle;
-PYPNCNA BOOL (^blockOnclickMenu)(id _Nullable menuIdentify);
+kPNA CGFloat menuHeight;
+kPNSNN id menuIdentify;
+kPNSNA UIColor * colorSeletedBg;
+kPNSNA NSArray<NSDictionary *> * menuStyle;
+kPNCNA BOOL (^blockOnclickMenu)(id _Nullable menuIdentify);
 @end

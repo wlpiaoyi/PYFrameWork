@@ -13,11 +13,11 @@
 
 
 @interface PYFwnmMemuButton:UIButton
-PYPNSNN id identify;
+kPNSNN id identify;
 @end
 @implementation PYFwnmMemuButton @end
 @interface PYFwnmMenuController ()
-PYPNSNN PYSelectorBarView *  menus;
+kPNSNN PYSelectorBarView *  menus;
 @end
 
 @implementation PYFwnmMenuController
@@ -30,7 +30,7 @@ PYPNSNN PYSelectorBarView *  menus;
 }
 -(void) setColorSeletedBg:(UIColor *)colorSeletedBg{
     _colorSeletedBg = colorSeletedBg;
-    self.menus.selectorColor = _colorSeletedBg;
+    self.menus.selectorTag = [[UIImageView alloc] initWithImage:[UIImage imageWithColor:_colorSeletedBg]];
 }
 -(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle{
     _menuStyle = menuStyle;
