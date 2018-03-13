@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PYFwnmParam.h"
+#import "PYFrameworkParam.h"
 
 @interface PYFrameworkUtileOrientation : NSObject
 @property (nonatomic) BOOL shouldAutorotate;
@@ -60,7 +60,7 @@
 /**
  创建上下结构的文字图片结构
  */
-+(nonnull UIImage *) createImageWithTitle:(nonnull NSString *) title font:(nonnull UIFont *) font color:(nonnull UIColor *) color image:(nonnull UIImage *) image offH:(CGFloat) offH;
++(nonnull UIImage *) createImageWithTitle:(nonnull NSString *) title font:(nonnull UIFont *) font color:(nonnull UIColor *) color image:(nonnull UIImage *) image offH:(CGFloat) offH isDownImgDirection:(BOOL) isDownImgDirection;
 /**
  旋转默认设置
  */

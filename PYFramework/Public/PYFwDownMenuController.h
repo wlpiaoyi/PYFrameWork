@@ -1,0 +1,34 @@
+//
+//  PYFwDownMenuController.h
+//  PYFramework
+//
+//  Created by wlpiaoyi on 2017/8/19.
+//  Copyright © 2017年 wlpiaoyi. All rights reserved.
+//
+
+#import "PYFrameworkController.h"
+#import "PYUtile.h"
+#import "PYFrameworkParam.h"
+/**
+ 普通目录式框架结构
+ */
+@interface PYFwDownMenuController : PYFrameworkController
+/**
+ 目录高度
+ */
+kPNA CGFloat menuHeight;
+/**
+ 目录选中的背景颜色
+ */
+kPNSNA UIColor * colorSeletedBg;
+/**
+ 目录选中的背景高度
+ */
+kPNA CGFloat colorSeletedHeight;
+/**
+ 目录样式
+ */
+kPNSNA NSArray<NSDictionary *> * menuStyle;
+kPNCNA BOOL (^blockOnclickMenu)(id _Nullable menuIdentify);
+-(void) showMenu:(nonnull id)menuIdentify;
+@end

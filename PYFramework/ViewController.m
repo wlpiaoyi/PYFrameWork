@@ -9,10 +9,11 @@
 #import "ViewController.h"
 #import "UIView+Expand.h"
 #import "PYViewAutolayoutCenter.h"
-#import "PYFwnmParam.h"
+#import "PYFrameworkParam.h"
 #import "UIImage+Expand.h"
 #import "PYGraphicsDraw.h"
 #import <CoreText/CoreText.h>
+#import "pyutilea.h"
 
 @interface ViewController () <PYFrameworkAllTag>{
 @private UIButton * buttonNext;
@@ -23,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = kRGB(200, 200, 200);
     UIView * view = [UIView new];
     [view setCornerRadiusAndBorder:1 borderWidth:1 borderColor:[UIColor greenColor]];
     [self.view addSubview:view];
@@ -48,6 +50,9 @@
     
     // Do any additional setup after loading the view, typically from a nib.
 }
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
 
 +(UIImage *) createImageWithTitle:(NSString *) title font:(UIFont *) font color:(UIColor *) color image:(UIImage *) image offH:(CGFloat) offH{
     
@@ -66,9 +71,6 @@
     UIGraphicsEndImageContext();
     
     return image;
-}
--(void) viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
 }
 - (void)onClicked {
     NSMutableString * str = [NSMutableString stringWithUTF8String:"vc"];

@@ -8,7 +8,7 @@
 
 #import "PYFrameworkController.h"
 #import "PYViewAutolayoutCenter.h"
-#import "PYFwnmMenuController.h"
+#import "PYFwMenuController.h"
 #import "UIView+Expand.h"
 
 @interface PYFrameworkController ()
@@ -57,35 +57,53 @@ kSOULDLAYOUTP
 
 -(void) excuteBlockLayout{
     if(self.blockLayoutAnimate){
-        _blockLayoutAnimate(self.frameworkShow, self.rootView, self.menuView);
+        CGRect rootFrame = self.rootView.frame;
+        CGRect menuFrame = self.menuView.frame;
+        CATransform3D rootRransform = self.rootView.layer.transform;
+        CATransform3D menuRransform = self.menuView.layer.transform;
+        PYFwlayoutParams rootParams = PYFwlayoutParamsMake(rootFrame, 0, rootRransform);
+        PYFwlayoutParams menuParams = PYFwlayoutParamsMake(menuFrame, 0, menuRransform);
+        _blockLayoutAnimate(self.frameworkShow, &rootParams, &menuParams);
+        self.rootView.frame = rootParams.frame;
+        self.rootView.layer.transform = rootParams.transform;
+        self.menuView.frame = menuParams.frame;
+        self.menuView.layer.transform = menuParams.transform;
     }
 }
 
--(void) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime{
-    _frameworkShow = show;
+-(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime{
     if(delayTime > 0){
+        if(_isRootAnimated) return NO;
         _isRootAnimated = true;
-        __unsafe_unretained typeof(self) uself = self;
+        _frameworkShow = show;
+        self.view.userInteractionEnabled = NO;
+        kAssign(self);
         [UIView animateWithDuration:delayTime animations:^{
-            [uself excuteBlockLayout];
-            [_rootView layoutIfNeeded];
-            [_menuView layoutIfNeeded];
+            kStrong(self)
+            [self excuteBlockLayout];
+            [self.view layoutIfNeeded];
+            [self.rootView layoutIfNeeded];
+            [self.menuView layoutIfNeeded];
         } completion:^(BOOL finished) {
-            _isRootAnimated = false;
-            [_rootView layoutIfNeeded];
-            [_menuView layoutIfNeeded];
+            self->_isRootAnimated = false;
+            [self.view layoutIfNeeded];
+            [self.rootView layoutIfNeeded];
+            [self.menuView layoutIfNeeded];
+            self.view.userInteractionEnabled = YES;
         }];
     }else{
+        _frameworkShow = show;
         _isRootAnimated = false;
         [self excuteBlockLayout];
-        [_rootView layoutIfNeeded];
-        [_menuView layoutIfNeeded];
+        [self.rootView layoutIfNeeded];
+        [self.menuView layoutIfNeeded];
     }
+    return YES;
 }
 
 -(BOOL) removeRootController{
     if(_isRootAnimated) return NO;
-    _frameworkShow = _frameworkShow ^ PYFrameworkRootShow;
+    _frameworkShow = _frameworkShow ^ (PYFrameworkRootFillShow | PYFrameworkRootFitShow | PYFrameworkRootHidden);
     [self.rootController removeFromParentViewController];
     [self.rootController.view removeFromSuperview];
     if(self.lcRoots){
@@ -99,7 +117,7 @@ kSOULDLAYOUTP
 
 -(BOOL) removeMenuController{
     if(_isMenuAnimated) return NO;
-    _frameworkShow = _frameworkShow ^ PYFrameworkMenuShow;
+    _frameworkShow = _frameworkShow ^ (PYFrameworkMenuShow | PYFrameworkMenuHidden);
     [self.menuController removeFromParentViewController];
     [self.menuController.view removeFromSuperview];
     if(self.lcMenus){
@@ -111,21 +129,11 @@ kSOULDLAYOUTP
     return YES;
 }
 -(UIViewController *) getEnableController{
-    switch (_frameworkShow) {
-        case PYFrameworkRootShow:{
-            return self.rootController;
-        }
-            break;
-        case PYFrameworkAllShow:{
-            return self.rootController;
-        }
-            break;
-        case PYFrameworkMenuShow:{
-            return self.menuController;
-        }
-            break;
-        default:
-            break;
+    if(_frameworkShow & PYFrameworkRootFillShow || _frameworkShow & PYFrameworkRootFitShow){
+        return self.rootController;
+    }
+    if(_frameworkShow & PYFrameworkMenuShow){
+        return self.menuController;
     }
     return nil;
 }

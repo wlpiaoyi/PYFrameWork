@@ -44,7 +44,7 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
 /**
  创建上下结构的文字图片结构
  */
-+(UIImage *) createImageWithTitle:(NSString *) title font:(UIFont *) font color:(UIColor *) color image:(UIImage *) image offH:(CGFloat) offH{
++(UIImage *) createImageWithTitle:(NSString *) title font:(UIFont *) font color:(UIColor *) color image:(UIImage *) image offH:(CGFloat) offH  isDownImgDirection:(BOOL) isDownImgDirection{
     
     NSAttributedString * attribute = [[NSAttributedString alloc] initWithString:title attributes:@{(NSString *)kCTForegroundColorAttributeName:color,(NSString *)kCTFontAttributeName:font}];
     CGSize tSize = [PYUtile getBoundSizeWithAttributeTxt:attribute size:CGSizeMake(999, [PYUtile getFontHeightWithSize:font.pointSize fontName:font.fontName])];
@@ -57,9 +57,17 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
     
     tSize = tImage.size;
     CGSize tS = CGSizeMake(MAX(tSize.width, image.size.width), tSize.height + offH + image.size.height);
+    CGRect tFrame, iFrame;
+    if(isDownImgDirection){
+        iFrame = CGRectMake((tS.width - image.size.width)/2, 0, image.size.width, image.size.height);
+        tFrame = CGRectMake((tS.width - tSize.width)/2, iFrame.size.height + offH, tImage.size.width, tImage.size.height);
+    }else{
+        tFrame = CGRectMake((tS.width - tSize.width)/2, 0, tImage.size.width, tImage.size.height);
+        iFrame = CGRectMake((tS.width - image.size.width)/2, tSize.height + offH, image.size.width, image.size.height);
+    }
     UIGraphicsBeginImageContextWithOptions(tS, NO, 2);
-    [tImage drawInRect:CGRectMake((tS.width - tSize.width)/2, 0, tImage.size.width, tImage.size.height)];
-    [image drawInRect:CGRectMake((tS.width - image.size.width)/2, tSize.height + offH, image.size.width, image.size.height)];
+    [tImage drawInRect:tFrame];
+    [image drawInRect:iFrame];
     image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

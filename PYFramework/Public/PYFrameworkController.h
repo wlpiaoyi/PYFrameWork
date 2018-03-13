@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PYUtile.h"
-#import "PYFwnmParam.h"
+#import "PYFrameworkParam.h"
 
 
 @interface PYFrameworkController : UIViewController
@@ -38,10 +38,10 @@
  显示和动作block设置
  */
 //==>
-@property (nonatomic, copy, nonnull) void (^blockLayoutAnimate)(PYFrameworkShow frameworkShow, UIView * _Nullable rootView, UIView * _Nonnull menuView);
+@property (nonatomic, copy, nonnull) void (^blockLayoutAnimate)(PYFrameworkShow frameworkShow, PYFwlayoutParams * _Nullable rootParams, PYFwlayoutParams * _Nullable menuParams);
 ///<==
 
--(void) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime;
+-(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime;
 -(BOOL) removeRootController;
 -(BOOL) removeMenuController;
 @end

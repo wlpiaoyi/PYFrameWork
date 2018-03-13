@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PYFwnmParam.h"
+#import "PYFrameworkParam.h"
 #import "PYFrameworkUtile.h"
-#import "PYFwnmController.h"
+#import "PYFwDownMenuController.h"
 #import "PYFrameworkController.h"
