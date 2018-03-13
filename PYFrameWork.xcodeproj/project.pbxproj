@@ -17,7 +17,7 @@
 		150C6DEF1F47E68700731FC7 /* PYFrameworkUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6DEE1F47E68700731FC7 /* PYFrameworkUITests.m */; };
 		150C6E341F47EB2400731FC7 /* PYFrameworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E331F47EB2400731FC7 /* PYFrameworkController.m */; };
 		150C6E401F48498400731FC7 /* TMController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E3F1F48498400731FC7 /* TMController.m */; };
-		150C6E471F49135700731FC7 /* PYFwDownMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E461F49135700731FC7 /* PYFwDownMenuController.m */; };
+		150C6E471F49135700731FC7 /* PYFwTabMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E461F49135700731FC7 /* PYFwTabMenuController.m */; };
 		150C6E4B1F4913DC00731FC7 /* PYFwMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E4A1F4913DC00731FC7 /* PYFwMenuController.m */; };
 		150C6E6D1F49601700731FC7 /* PYFrameworkParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E6C1F49601700731FC7 /* PYFrameworkParam.m */; };
 		150C6E731F49929300731FC7 /* bill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 150C6E6F1F49929300731FC7 /* bill@2x.png */; };
@@ -28,11 +28,11 @@
 		150C6ECA1F4A95AE00731FC7 /* pyframeworka.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6EC71F4A95AE00731FC7 /* pyframeworka.h */; };
 		150C6ECE1F4A961800731FC7 /* PYFrameworkUtile.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6EB51F4A81C000731FC7 /* PYFrameworkUtile.m */; };
 		150C6ECF1F4A961800731FC7 /* PYFrameworkParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E6C1F49601700731FC7 /* PYFrameworkParam.m */; };
-		150C6ED01F4A961800731FC7 /* PYFwDownMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E461F49135700731FC7 /* PYFwDownMenuController.m */; };
+		150C6ED01F4A961800731FC7 /* PYFwTabMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E461F49135700731FC7 /* PYFwTabMenuController.m */; };
 		150C6ED11F4A961800731FC7 /* PYFrameworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E331F47EB2400731FC7 /* PYFrameworkController.m */; };
 		150C6ED21F4A964500731FC7 /* PYFrameworkUtile.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6EB41F4A81C000731FC7 /* PYFrameworkUtile.h */; };
 		150C6ED31F4A964500731FC7 /* PYFrameworkParam.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6E6B1F49601700731FC7 /* PYFrameworkParam.h */; };
-		150C6ED41F4A964500731FC7 /* PYFwDownMenuController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6E451F49135700731FC7 /* PYFwDownMenuController.h */; };
+		150C6ED41F4A964500731FC7 /* PYFwTabMenuController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6E451F49135700731FC7 /* PYFwTabMenuController.h */; };
 		150C6ED51F4A964500731FC7 /* PYFrameworkController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6E321F47EB2400731FC7 /* PYFrameworkController.h */; };
 		150C6ED61F4A968400731FC7 /* PYFwMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E4A1F4913DC00731FC7 /* PYFwMenuController.m */; };
 		157610851FD933A300522CF0 /* libpyutilea.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1576103C1FD933A200522CF0 /* libpyutilea.a */; };
@@ -69,7 +69,7 @@
 			files = (
 				150C6ED21F4A964500731FC7 /* PYFrameworkUtile.h in CopyFiles */,
 				150C6ED31F4A964500731FC7 /* PYFrameworkParam.h in CopyFiles */,
-				150C6ED41F4A964500731FC7 /* PYFwDownMenuController.h in CopyFiles */,
+				150C6ED41F4A964500731FC7 /* PYFwTabMenuController.h in CopyFiles */,
 				150C6ED51F4A964500731FC7 /* PYFrameworkController.h in CopyFiles */,
 				150C6ECA1F4A95AE00731FC7 /* pyframeworka.h in CopyFiles */,
 			);
@@ -98,8 +98,8 @@
 		150C6E331F47EB2400731FC7 /* PYFrameworkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYFrameworkController.m; sourceTree = "<group>"; };
 		150C6E3E1F48498400731FC7 /* TMController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMController.h; sourceTree = "<group>"; };
 		150C6E3F1F48498400731FC7 /* TMController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMController.m; sourceTree = "<group>"; };
-		150C6E451F49135700731FC7 /* PYFwDownMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYFwDownMenuController.h; sourceTree = "<group>"; };
-		150C6E461F49135700731FC7 /* PYFwDownMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYFwDownMenuController.m; sourceTree = "<group>"; };
+		150C6E451F49135700731FC7 /* PYFwTabMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYFwTabMenuController.h; sourceTree = "<group>"; };
+		150C6E461F49135700731FC7 /* PYFwTabMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYFwTabMenuController.m; sourceTree = "<group>"; };
 		150C6E491F4913DC00731FC7 /* PYFwMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYFwMenuController.h; sourceTree = "<group>"; };
 		150C6E4A1F4913DC00731FC7 /* PYFwMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYFwMenuController.m; sourceTree = "<group>"; };
 		150C6E6B1F49601700731FC7 /* PYFrameworkParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYFrameworkParam.h; sourceTree = "<group>"; };
@@ -308,8 +308,8 @@
 				150C6E6C1F49601700731FC7 /* PYFrameworkParam.m */,
 				150C6EB41F4A81C000731FC7 /* PYFrameworkUtile.h */,
 				150C6EB51F4A81C000731FC7 /* PYFrameworkUtile.m */,
-				150C6E451F49135700731FC7 /* PYFwDownMenuController.h */,
-				150C6E461F49135700731FC7 /* PYFwDownMenuController.m */,
+				150C6E451F49135700731FC7 /* PYFwTabMenuController.h */,
+				150C6E461F49135700731FC7 /* PYFwTabMenuController.m */,
 				15C376021FC1361D0076EFA6 /* PYFwRightSlipController.h */,
 				15C376031FC1361D0076EFA6 /* PYFwRightSlipController.m */,
 			);
@@ -637,7 +637,7 @@
 				15C376041FC1361D0076EFA6 /* PYFwRightSlipController.m in Sources */,
 				150C6DD11F47E68600731FC7 /* ViewController.m in Sources */,
 				150C6E6D1F49601700731FC7 /* PYFrameworkParam.m in Sources */,
-				150C6E471F49135700731FC7 /* PYFwDownMenuController.m in Sources */,
+				150C6E471F49135700731FC7 /* PYFwTabMenuController.m in Sources */,
 				150C6E4B1F4913DC00731FC7 /* PYFwMenuController.m in Sources */,
 				150C6EB61F4A81C000731FC7 /* PYFrameworkUtile.m in Sources */,
 				150C6DCE1F47E68600731FC7 /* AppDelegate.m in Sources */,
@@ -670,7 +670,7 @@
 				150C6ED61F4A968400731FC7 /* PYFwMenuController.m in Sources */,
 				150C6ECE1F4A961800731FC7 /* PYFrameworkUtile.m in Sources */,
 				150C6ECF1F4A961800731FC7 /* PYFrameworkParam.m in Sources */,
-				150C6ED01F4A961800731FC7 /* PYFwDownMenuController.m in Sources */,
+				150C6ED01F4A961800731FC7 /* PYFwTabMenuController.m in Sources */,
 				150C6ED11F4A961800731FC7 /* PYFrameworkController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

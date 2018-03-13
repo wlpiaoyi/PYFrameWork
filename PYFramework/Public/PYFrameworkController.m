@@ -56,26 +56,28 @@ kSOULDLAYOUTP
 }
 
 -(void) excuteBlockLayout{
-    if(self.blockLayoutAnimate){
-        CGRect rootFrame = self.rootView.frame;
-        CGRect menuFrame = self.menuView.frame;
-        CATransform3D rootRransform = self.rootView.layer.transform;
-        CATransform3D menuRransform = self.menuView.layer.transform;
-        PYFwlayoutParams rootParams = PYFwlayoutParamsMake(rootFrame, 0, rootRransform);
-        PYFwlayoutParams menuParams = PYFwlayoutParamsMake(menuFrame, 0, menuRransform);
-        _blockLayoutAnimate(self.frameworkShow, &rootParams, &menuParams);
-        self.rootView.frame = rootParams.frame;
-        self.rootView.layer.transform = rootParams.transform;
-        self.menuView.frame = menuParams.frame;
-        self.menuView.layer.transform = menuParams.transform;
+    CGRect rootFrame = self.rootView.frame;
+    CGRect menuFrame = self.menuView.frame;
+    CATransform3D rootRransform = self.rootView.layer.transform;
+    CATransform3D menuRransform = self.menuView.layer.transform;
+    PYFwlayoutParams rootParams = PYFwlayoutParamsMake(rootFrame, 0, rootRransform);
+    PYFwlayoutParams menuParams = PYFwlayoutParamsMake(menuFrame, 0, menuRransform);
+    if(self.pyfwDelegate){
+        [self.pyfwDelegate pyfwDelegateLayoutAnimate:self pyfwShow:self.pyfwShow rootParams:&rootParams menusParams:&menuParams];
+    }else if(self.blockLayoutAnimate){
+        _blockLayoutAnimate(self.pyfwShow, &rootParams, &menuParams);
     }
+    self.rootView.frame = rootParams.frame;
+    self.rootView.layer.transform = rootParams.transform;
+    self.menuView.frame = menuParams.frame;
+    self.menuView.layer.transform = menuParams.transform;
 }
 
 -(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime{
     if(delayTime > 0){
         if(_isRootAnimated) return NO;
         _isRootAnimated = true;
-        _frameworkShow = show;
+        _pyfwShow = show;
         self.view.userInteractionEnabled = NO;
         kAssign(self);
         [UIView animateWithDuration:delayTime animations:^{
@@ -92,7 +94,7 @@ kSOULDLAYOUTP
             self.view.userInteractionEnabled = YES;
         }];
     }else{
-        _frameworkShow = show;
+        _pyfwShow = show;
         _isRootAnimated = false;
         [self excuteBlockLayout];
         [self.rootView layoutIfNeeded];
@@ -103,7 +105,7 @@ kSOULDLAYOUTP
 
 -(BOOL) removeRootController{
     if(_isRootAnimated) return NO;
-    _frameworkShow = _frameworkShow ^ (PYFrameworkRootFillShow | PYFrameworkRootFitShow | PYFrameworkRootHidden);
+    _pyfwShow = _pyfwShow ^ (PYFrameworkRootFillShow | PYFrameworkRootFitShow | PYFrameworkRootHidden);
     [self.rootController removeFromParentViewController];
     [self.rootController.view removeFromSuperview];
     if(self.lcRoots){
@@ -117,7 +119,7 @@ kSOULDLAYOUTP
 
 -(BOOL) removeMenuController{
     if(_isMenuAnimated) return NO;
-    _frameworkShow = _frameworkShow ^ (PYFrameworkMenuShow | PYFrameworkMenuHidden);
+    _pyfwShow = _pyfwShow ^ (PYFrameworkMenuShow | PYFrameworkMenuHidden);
     [self.menuController removeFromParentViewController];
     [self.menuController.view removeFromSuperview];
     if(self.lcMenus){
@@ -129,10 +131,10 @@ kSOULDLAYOUTP
     return YES;
 }
 -(UIViewController *) getEnableController{
-    if(_frameworkShow & PYFrameworkRootFillShow || _frameworkShow & PYFrameworkRootFitShow){
+    if(_pyfwShow & PYFrameworkRootFillShow || _pyfwShow & PYFrameworkRootFitShow){
         return self.rootController;
     }
-    if(_frameworkShow & PYFrameworkMenuShow){
+    if(_pyfwShow & PYFrameworkMenuShow){
         return self.menuController;
     }
     return nil;

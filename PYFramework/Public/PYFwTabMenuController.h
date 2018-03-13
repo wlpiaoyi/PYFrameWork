@@ -1,5 +1,5 @@
 //
-//  PYFwDownMenuController.h
+//  PYFwTabMenuController.h
 //  PYFramework
 //
 //  Created by wlpiaoyi on 2017/8/19.
@@ -12,7 +12,7 @@
 /**
  普通目录式框架结构
  */
-@interface PYFwDownMenuController : PYFrameworkController
+@interface PYFwTabMenuController : PYFrameworkController
 /**
  目录高度
  */
@@ -25,6 +25,10 @@ kPNSNA UIColor * colorSeletedBg;
  目录选中的背景高度
  */
 kPNA CGFloat colorSeletedHeight;
+/**
+ 目录背景图片
+ */
+kPNA UIImage * imageMenuBg;
 /**
  目录样式
  */

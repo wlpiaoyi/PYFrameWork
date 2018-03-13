@@ -1,12 +1,12 @@
 //
-//  PYFwDownMenuController.m
+//  PYFwTabMenuController.m
 //  PYFramework
 //
 //  Created by wlpiaoyi on 2017/8/19.
 //  Copyright © 2017年 wlpiaoyi. All rights reserved.
 //
 
-#import "PYFwDownMenuController.h"
+#import "PYFwTabMenuController.h"
 #import <objc/runtime.h>
 #import "pyutilea.h"
 #import "PYFrameworkParam.h"
@@ -16,7 +16,8 @@
 kPNANN NSMutableDictionary * mdict;
 -(void) beforeExcuteDeallocWithTarget:(nonnull NSObject *) target;
 @end
-
+@interface UIViewControllerPyfwController: NSObject<PYFrameworkDelegate>
+@end
 @implementation UIResponderHookBaseDelegateFWC
 
 -(void) beforeExcuteDeallocWithTarget:(nonnull NSObject *) target;{
@@ -53,14 +54,14 @@ kPNSNN NSMutableDictionary * mdict;
         case 0:
             break;
         case 1:{
-            if(!(wrv.frameworkShow & PYFrameworkRootFitShow) || !(wrv.frameworkShow & PYFrameworkMenuShow)){
+            if(!(wrv.pyfwShow & PYFrameworkRootFitShow) || !(wrv.pyfwShow & PYFrameworkMenuShow)){
                 [wrv refreshChildControllerWithShow:PYFrameworkRootFillShow | PYFrameworkMenuHidden delayTime:0];
                 [wrv refreshChildControllerWithShow:PYFrameworkRootFitShow | PYFrameworkMenuShow delayTime:0.25];
             }
         }
             break;
         default:{
-            if((wrv.frameworkShow & PYFrameworkRootFitShow) && (wrv.frameworkShow & PYFrameworkMenuShow)){
+            if((wrv.pyfwShow & PYFrameworkRootFitShow) && (wrv.pyfwShow & PYFrameworkMenuShow)){
                 [wrv refreshChildControllerWithShow:PYFrameworkRootFillShow | PYFrameworkMenuShow delayTime:0];
                 [wrv refreshChildControllerWithShow:PYFrameworkRootFitShow | PYFrameworkMenuHidden delayTime:0.25];
             }
@@ -91,15 +92,15 @@ kPNSNN NSMutableDictionary * mdict;
     }
     [UIViewcontrollerHookViewDelegateFWC REFRESHMENU];
 }
-
 @end
 
 static UIViewcontrollerHookViewDelegateFWC * xUIViewcontrollerHookViewDelegateFWC;
-@interface PYFwDownMenuController ()
+@interface PYFwTabMenuController ()
 kPNSNN UIView * viewOutSafe;
+kPNSNN UIViewControllerPyfwController * superDelegate;
 @end
 
-@implementation PYFwDownMenuController
+@implementation PYFwTabMenuController
 +(void) initialize{
     xUIViewcontrollerHookViewDelegateFWC = [UIViewcontrollerHookViewDelegateFWC new];
     [UIViewController hookMethodView];
@@ -128,25 +129,8 @@ kPNSNN UIView * viewOutSafe;
     PYEdgeInsetsItem eii = PYEdgeInsetsItemNull();
     eii.bottomActive = true;
     [PYViewAutolayoutCenter persistConstraint:self.viewOutSafe relationmargins:UIEdgeInsetsMake(DisableConstrainsValueMAX, 0, 0, 0) relationToItems:eii];
-    @unsafeify(self);
-    [super setBlockLayoutAnimate:^(PYFrameworkShow frameworkShow, PYFwlayoutParams * rootParams, PYFwlayoutParams * menuParams){
-        @strongify(self);
-        CGRect menuBounds = CGRectMake(0, boundsHeight(), boundsWidth(), self.menuHeight);
-        CGRect rootBounds = CGRectMake(0, 0, boundsWidth(), boundsHeight());
-        if(frameworkShow & PYFrameworkMenuShow){
-            menuBounds.size = CGSizeMake(boundsWidth(), self.menuHeight + (boundsHeight() - self.viewOutSafe.frameY));
-            menuBounds.origin = CGPointMake(0, boundsHeight() - menuBounds.size.height);
-        }else{
-            menuBounds = CGRectMake(0, boundsHeight(), boundsWidth(), 0);
-        }
-        if(frameworkShow & PYFrameworkRootFillShow){
-            rootBounds = CGRectMake(0, 0, boundsWidth(), boundsHeight());
-        }else{
-            rootBounds = CGRectMake(0, 0, boundsWidth(),  boundsHeight() - menuBounds.size.height);
-        }
-        (*rootParams).frame = rootBounds;
-        (*menuParams).frame = menuBounds;
-    }];
+    self.superDelegate = [UIViewControllerPyfwController new];
+    self.pyfwDelegate = _superDelegate;
     PYFwMenuController * mv = [PYFwMenuController new];
     self.menuController = mv;
 #ifdef DEBUG
@@ -175,18 +159,21 @@ kPNSNN UIView * viewOutSafe;
                               PYFwMenuImageNormal:[UIImage imageNamed:@"me.png"],
                               PYFwMenuImageHigthlight:[UIImage imageNamed:@"me_pre.png"],
                               PYFwMenuImageSelected:[UIImage imageNamed:@"me_pre.png"],
-                              PYFwMenuIsDownImgDirection: @(NO)
+                              PYFwMenuIsDownImgDirection: @(YES)
                              };
     [self setMenuStyle:@[style1, style2]];
     [self setColorSeletedBg:[UIColor orangeColor]];
+    self.imageMenuBg = [UIImage imageWithColor:[UIColor blueColor]];
+    kAssign(self);
     [self setBlockOnclickMenu:^BOOL (id _Nullable menuIdentify){
-        @strongify(self);
+        kStrong(self);
         UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         UIViewController * rv  = [storyboard instantiateViewControllerWithIdentifier:@"rv"];
         self.rootController = rv;
         [self refreshChildControllerWithShow:PYFrameworkRootFitShow | PYFrameworkMenuShow delayTime:0];
         return YES;
     }];
+    self.view.backgroundColor = [UIColor lightGrayColor];
 #endif
 }
 -(void) showMenu:(nonnull id)menuIdentify{
@@ -209,10 +196,46 @@ kPNSNN UIView * viewOutSafe;
     PYFwMenuController * mv = (PYFwMenuController*)self.menuController;
     mv.blockOnclickMenu = _blockOnclickMenu;
 }
+-(void) setImageMenuBg:(UIImage *)imageMenuBg{
+    _imageMenuBg = imageMenuBg;
+    UIImageView * imageView = [self.menuController.view viewWithTag:186334];
+    if(imageView == nil){
+        imageView = [UIImageView new];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.tag = 186334;
+        imageView.backgroundColor = [UIColor clearColor];
+        [self.menuController.view addSubview:imageView];
+        [imageView setCornerRadiusAndBorder:0 borderWidth:0 borderColor:[UIColor clearColor]];
+        [PYViewAutolayoutCenter persistConstraint:imageView relationmargins:UIEdgeInsetsZero relationToItems:PYEdgeInsetsItemNull()];
+    }
+    [self.menuController.view sendSubviewToBack:imageView];
+    imageView.image = imageMenuBg;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+@end
 
+
+@implementation UIViewControllerPyfwController
+-(void) pyfwDelegateLayoutAnimate:(PYFrameworkController *) pyfwVc pyfwShow:(PYFrameworkShow) pyfwShow rootParams:(nonnull PYFwlayoutParams *) rootsParams menusParams:(nonnull PYFwlayoutParams *) menusParams{
+    PYFwTabMenuController * tself = (PYFwTabMenuController *)pyfwVc;
+    CGRect menuBounds = CGRectMake(0, boundsHeight(), boundsWidth(), tself.menuHeight);
+    CGRect rootBounds = CGRectMake(0, 0, boundsWidth(), boundsHeight());
+    if(pyfwShow & PYFrameworkMenuShow){
+        menuBounds.size = CGSizeMake(boundsWidth(), tself.menuHeight + (boundsHeight() - tself.viewOutSafe.frameY));
+        menuBounds.origin = CGPointMake(0, boundsHeight() - menuBounds.size.height);
+    }else{
+        menuBounds = CGRectMake(0, boundsHeight(), boundsWidth(), 0);
+    }
+    if(pyfwShow & PYFrameworkRootFillShow){
+        rootBounds = CGRectMake(0, 0, boundsWidth(), boundsHeight());
+    }else{
+        rootBounds = CGRectMake(0, 0, boundsWidth(),  boundsHeight() - menuBounds.size.height);
+    }
+    (*rootsParams).frame = rootBounds;
+    (*menusParams).frame = menuBounds;
+}
 @end
