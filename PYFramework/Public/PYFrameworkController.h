@@ -4,11 +4,14 @@
 //
 //  Created by wlpiaoyi on 2017/8/19.
 //  Copyright © 2017年 wlpiaoyi. All rights reserved.
+//  基础框架结构
+//  分为 目录控制器 和 显示控制器
 //
 
 #import <UIKit/UIKit.h>
 #import "PYUtile.h"
 #import "PYFrameworkParam.h"
+
 @class PYFrameworkController;
 @protocol PYFrameworkDelegate<NSObject>
 @required

@@ -1,5 +1,5 @@
 //
-//  PYFwTabMenuController.h
+//  PYFwMenuTabController.h
 //  PYFramework
 //
 //  Created by wlpiaoyi on 2017/8/19.
@@ -7,12 +7,10 @@
 //
 
 #import "PYFrameworkController.h"
-#import "PYUtile.h"
-#import "PYFrameworkParam.h"
 /**
  普通目录式框架结构
  */
-@interface PYFwTabMenuController : PYFrameworkController
+@interface PYFwMenuTabController : PYFrameworkController
 /**
  目录高度
  */

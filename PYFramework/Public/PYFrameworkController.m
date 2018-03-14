@@ -104,11 +104,13 @@ kSOULDLAYOUTP
         _blockLayoutAnimate(self.pyfwShow, &rootParams, &menuParams);
     }
     self.rootView.frame = rootParams.frame;
-    self.rootView.transform2D = rootParams.transform2D;
     self.rootView.alpha = rootParams.alpha;
+    self.rootView.transform2D = rootParams.transform2D;
+    self.rootView.transform3D = rootParams.transform3D;
+    self.menuView.alpha = menuParams.alpha;
     self.menuView.frame = menuParams.frame;
     self.menuView.transform2D = menuParams.transform2D;
-    self.menuView.alpha = menuParams.alpha;
+    self.menuView.transform3D = menuParams.transform3D;
 }
 -(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime{
     if(delayTime > 0){
@@ -233,15 +235,5 @@ kSOULDLAYOUTMEND
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

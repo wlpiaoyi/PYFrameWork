@@ -14,7 +14,7 @@
 #import "PYGraphicsDraw.h"
 #import <CoreText/CoreText.h>
 #import "pyutilea.h"
-#import "PYFwRightSlipController.h"
+#import "PYFwMenuSlipController.h"
 
 @interface ViewController () <PYFrameworkAllTag>{
 @private UIButton * buttonNext;
@@ -74,8 +74,8 @@
     return image;
 }
 - (void)onClicked {
-    if([[UIApplication sharedApplication].keyWindow.rootViewController isKindOfClass:[PYFwRightSlipController class]]){
-        [((PYFwRightSlipController*)[UIApplication sharedApplication].keyWindow.rootViewController) refreshChildControllerWithShow:PYFrameworkMenuShow delayTime:((PYFwRightSlipController*)[UIApplication sharedApplication].keyWindow.rootViewController).delayTime];
+    if([[UIApplication sharedApplication].keyWindow.rootViewController isKindOfClass:[PYFwMenuSlipController class]]){
+        [((PYFwMenuSlipController*)[UIApplication sharedApplication].keyWindow.rootViewController) refreshChildControllerWithShow:PYFrameworkMenuShow delayTime:((PYFwMenuSlipController*)[UIApplication sharedApplication].keyWindow.rootViewController).delayTime];
     }else{
         NSMutableString * str = [NSMutableString stringWithUTF8String:"vc"];
         [str appendString:@(self.navigationController.viewControllers.count).stringValue];

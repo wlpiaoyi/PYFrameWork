@@ -1,5 +1,5 @@
 //
-//  PYFwRightSlipController.h
+//  PYFwMenuSlipController.h
 //  PYFramework
 //
 //  Created by wlpiaoyi on 2017/11/19.
@@ -8,6 +8,7 @@
 
 #import "PYFrameworkController.h"
 
-@interface PYFwRightSlipController : PYFrameworkController
+@interface PYFwMenuSlipController : PYFrameworkController
+kPNA BOOL isLeft;
 kPNA CGFloat delayTime;
 @end

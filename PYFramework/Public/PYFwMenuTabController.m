@@ -1,12 +1,12 @@
 //
-//  PYFwTabMenuController.m
+//  PYFwMenuTabController.m
 //  PYFramework
 //
 //  Created by wlpiaoyi on 2017/8/19.
 //  Copyright © 2017年 wlpiaoyi. All rights reserved.
 //
 
-#import "PYFwTabMenuController.h"
+#import "PYFwMenuTabController.h"
 #import <objc/runtime.h>
 #import "pyutilea.h"
 #import "PYFrameworkParam.h"
@@ -95,12 +95,12 @@ kPNSNN NSMutableDictionary * mdict;
 @end
 
 static UIViewcontrollerHookViewDelegateFWC * xUIViewcontrollerHookViewDelegateFWC;
-@interface PYFwTabMenuController ()
+@interface PYFwMenuTabController ()
 kPNSNN UIView * viewOutSafe;
 kPNSNN UIViewControllerPyfwController * superDelegate;
 @end
 
-@implementation PYFwTabMenuController
+@implementation PYFwMenuTabController
 +(void) initialize{
     xUIViewcontrollerHookViewDelegateFWC = [UIViewcontrollerHookViewDelegateFWC new];
     [UIViewController hookMethodView];
@@ -221,7 +221,7 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
 
 @implementation UIViewControllerPyfwController
 -(void) pyfwDelegateLayoutAnimate:(PYFrameworkController *) pyfwVc pyfwShow:(PYFrameworkShow) pyfwShow rootParams:(nonnull PYFwlayoutParams *) rootsParams menusParams:(nonnull PYFwlayoutParams *) menusParams{
-    PYFwTabMenuController * tself = (PYFwTabMenuController *)pyfwVc;
+    PYFwMenuTabController * tself = (PYFwMenuTabController *)pyfwVc;
     CGRect menuBounds = CGRectMake(0, boundsHeight(), boundsWidth(), tself.menuHeight);
     CGRect rootBounds = CGRectMake(0, 0, boundsWidth(), boundsHeight());
     if(pyfwShow & PYFrameworkMenuShow){

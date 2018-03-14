@@ -10,5 +10,6 @@
 
 #import "PYFrameworkParam.h"
 #import "PYFrameworkUtile.h"
-#import "PYFwTabMenuController.h"
+#import "PYFwMenuTabController.h"
+#import "PYFwMenuSlipController.h"
 #import "PYFrameworkController.h"

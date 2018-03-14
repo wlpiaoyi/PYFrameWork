@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Fw Tab Menu Controller-->
+        <!--Fw Menu Tab Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PYFwTabMenuController" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="PYFwMenuTabController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -184,10 +184,10 @@
             </objects>
             <point key="canvasLocation" x="3078" y="36"/>
         </scene>
-        <!--Fw Right Slip Controller-->
+        <!--Fw Menu Slip Controller-->
         <scene sceneID="00W-3m-Jjw">
             <objects>
-                <viewController id="KGe-qk-bAJ" customClass="PYFwRightSlipController" sceneMemberID="viewController">
+                <viewController id="KGe-qk-bAJ" customClass="PYFwMenuSlipController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nge-eI-0li"/>
                         <viewControllerLayoutGuide type="bottom" id="4JH-h3-pyL"/>
