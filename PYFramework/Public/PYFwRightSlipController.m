@@ -8,54 +8,12 @@
 
 #import "PYFwRightSlipController.h"
 
-@interface _PYFwrscView:UIView
-kPNANA PYFwRightSlipController * rsController;
-kPNA PYFwlayoutParams rootParams;
-kPNA PYFwlayoutParams menuParams;
-@end
-@implementation _PYFwrscView
--(void) setRsController:(PYFwRightSlipController *)rsController{
-    _rsController = rsController;
-    kAssign(self);
-    [_rsController setBlockLayoutAnimate:^(PYFrameworkShow pyfwShow, PYFwlayoutParams * _Nullable rootParams, PYFwlayoutParams * _Nullable menuParams) {
-        (*rootParams).frame = CGRectMake(0, 0, boundsWidth(), boundsHeight());
-        (*menuParams).frame = CGRectMake(boundsWidth() / 4.0, 0, boundsWidth() * 3.0 / 4.0, boundsHeight());
-        CATransform3D trans = CATransform3DIdentity;
-        kStrong(self);
-        if(pyfwShow == PYFrameworkShowUnkownShow){
-            
-        }else if(pyfwShow & PYFrameworkRootFillShow){
-            CATransform3D transTemp = CATransform3DScale(trans, 2, 2, 0);
-            (*menuParams).transform = transTemp;
-            (*menuParams).alpha = .5;
-            (*rootParams).transform = trans;
-        }else if(pyfwShow & PYFrameworkRootFitShow){
-            CATransform3D transTemp = CATransform3DTranslate(trans, boundsWidth()/2, 0, 0);
-            transTemp = CATransform3DScale(transTemp, 0.5, 0.5, 0);
-            (*rootParams).transform = transTemp;
-            (*menuParams).transform = trans;
-            (*menuParams).alpha = 1;
-        }
-    }];
-}
-
--(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-}
--(void) touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-}
--(void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-}
--(void) touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-}
-
+@interface UIViewControllerPyfwrsController: NSObject<PYFrameworkDelegate>
 @end
 
 @interface PYFwRightSlipController ()
-
+kPNSNN UIViewControllerPyfwrsController * superDelegate;
+kPNSNN UIButton * buttonShowRoot;
 @end
 
 @implementation PYFwRightSlipController
@@ -64,17 +22,44 @@ kPNA PYFwlayoutParams menuParams;
 }
 -(instancetype) initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
-    self.view = [_PYFwrscView new];
+    self.delayTime = 0.75;
     return self;
 }
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.view = [_PYFwrscView new];
+    self.delayTime = 0.75;
     return self;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ((_PYFwrscView*)self.view).rsController = self;
+    self.superDelegate = [UIViewControllerPyfwrsController new];
+    self.pyfwDelegate = _superDelegate;
+    UIButton * b = [UIButton buttonWithType:UIButtonTypeCustom];
+    b.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    [b addTarget:self action:@selector(onclickShowRoot) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:b];
+    [self.view sendSubviewToBack:b];
+    self.buttonShowRoot = b;
+    [self refreshChildControllerWithShow:PYFrameworkRootFillShow delayTime:0];
+#ifdef DEBUG
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UIViewController * rv  = [storyboard instantiateViewControllerWithIdentifier:@"rv"];
+    self.rootController = rv;
+    UIViewController * vcm = [UIViewController new];
+    [vcm.view setCornerRadiusAndBorder:1 borderWidth:1 borderColor:[UIColor blueColor]];
+    UIView * view = [UIView new];
+    [view setCornerRadiusAndBorder:4 borderWidth:4 borderColor:[UIColor yellowColor]];
+    view.backgroundColor = [UIColor whiteColor];
+    [vcm.view addSubview:view];
+    PYEdgeInsetsItem eii = PYEdgeInsetsItemNull();
+    eii.topActive = true;
+    eii.bottomActive = true;
+    [PYViewAutolayoutCenter persistConstraint:view relationmargins:UIEdgeInsetsZero relationToItems:eii];
+    self.menuController = vcm;
+#endif
+}
+-(void) onclickShowRoot{
+    [self refreshChildControllerWithShow:PYFrameworkRootFillShow delayTime:self.delayTime];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,4 +77,30 @@ kPNA PYFwlayoutParams menuParams;
 }
 */
 
+@end
+
+@implementation UIViewControllerPyfwrsController
+-(void) pyfwDelegateLayoutAnimate:(PYFrameworkController *) pyfwVc pyfwShow:(PYFrameworkShow) pyfwShow rootParams:(nonnull PYFwlayoutParams *) rootParams menusParams:(nonnull PYFwlayoutParams *) menuParams{
+    (*rootParams).frame = CGRectMake(0, 0, boundsWidth(), boundsHeight());
+    (*menuParams).frame = CGRectMake(boundsWidth() / 4.0, 0, boundsWidth() * 3.0 / 4.0, boundsHeight());
+    ((PYFwRightSlipController *)pyfwVc).buttonShowRoot.frame = CGRectMake(0, 0, boundsWidth()/4, boundsHeight());
+    CGAffineTransform transform2D = CGAffineTransformIdentity;
+    if(pyfwShow & PYFrameworkMenuShow){
+        CGFloat tValue = 0.5;
+        CGAffineTransform transform2DTemp =CGAffineTransformScale(transform2D, tValue, tValue);
+        transform2DTemp = CGAffineTransformTranslate(transform2DTemp, -boundsWidth(), 0);
+        (*rootParams).transform2D = transform2DTemp;
+        (*rootParams).alpha = .5;
+        (*menuParams).transform2D = transform2D;
+        (*menuParams).alpha = 1;
+        [((PYFwRightSlipController *)pyfwVc).view bringSubviewToFront:((PYFwRightSlipController *)pyfwVc).buttonShowRoot];
+    }else{
+        CGAffineTransform transform2DTemp =CGAffineTransformScale(transform2D, 2, 2);
+        (*menuParams).transform2D = transform2DTemp;
+        (*menuParams).alpha = .5;
+        (*rootParams).transform2D = transform2D;
+        (*rootParams).alpha = 1;
+        [((PYFwRightSlipController *)pyfwVc).view sendSubviewToBack:((PYFwRightSlipController *)pyfwVc).buttonShowRoot];
+    }
+}
 @end

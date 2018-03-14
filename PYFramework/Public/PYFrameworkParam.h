@@ -45,10 +45,11 @@ extern NSString * _Nonnull PYFwMenuIsDownImgDirection;
 typedef struct PYFwlayoutParams {
     CGRect frame;
     CGFloat alpha;
-    CATransform3D transform;
+    CATransform3D transform3D;
+    CGAffineTransform transform2D;
 } PYFwlayoutParams;
-kUTILE_STATIC_INLINE PYFwlayoutParams PYFwlayoutParamsMake(CGRect frame, CGFloat  alpha, CATransform3D transform) {
-    PYFwlayoutParams params = {frame, alpha, transform};
+kUTILE_STATIC_INLINE PYFwlayoutParams PYFwlayoutParamsMake(CGRect frame, CGFloat  alpha, CATransform3D transform3D, CGAffineTransform transform2D) {
+    PYFwlayoutParams params = {frame, alpha, transform3D, transform2D};
     return params;
 }
 

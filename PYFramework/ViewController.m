@@ -14,6 +14,7 @@
 #import "PYGraphicsDraw.h"
 #import <CoreText/CoreText.h>
 #import "pyutilea.h"
+#import "PYFwRightSlipController.h"
 
 @interface ViewController () <PYFrameworkAllTag>{
 @private UIButton * buttonNext;
@@ -73,15 +74,21 @@
     return image;
 }
 - (void)onClicked {
-    NSMutableString * str = [NSMutableString stringWithUTF8String:"vc"];
-    [str appendString:@(self.navigationController.viewControllers.count).stringValue];
-    [self performSegueWithIdentifier:str sender:nil];
+    if([[UIApplication sharedApplication].keyWindow.rootViewController isKindOfClass:[PYFwRightSlipController class]]){
+        [((PYFwRightSlipController*)[UIApplication sharedApplication].keyWindow.rootViewController) refreshChildControllerWithShow:PYFrameworkMenuShow delayTime:((PYFwRightSlipController*)[UIApplication sharedApplication].keyWindow.rootViewController).delayTime];
+    }else{
+        NSMutableString * str = [NSMutableString stringWithUTF8String:"vc"];
+        [str appendString:@(self.navigationController.viewControllers.count).stringValue];
+        [self performSegueWithIdentifier:str sender:nil];
+    }
 }
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id <UIViewControllerTransitionCoordinator>)coordinator{
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 - (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id <UIContentContainer>)containe{
     [super systemLayoutFittingSizeDidChangeForChildContentContainer:containe];
+}
+- (IBAction)onclickShowMenu:(id)sender {
 }
 -(void) dealloc{
 }

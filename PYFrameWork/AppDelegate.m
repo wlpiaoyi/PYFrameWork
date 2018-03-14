@@ -21,7 +21,7 @@
     
     PYFrameworkUtileOrientation *data = [PYFrameworkUtileOrientation new];
     data.shouldAutorotate = YES;
-    data.supportedInterfaceOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
+    data.supportedInterfaceOrientations = UIInterfaceOrientationMaskAll;
     data.preferredInterfaceOrientationForPresentation = UIInterfaceOrientationPortrait;
     [PYFrameworkUtile setViewControllerOrientationData:data];
     [PYOrientationNotification instanceSingle];

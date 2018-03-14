@@ -11,9 +11,45 @@
 #import "PYFwMenuController.h"
 #import "UIView+Expand.h"
 
+@interface PYFWView:UIView
+kPNA CATransform3D transform3D;
+kPNA CGAffineTransform transform2D;
+@end
+
+@implementation PYFWView{
+@private
+    UIView * _viewTransform3D;
+    UIView * _viewTransform2D;
+}
+kINITPARAMSForType(PYFWView){
+    _viewTransform2D = [UIView new];
+    _viewTransform2D.backgroundColor = [UIColor clearColor];
+    [super addSubview:_viewTransform2D];
+    [PYViewAutolayoutCenter persistConstraint:_viewTransform2D relationmargins:UIEdgeInsetsZero relationToItems:PYEdgeInsetsItemNull()];
+    _viewTransform3D = [UIView new];
+    _viewTransform3D.backgroundColor = [UIColor clearColor];
+    [_viewTransform2D addSubview:_viewTransform3D];
+    [PYViewAutolayoutCenter persistConstraint:_viewTransform3D relationmargins:UIEdgeInsetsZero relationToItems:PYEdgeInsetsItemNull()];
+    _transform2D = _viewTransform2D.transform;
+    _transform3D = _viewTransform3D.layer.transform;
+}
+-(void) addSubview:(UIView *)view{
+    [_viewTransform3D addSubview:view];
+}
+-(void) setTransform3D:(CATransform3D)transform3D{
+    _transform3D = transform3D;
+    _viewTransform3D.layer.transform = _transform3D;
+}
+-(void) setTransform2D:(CGAffineTransform)transform2D{
+    _transform2D = transform2D;
+    _viewTransform2D.transform = _transform2D;
+}
+
+@end
+
 @interface PYFrameworkController ()
-kPNSNN UIView * rootView;
-kPNSNN UIView * menuView;
+kPNSNN PYFWView * rootView;
+kPNSNN PYFWView * menuView;
 kPNSNN NSArray<NSLayoutConstraint *> * lcRoots;
 kPNSNN NSArray<NSLayoutConstraint *> * lcMenus;
 kSOULDLAYOUTP
@@ -23,10 +59,10 @@ kSOULDLAYOUTP
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.rootView = [UIView new];
-    self.rootView.backgroundColor = [UIColor whiteColor];
-    self.menuView = [UIView new];
-    self.menuView.backgroundColor = [UIColor whiteColor];
+    self.rootView = [PYFWView new];
+    self.rootView.backgroundColor = [UIColor clearColor];
+    self.menuView = [PYFWView new];
+    self.menuView.backgroundColor = [UIColor clearColor];
     [self.menuView setShadowColor:[UIColor grayColor].CGColor shadowRadius:4];
     [self.view addSubview:self.rootView];
     [self.view addSubview:self.menuView];
@@ -58,21 +94,22 @@ kSOULDLAYOUTP
 -(void) excuteBlockLayout{
     CGRect rootFrame = self.rootView.frame;
     CGRect menuFrame = self.menuView.frame;
-    CATransform3D rootRransform = self.rootView.layer.transform;
-    CATransform3D menuRransform = self.menuView.layer.transform;
-    PYFwlayoutParams rootParams = PYFwlayoutParamsMake(rootFrame, 0, rootRransform);
-    PYFwlayoutParams menuParams = PYFwlayoutParamsMake(menuFrame, 0, menuRransform);
+    CATransform3D rootRransform3D = self.rootView.transform3D;
+    CATransform3D menuRransform3D = self.menuView.transform3D;
+    PYFwlayoutParams rootParams = PYFwlayoutParamsMake(rootFrame, self.rootView.alpha, rootRransform3D, self.rootView.transform2D);
+    PYFwlayoutParams menuParams = PYFwlayoutParamsMake(menuFrame, self.menuView.alpha, menuRransform3D, self.menuView.transform2D);
     if(self.pyfwDelegate){
         [self.pyfwDelegate pyfwDelegateLayoutAnimate:self pyfwShow:self.pyfwShow rootParams:&rootParams menusParams:&menuParams];
     }else if(self.blockLayoutAnimate){
         _blockLayoutAnimate(self.pyfwShow, &rootParams, &menuParams);
     }
     self.rootView.frame = rootParams.frame;
-    self.rootView.layer.transform = rootParams.transform;
+    self.rootView.transform2D = rootParams.transform2D;
+    self.rootView.alpha = rootParams.alpha;
     self.menuView.frame = menuParams.frame;
-    self.menuView.layer.transform = menuParams.transform;
+    self.menuView.transform2D = menuParams.transform2D;
+    self.menuView.alpha = menuParams.alpha;
 }
-
 -(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime{
     if(delayTime > 0){
         if(_isRootAnimated) return NO;
@@ -83,22 +120,17 @@ kSOULDLAYOUTP
         [UIView animateWithDuration:delayTime animations:^{
             kStrong(self)
             [self excuteBlockLayout];
-            [self.view layoutIfNeeded];
-            [self.rootView layoutIfNeeded];
-            [self.menuView layoutIfNeeded];
+            [self refreshLayout];
         } completion:^(BOOL finished) {
             self->_isRootAnimated = false;
-            [self.view layoutIfNeeded];
-            [self.rootView layoutIfNeeded];
-            [self.menuView layoutIfNeeded];
+            [self refreshLayout];
             self.view.userInteractionEnabled = YES;
         }];
     }else{
         _pyfwShow = show;
         _isRootAnimated = false;
         [self excuteBlockLayout];
-        [self.rootView layoutIfNeeded];
-        [self.menuView layoutIfNeeded];
+        [self refreshLayout];
     }
     return YES;
 }
@@ -182,6 +214,18 @@ kSOULDLAYOUTP
 }
 #pragma Orientations <==
 
+-(void) refreshLayout{
+    UIView * toBringView = self.rootView;
+    if(_pyfwShow & PYFrameworkMenuShow){
+        toBringView = self.menuView;
+    }
+    [self.view bringSubviewToFront:toBringView];
+    [self.view layoutIfNeeded];
+}
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self excuteBlockLayout];
+}
 kSOULDLAYOUTVMSTART
     [self excuteBlockLayout];
 kSOULDLAYOUTMEND

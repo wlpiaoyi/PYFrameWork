@@ -35,6 +35,9 @@
 		150C6ED41F4A964500731FC7 /* PYFwTabMenuController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6E451F49135700731FC7 /* PYFwTabMenuController.h */; };
 		150C6ED51F4A964500731FC7 /* PYFrameworkController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6E321F47EB2400731FC7 /* PYFrameworkController.h */; };
 		150C6ED61F4A968400731FC7 /* PYFwMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E4A1F4913DC00731FC7 /* PYFwMenuController.m */; };
+		155C61772057821600C8A9B4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 155C61762057821600C8A9B4 /* icon.png */; };
+		155C6179205782BB00C8A9B4 /* tab_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 155C6178205782BB00C8A9B4 /* tab_bg.jpg */; };
+		155C617C2057D37B00C8A9B4 /* PYTestNormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155C617B2057D37B00C8A9B4 /* PYTestNormalViewController.m */; };
 		157610851FD933A300522CF0 /* libpyutilea.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1576103C1FD933A200522CF0 /* libpyutilea.a */; };
 		157610861FD933A300522CF0 /* libpykita.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1576105F1FD933A200522CF0 /* libpykita.a */; };
 		157610871FD933A300522CF0 /* py_webview_hybird.js in Resources */ = {isa = PBXBuildFile; fileRef = 157610621FD933A200522CF0 /* py_webview_hybird.js */; };
@@ -112,6 +115,10 @@
 		150C6EB51F4A81C000731FC7 /* PYFrameworkUtile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYFrameworkUtile.m; sourceTree = "<group>"; };
 		150C6EC51F4A95AE00731FC7 /* libpyframeworka.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpyframeworka.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		150C6EC71F4A95AE00731FC7 /* pyframeworka.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pyframeworka.h; sourceTree = "<group>"; };
+		155C61762057821600C8A9B4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		155C6178205782BB00C8A9B4 /* tab_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tab_bg.jpg; sourceTree = "<group>"; };
+		155C617A2057D37B00C8A9B4 /* PYTestNormalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYTestNormalViewController.h; sourceTree = "<group>"; };
+		155C617B2057D37B00C8A9B4 /* PYTestNormalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYTestNormalViewController.m; sourceTree = "<group>"; };
 		1576103C1FD933A200522CF0 /* libpyutilea.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpyutilea.a; sourceTree = "<group>"; };
 		1576103E1FD933A200522CF0 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
 		1576103F1FD933A200522CF0 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
@@ -244,6 +251,7 @@
 		150C6DC81F47E68600731FC7 /* PYFramework */ = {
 			isa = PBXGroup;
 			children = (
+				155C617D2057D39400C8A9B4 /* Test */,
 				150C6E6E1F49929300731FC7 /* Img */,
 				150C6E481F4913C400731FC7 /* Private */,
 				150C6E2B1F47E70800731FC7 /* Public */,
@@ -328,6 +336,8 @@
 		150C6E6E1F49929300731FC7 /* Img */ = {
 			isa = PBXGroup;
 			children = (
+				155C6178205782BB00C8A9B4 /* tab_bg.jpg */,
+				155C61762057821600C8A9B4 /* icon.png */,
 				150C6E6F1F49929300731FC7 /* bill@2x.png */,
 				150C6E701F49929300731FC7 /* bill_pre@2x.png */,
 				150C6E711F49929300731FC7 /* me@2x.png */,
@@ -342,6 +352,15 @@
 				150C6EC71F4A95AE00731FC7 /* pyframeworka.h */,
 			);
 			path = pyframeworka;
+			sourceTree = "<group>";
+		};
+		155C617D2057D39400C8A9B4 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				155C617A2057D37B00C8A9B4 /* PYTestNormalViewController.h */,
+				155C617B2057D37B00C8A9B4 /* PYTestNormalViewController.m */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		1576103B1FD933A200522CF0 /* pyutile */ = {
@@ -602,8 +621,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155C6179205782BB00C8A9B4 /* tab_bg.jpg in Resources */,
 				150C6E751F49929300731FC7 /* me@2x.png in Resources */,
 				157610871FD933A300522CF0 /* py_webview_hybird.js in Resources */,
+				155C61772057821600C8A9B4 /* icon.png in Resources */,
 				150C6E741F49929300731FC7 /* bill_pre@2x.png in Resources */,
 				150C6DD91F47E68600731FC7 /* LaunchScreen.storyboard in Resources */,
 				150C6DD61F47E68600731FC7 /* Assets.xcassets in Resources */,
@@ -641,6 +662,7 @@
 				150C6E4B1F4913DC00731FC7 /* PYFwMenuController.m in Sources */,
 				150C6EB61F4A81C000731FC7 /* PYFrameworkUtile.m in Sources */,
 				150C6DCE1F47E68600731FC7 /* AppDelegate.m in Sources */,
+				155C617C2057D37B00C8A9B4 /* PYTestNormalViewController.m in Sources */,
 				150C6DCB1F47E68600731FC7 /* main.m in Sources */,
 				150C6E401F48498400731FC7 /* TMController.m in Sources */,
 				150C6E341F47EB2400731FC7 /* PYFrameworkController.m in Sources */,

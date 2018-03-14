@@ -9,5 +9,5 @@
 #import "PYFrameworkController.h"
 
 @interface PYFwRightSlipController : PYFrameworkController
-
+kPNA CGFloat delayTime;
 @end

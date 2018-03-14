@@ -28,7 +28,7 @@ kPNA CGFloat colorSeletedHeight;
 /**
  目录背景图片
  */
-kPNA UIImage * imageMenuBg;
+kPNSNA UIImage * imageMenuBg;
 /**
  目录样式
  */

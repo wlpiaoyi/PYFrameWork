@@ -51,4 +51,5 @@ kPNANA id<PYFrameworkDelegate> pyfwDelegate;
 -(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime;
 -(BOOL) removeRootController;
 -(BOOL) removeMenuController;
+-(void) refreshLayout;
 @end

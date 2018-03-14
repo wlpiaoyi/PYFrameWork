@@ -163,7 +163,7 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
                              };
     [self setMenuStyle:@[style1, style2]];
     [self setColorSeletedBg:[UIColor orangeColor]];
-    self.imageMenuBg = [UIImage imageWithColor:[UIColor blueColor]];
+    self.imageMenuBg = [UIImage imageNamed:@"tab_bg.jpg"];
     kAssign(self);
     [self setBlockOnclickMenu:^BOOL (id _Nullable menuIdentify){
         kStrong(self);
