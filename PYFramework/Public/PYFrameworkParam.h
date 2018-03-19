@@ -41,9 +41,34 @@ extern NSString * _Nonnull PYFwMenuBGImageSelected;
 
 extern NSString * _Nonnull PYFwMenuIsDownImgDirection;
 
+//typedef struct PYFwlayoutContent {
+//    UIEdgeInsets ei;
+//    CGPoint point;
+//    CGSize size;
+//    PYEdgeInsetsItem eii;
+//} PYFwlayoutContent;
+//kUTILE_STATIC_INLINE PYFwlayoutContent PYFwlayoutContentMack(UIEdgeInsets ei, CGPoint point, CGSize size, PYEdgeInsetsItem eii) {
+//    PYFwlayoutContent layoutContent;
+//    layoutContent.ei = ei;
+//    layoutContent.point = point;
+//    layoutContent.size = size;
+//    layoutContent.eii = eii;
+//    return layoutContent;
+//}
+//kUTILE_STATIC_INLINE PYFwlayoutContent PYFwlayoutContentNull() {
+//    PYFwlayoutContent layoutContent;
+//    CGFloat disValue = DisableConstrainsValueMAX;
+//    layoutContent.ei = UIEdgeInsetsMake(disValue, disValue, disValue, disValue);
+//    layoutContent.point = CGPointMake(disValue, disValue);
+//    layoutContent.size = CGSizeMake(disValue, disValue);
+//    layoutContent.eii = PYEdgeInsetsItemNull();
+//    return layoutContent;
+//}
 
 typedef struct PYFwlayoutParams {
+//    BOOL isAutoLayout;
     CGRect frame;
+//    PYFwlayoutContent layoutContent;
     CGFloat alpha;
     CATransform3D transform3D;
     CGAffineTransform transform2D;

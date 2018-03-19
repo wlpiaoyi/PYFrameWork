@@ -7,8 +7,9 @@
 //
 
 #import "PYTestNormalViewController.h"
+#import "PYFrameworkParam.h"
 
-@interface PYTestNormalViewController ()
+@interface PYTestNormalViewController ()<PYFrameworkAllTag>
 
 @end
 
@@ -16,12 +17,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 - (IBAction)onclickNext:(id)sender {
     NSMutableString * str = [NSMutableString stringWithUTF8String:"vc"];
     [str appendString:@(self.navigationController.viewControllers.count).stringValue];
     [self performSegueWithIdentifier:str sender:nil];
+}
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+//    [[PYOrientationNotification instanceSingle] attemptRotationToDeviceOrientation:UIDeviceOrientationLandscapeLeft completion:^(NSTimer * _Nonnull timer) {
+//        kNOTIF_POST(@"PYFWRefreshLayout", nil);
+//    }];
+}
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+//    return UIInterfaceOrientationMaskPortrait;
+//}
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+//    return UIInterfaceOrientationPortrait;
+//}
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskLandscapeLeft;
+}
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationLandscapeLeft;
 }
 
 - (void)didReceiveMemoryWarning {

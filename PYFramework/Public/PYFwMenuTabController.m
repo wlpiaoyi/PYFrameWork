@@ -123,9 +123,9 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewOutSafe = [UIView new];
-    self.viewOutSafe.backgroundColor = [UIColor clearColor];
+    self.viewOutSafe.backgroundColor = [UIColor redColor];
     [self.view addSubview:_viewOutSafe];
-    [PYViewAutolayoutCenter persistConstraint:self.viewOutSafe size:CGSizeMake(DisableConstrainsValueMAX, 0.5)];
+    [PYViewAutolayoutCenter persistConstraint:self.viewOutSafe size:CGSizeMake(DisableConstrainsValueMAX, .5)];
     PYEdgeInsetsItem eii = PYEdgeInsetsItemNull();
     eii.bottomActive = true;
     [PYViewAutolayoutCenter persistConstraint:self.viewOutSafe relationmargins:UIEdgeInsetsMake(DisableConstrainsValueMAX, 0, 0, 0) relationToItems:eii];
@@ -137,7 +137,6 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     UIViewController * rv  = [storyboard instantiateViewControllerWithIdentifier:@"rv"];
     self.rootController = rv;
-    [self refreshChildControllerWithShow:PYFrameworkRootFitShow | PYFrameworkMenuShow delayTime:0];
     NSDictionary * style1 = @{
                               PYFwMenuIdentify:@"medenuId1",
                               PYFwMenuTitle:@"目录名称1",
@@ -174,6 +173,7 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
         return YES;
     }];
     self.view.backgroundColor = [UIColor lightGrayColor];
+    [self refreshChildControllerWithShow:PYFrameworkRootFitShow | PYFrameworkMenuShow delayTime:0];
 #endif
 }
 -(void) showMenu:(nonnull id)menuIdentify{
@@ -211,6 +211,22 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
     [self.menuController.view sendSubviewToBack:imageView];
     imageView.image = imageMenuBg;
 }
+
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+//    UIInterfaceOrientation interfaceOrientation = [super preferredInterfaceOrientationForPresentation];
+//    if(self.rootController.childViewControllers.count <= 1 ||
+//       (([self.rootController isKindOfClass:[UINavigationController class]] && ((UINavigationController *)self.rootController).viewControllers.count <= 1))
+//       ){
+//        switch (interfaceOrientation) {
+//            case UIInterfaceOrientationPortrait:
+//                break;
+//            default:
+//                NSAssert(false, @"Menu tab controller only support interfaceOrientation that is UIInterfaceOrientationPortrait!");
+//                break;
+//        }
+//    }
+//    return  interfaceOrientation;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

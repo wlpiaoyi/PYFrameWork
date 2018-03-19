@@ -89,7 +89,7 @@ typedef long long                           kInt64;
 #define kFontT(s)             [UIFont systemFontOfSize:s weight:UIFontWeightThin]
 
 #pragma mark 通知
-#define kNOTIF_ADD(obs, n, f)          [[NSNotificationCenter defaultCenter] addObserver:obs selector:@selector(f) name:n object:nil]
+#define kNOTIF_ADD(obs, f, n, o)       [[NSNotificationCenter defaultCenter] addObserver:obs selector:@selector(f) name:n object:nil]
 #define kNOTIF_POST(n, o)               [[NSNotificationCenter defaultCenter] postNotificationName:n object:o]
 #define kNOTIF_REMV(obs)             [[NSNotificationCenter defaultCenter] removeObserver:obs]
 

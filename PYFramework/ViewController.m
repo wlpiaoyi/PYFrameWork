@@ -90,6 +90,23 @@
 }
 - (IBAction)onclickShowMenu:(id)sender {
 }
+
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationPortrait;
+}
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+//    return UIInterfaceOrientationMaskLandscapeLeft;
+//}
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+//    return UIInterfaceOrientationLandscapeLeft;
+//}
 -(void) dealloc{
 }
 
