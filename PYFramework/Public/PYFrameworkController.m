@@ -145,7 +145,6 @@ kSOULDLAYOUTP
         [self.menuView addSubview:_menuController.view];
         self.lcMenus = [PYViewAutolayoutCenter persistConstraint:_menuController.view relationmargins:UIEdgeInsetsMake(0, 0, 0, 0) relationToItems:PYEdgeInsetsItemNull()].allValues;
     }
-//    self.rootController = self.rootController;
 }
 
 -(void) excuteBlockLayout{

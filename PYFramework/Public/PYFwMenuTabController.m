@@ -212,22 +212,6 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
     imageView.image = imageMenuBg;
 }
 
-//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
-//    UIInterfaceOrientation interfaceOrientation = [super preferredInterfaceOrientationForPresentation];
-//    if(self.rootController.childViewControllers.count <= 1 ||
-//       (([self.rootController isKindOfClass:[UINavigationController class]] && ((UINavigationController *)self.rootController).viewControllers.count <= 1))
-//       ){
-//        switch (interfaceOrientation) {
-//            case UIInterfaceOrientationPortrait:
-//                break;
-//            default:
-//                NSAssert(false, @"Menu tab controller only support interfaceOrientation that is UIInterfaceOrientationPortrait!");
-//                break;
-//        }
-//    }
-//    return  interfaceOrientation;
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

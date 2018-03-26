@@ -25,8 +25,18 @@
     data.preferredInterfaceOrientationForPresentation = UIInterfaceOrientationPortrait;
     [PYFrameworkUtile setViewControllerOrientationData:data];
     [PYOrientationNotification instanceSingle];
-    [PYFrameworkUtile setViewControllerNavigationbarData:@[[PYFrameworkUtileNavigationbar defaut]]];
-    [PYFrameworkUtile setViewControllertBarButtonItemData:@[[PYFrameworkUtileBarButtonItem defaut]]];
+    PYFrameworkUtileNavigationbar * nb =[PYFrameworkUtileNavigationbar defaut];
+//    nb.backgroundColor = [UIColor yellowColor];
+    nb.backgroundImage = [UIImage imageWithColor:[UIColor yellowColor]];
+    nb.lineButtomImage = [UIImage imageWithColor:[UIColor greenColor]];
+    nb.nameColor = [UIColor blueColor];
+    nb.tintColor = [UIColor blueColor];
+    nb.statusBarStyle = UIStatusBarStyleDefault;
+    [PYFrameworkUtile setViewControllerNavigationbarData:@[nb]];
+    PYFrameworkUtileBarButtonItem * bbi = [PYFrameworkUtileBarButtonItem defaut];
+    bbi.nameColor = [UIColor orangeColor];
+    bbi.nameFont = [UIFont systemFontOfSize:16 weight:UIFontWeightBold];
+    [PYFrameworkUtile setViewControllertBarButtonItemData:@[bbi]];
     return YES;
 }
 

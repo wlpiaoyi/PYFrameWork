@@ -28,8 +28,7 @@
 //重写父类方法返回当前方向
 -(UIInterfaceOrientation) afterExcutePreferredInterfaceOrientationForPresentationWithTarget:(nonnull UIViewController *) target;
 //⇒ 重写父类方法旋转开始和结束
--(void) afterExcuteWillRotateToInterfaceOrientation:(UIInterfaceOrientation) toInterfaceOrientation duration:(NSTimeInterval)duration target:(nonnull UIViewController *) target;
--(void) afterExcuteDidRotateFromInterfaceOrientation:(UIInterfaceOrientation) fromInterfaceOrientation target:(nonnull UIViewController *) target;
+-(void) afterExcuteViewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator target:(nonnull UIViewController *)target;
 @end
 
 static UIViewcontrollerHookOrientationDelegateImp * xUIViewcontrollerHookOrientationDelegateImp;
@@ -226,7 +225,6 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
 @implementation UIViewcontrollerHookViewDelegateImp
 
 -(void) afterExcuteViewWillAppearWithTarget:(UIViewController *)target{
-    
     if([target isKindOfClass:[UINavigationController class]]){
         UINavigationBar *navigationBar = ((UINavigationController *) target).navigationBar;
         if(navigationBar)
@@ -269,25 +267,18 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
 }
 
 -(void) afterExcuteViewDidAppearWithTarget:(nonnull UIViewController *) target{
-    if([target conformsToProtocol:@protocol(PYFrameworkOrientationTag)]){
-        UIInterfaceOrientation interfaceOrientation = [PYOrientationNotification instanceSingle].interfaceOrientation;
-        if (![PYOrientationNotification isSupportInterfaceOrientation:interfaceOrientation targetController:target]) {
-            interfaceOrientation = [target preferredInterfaceOrientationForPresentation];
-        }
-        UIDeviceOrientation deviceOrientation = parseInterfaceOrientationToDeviceOrientation(interfaceOrientation);
-        if ([self.class isSupportDeviceOrientation:deviceOrientation targetController:target]){
-            target.currentInterfaceOrientation = interfaceOrientation;
-            [[PYOrientationNotification instanceSingle] attemptRotationToDeviceOrientation:deviceOrientation completion:^(NSTimer * _Nonnull timer) {
-                kNOTIF_POST(@"PYFWRefreshLayout", nil);
-            }];
-        }
+    target.navigationController.interactivePopGestureRecognizer.enabled =  [PYFrameworkUtile isSameOrientationInParentForTargetController:target];
+    if(![target conformsToProtocol:@protocol(PYFrameworkOrientationTag)]) return;
+    UIInterfaceOrientation interfaceOrientation = [PYOrientationNotification instanceSingle].interfaceOrientation;
+    if (![PYOrientationNotification isSupportInterfaceOrientation:interfaceOrientation targetController:target]) {
+        interfaceOrientation = [target preferredInterfaceOrientationForPresentation];
     }
-    
-    if([target conformsToProtocol:@protocol(PYFrameworkAttemptRotationTag)] || target.class == [UIViewController class]){
-        if (target.navigationController) {
-            target.navigationController.interactivePopGestureRecognizer.enabled =  [PYFrameworkUtile isSameOrientationInParentForTargetController:target];
-        }
-        [target setNeedsStatusBarAppearanceUpdate];
+    UIDeviceOrientation deviceOrientation = parseInterfaceOrientationToDeviceOrientation(interfaceOrientation);
+    if ([self.class isSupportDeviceOrientation:deviceOrientation targetController:target]){
+        target.currentInterfaceOrientation = interfaceOrientation;
+        [[PYOrientationNotification instanceSingle] attemptRotationToDeviceOrientation:deviceOrientation completion:^(NSTimer * _Nonnull timer) {
+            kNOTIF_POST(@"PYFWRefreshLayout", nil);
+        }];
     }
 }
 
@@ -348,19 +339,38 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
 }
 //⇒ 重写父类方法旋转开始和结束
 
--(void) afterExcuteWillRotateToInterfaceOrientation:(UIInterfaceOrientation) toInterfaceOrientation duration:(NSTimeInterval)duration target:(nonnull UIViewController *) target{
+-(void) afterExcuteViewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator target:(nonnull UIViewController *)target{
     if ([target isKindOfClass:[UINavigationController class]]) {
-        [((UINavigationController*)target).viewControllers.lastObject willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+        [((UINavigationController*)target).viewControllers.lastObject viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    }
+    UIInterfaceOrientation toInterfaceOrientation;
+    switch ([UIDevice currentDevice].orientation) {
+        case UIDeviceOrientationPortrait:
+            toInterfaceOrientation = UIInterfaceOrientationPortrait;
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            toInterfaceOrientation = UIInterfaceOrientationLandscapeLeft;
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            toInterfaceOrientation = UIInterfaceOrientationPortraitUpsideDown;
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            toInterfaceOrientation = UIInterfaceOrientationLandscapeRight;
+            break;
+        default:
+            toInterfaceOrientation = UIInterfaceOrientationUnknown;
+            break;
     }
     target.currentInterfaceOrientation = toInterfaceOrientation;
+    [PYOrientationNotification instanceSingle].duration = [coordinator transitionDuration];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            target.navigationController.interactivePopGestureRecognizer.enabled =  [PYFrameworkUtile isSameOrientationInParentForTargetController:target];
+        });
+    });
 }
--(void) afterExcuteDidRotateFromInterfaceOrientation:(UIInterfaceOrientation) fromInterfaceOrientation target:(nonnull UIViewController *) target{
-    if ([target isKindOfClass:[UINavigationController class]]) {
-         [((UINavigationController*)target).viewControllers.lastObject didRotateFromInterfaceOrientation:fromInterfaceOrientation];
-    }else if (target.navigationController) {
-        target.navigationController.interactivePopGestureRecognizer.enabled =  [PYFrameworkUtile isSameOrientationInParentForTargetController:target];
-    }
-}
+
+
 
 @end
 
