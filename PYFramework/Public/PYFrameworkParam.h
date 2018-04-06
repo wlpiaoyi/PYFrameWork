@@ -39,7 +39,7 @@ extern NSString * _Nonnull PYFwMenuBGImageNormal;
 extern NSString * _Nonnull PYFwMenuBGImageHigthlight;
 extern NSString * _Nonnull PYFwMenuBGImageSelected;
 
-extern NSString * _Nonnull PYFwMenuIsDownImgDirection;
+extern NSString * _Nonnull PYFwMenusImgDirection;
 
 //typedef struct PYFwlayoutContent {
 //    UIEdgeInsets ei;

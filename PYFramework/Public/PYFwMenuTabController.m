@@ -140,7 +140,7 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
     NSDictionary * style1 = @{
                               PYFwMenuIdentify:@"medenuId1",
                               PYFwMenuTitle:@"目录名称1",
-                              PYFwMenuTitleFontNormal:[UIFont systemFontOfSize:24],
+                              PYFwMenuTitleFontNormal:[UIFont systemFontOfSize:12],
                               PYFwMenuTitleColorNormal:[UIColor yellowColor],
                               PYFwMenuTitleColorHigthlight:[UIColor redColor],
                               PYFwMenuTitleColorSelected:[UIColor greenColor],
@@ -151,14 +151,14 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
     NSDictionary * style2 = @{
                               PYFwMenuIdentify:@"medenuId2",
                               PYFwMenuTitle:@"目录名称2",
-                              PYFwMenuTitleFontNormal:[UIFont systemFontOfSize:24],
+                              PYFwMenuTitleFontNormal:[UIFont systemFontOfSize:12],
                               PYFwMenuTitleColorNormal:[UIColor yellowColor],
                               PYFwMenuTitleColorHigthlight:[UIColor redColor],
                               PYFwMenuTitleColorSelected:[UIColor greenColor],
                               PYFwMenuImageNormal:[UIImage imageNamed:@"me.png"],
                               PYFwMenuImageHigthlight:[UIImage imageNamed:@"me_pre.png"],
                               PYFwMenuImageSelected:[UIImage imageNamed:@"me_pre.png"],
-                              PYFwMenuIsDownImgDirection: @(YES)
+                              PYFwMenusImgDirection: @(1)
                              };
     [self setMenuStyle:@[style1, style2]];
     [self setColorSeletedBg:[UIColor orangeColor]];

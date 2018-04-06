@@ -58,10 +58,6 @@
 
 @interface PYFrameworkUtile : NSObject
 /**
- 创建上下结构的文字图片结构
- */
-+(nonnull UIImage *) createImageWithTitle:(nonnull NSString *) title font:(nonnull UIFont *) font color:(nonnull UIColor *) color image:(nonnull UIImage *) image offH:(CGFloat) offH isDownImgDirection:(BOOL) isDownImgDirection;
-/**
  旋转默认设置
  */
 +(void) setViewControllerOrientationData:(nullable PYFrameworkUtileOrientation *) frameworkOrientation;
@@ -81,4 +77,16 @@
  设置导航栏样式
  */
 +(void) setNavigationBarStyle:(nonnull UINavigationBar *) navigationBar managerNavigationbarData:(nonnull PYFrameworkUtileNavigationbar *) managerNavigationbarData;
+/**
+ 将button的image和title纵向显示
+ #param offH:间距
+ #param maxHeight:imageSize.height的最大高度，主要用于多个button的image 和 title 的协调
+ #param direction:0 title在上 1 title在下
+ */
++(void) parseImagetitleForButton:(nonnull UIButton *) button offH:(CGFloat) offH maxHeight:(CGFloat) maxHeight direction:(short) direction;
+/**
+ 创建上下结构的文字图片结构
+ direction：(0:top, 1:left, 2:bottom, 3:right)
+ */
++(nonnull UIImage *) createImageWithTitle:(nonnull NSString *) title font:(nonnull UIFont *) font color:(nonnull UIColor *) color image:(nonnull UIImage *) image offH:(CGFloat) offH imageOffH:(CGFloat) imageOffH direction:(short) direction;
 @end

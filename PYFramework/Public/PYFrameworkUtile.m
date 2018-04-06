@@ -41,38 +41,6 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
     [UINavigationController hookMethodWithName:@"preferredStatusBarStyle"];
 }
 /**
- 创建上下结构的文字图片结构
- */
-+(UIImage *) createImageWithTitle:(NSString *) title font:(UIFont *) font color:(UIColor *) color image:(UIImage *) image offH:(CGFloat) offH  isDownImgDirection:(BOOL) isDownImgDirection{
-    
-    NSAttributedString * attribute = [[NSAttributedString alloc] initWithString:title attributes:@{(NSString *)kCTForegroundColorAttributeName:color,(NSString *)kCTFontAttributeName:font}];
-    CGSize tSize = [PYUtile getBoundSizeWithAttributeTxt:attribute size:CGSizeMake(999, [PYUtile getFontHeightWithSize:font.pointSize fontName:font.fontName])];
-    UIImage * tImage = [UIImage imageWithSize:tSize blockDraw:^(CGContextRef  _Nonnull context, CGRect rect) {
-        [PYGraphicsDraw drawTextWithContext:context attribute:attribute rect:CGRectMake(0, 0, 400, 400) y:rect.size.height scaleFlag:YES];
-    }];
-    
-    tSize = CGSizeMake(tImage.size.width/2, tImage.size.height/2);
-    tImage = [tImage setImageSize:tSize];
-    
-    tSize = tImage.size;
-    CGSize tS = CGSizeMake(MAX(tSize.width, image.size.width), tSize.height + offH + image.size.height);
-    CGRect tFrame, iFrame;
-    if(isDownImgDirection){
-        iFrame = CGRectMake((tS.width - image.size.width)/2, 0, image.size.width, image.size.height);
-        tFrame = CGRectMake((tS.width - tSize.width)/2, iFrame.size.height + offH, tImage.size.width, tImage.size.height);
-    }else{
-        tFrame = CGRectMake((tS.width - tSize.width)/2, 0, tImage.size.width, tImage.size.height);
-        iFrame = CGRectMake((tS.width - image.size.width)/2, tSize.height + offH, image.size.width, image.size.height);
-    }
-    UIGraphicsBeginImageContextWithOptions(tS, NO, 2);
-    [tImage drawInRect:tFrame];
-    [image drawInRect:iFrame];
-    image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-/**
  旋转默认设置
  */
 +(void) setViewControllerOrientationData:(nullable PYFrameworkUtileOrientation *) frameworkOrientation{
@@ -182,6 +150,87 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
     if(managerNavigationbarData.lineButtomImage)navigationBar.shadowImage = managerNavigationbarData.lineButtomImage;
 }
 
+/**
+ 将button的image和title纵向显示
+ #param offH:间距
+ #param maxHeight:imageSize.height的最大高度，主要用于多个button的image 和 title 的协调
+ #param direction:0 title在上 1 title在下
+ */
++(void) parseImagetitleForButton:(nonnull UIButton *) button offH:(CGFloat) offH maxHeight:(CGFloat) maxHeight direction:(short) direction{
+    UIControlState state = UIControlStateNormal;
+    UIImage * image;
+    NSString * title;
+    image = [button imageForState:state];
+    title = [button titleForState:state];
+    if(image && [NSString isEnabled:title]){
+        image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:button.titleLabel.textColor image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
+        [button setTitle:@"" forState:state];
+        [button setImage:image forState:state];
+    }
+    state = UIControlStateSelected;
+    image = [button imageForState:state];
+    title = [button titleForState:state];
+    if(image && [NSString isEnabled:title]){
+        image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:button.titleLabel.textColor image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
+        [button setTitle:@"" forState:state];
+        [button setImage:image forState:state];
+    }
+    state = UIControlStateHighlighted;
+    image = [button imageForState:state];
+    title = [button titleForState:state];
+    if(image && [NSString isEnabled:title]){
+        image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:button.titleLabel.textColor image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
+        [button setTitle:@"" forState:state];
+        [button setImage:image forState:state];
+    }
+    state = UIControlStateDisabled;
+    image = [button imageForState:state];
+    title = [button titleForState:state];
+    if(image && [NSString isEnabled:title]){
+        image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:button.titleLabel.textColor image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
+        [button setTitle:@"" forState:state];
+        [button setImage:image forState:state];
+    }
+}
+
+/**
+ 创建上下结构的文字图片结构
+ */
++(UIImage *) createImageWithTitle:(NSString *) title font:(UIFont *) font color:(UIColor *) color image:(UIImage *) image offH:(CGFloat) offH imageOffH:(CGFloat) imageOffH direction:(short) direction{
+    
+    NSAttributedString * attribute = [[NSAttributedString alloc] initWithString:title attributes:@{(NSString *)kCTForegroundColorAttributeName:color,(NSString *)kCTFontAttributeName:font}];
+    CGSize tSize = [PYUtile getBoundSizeWithAttributeTxt:attribute size:CGSizeMake(999, [PYUtile getFontHeightWithSize:font.pointSize fontName:font.fontName])];
+    UIImage * tImage = [UIImage imageWithSize:tSize blockDraw:^(CGContextRef  _Nonnull context, CGRect rect) {
+        [PYGraphicsDraw drawTextWithContext:context attribute:attribute rect:CGRectMake(0, 0, 400, 400) y:rect.size.height scaleFlag:YES];
+    }];
+    
+    tSize = CGSizeMake(tImage.size.width, tImage.size.height);
+    tImage = [tImage setImageSize:tSize];
+    
+    tSize = tImage.size;
+    CGSize tS = CGSizeMake(MAX(tSize.width, image.size.width), tSize.height + offH + image.size.height + imageOffH);
+    CGRect tFrame, iFrame;
+    switch (direction) {
+        case 0:{
+            tFrame = CGRectMake((tS.width - tSize.width)/2, 0, tImage.size.width, tImage.size.height);
+            iFrame = CGRectMake((tS.width - image.size.width)/2, tFrame.size.height + tFrame.origin.y + offH + imageOffH, image.size.width, image.size.height);
+        }
+            break;
+        default:{
+            iFrame = CGRectMake((tS.width - image.size.width)/2, imageOffH, image.size.width, image.size.height);
+            tFrame = CGRectMake((tS.width - tSize.width)/2, iFrame.size.height + iFrame.origin.y + offH, tImage.size.width, tImage.size.height);
+        }
+            break;
+    }
+    UIGraphicsBeginImageContextWithOptions(tS, NO, [UIScreen mainScreen].scale);
+    [tImage drawInRect:tFrame];
+    [image drawInRect:iFrame];
+    image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 +(BOOL) isSameOrientationInParentForTargetController:(nonnull UIViewController *) targetController{
     if (!targetController.navigationController) {
         return false;
@@ -232,10 +281,7 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
                 [PYFrameworkUtile setNavigationBarStyle:navigationBar managerNavigationbarData:data];
             }
     }else{
-        UINavigationBar *navigationBar = nil;
-        if([target respondsToSelector:@selector(navigationBar)]){
-            navigationBar = [target performSelector:@selector(navigationBar)];
-        }
+        UINavigationBar *navigationBar = target.navigationController.navigationBar;
         if(navigationBar)
             for (PYFrameworkUtileNavigationbar * data in self.managerNavigationbarDatas) {
                 [PYFrameworkUtile setNavigationBarStyle:navigationBar managerNavigationbarData:data];

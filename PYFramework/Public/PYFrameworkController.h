@@ -20,39 +20,41 @@
 
 @interface PYFrameworkController : UIViewController
 /**
- 显示和动作delegate设置
+ 显示和动作delegate/block设置
  */
+//==>
 kPNANA id<PYFrameworkDelegate> pyfwDelegate;
+kPNCNA void (^blockLayoutAnimate)(PYFrameworkShow pyfwShow, PYFwlayoutParams * _Nullable rootsParams, PYFwlayoutParams * _Nullable menusParams);
+///<==
 /**
  当前显示Controller的状态
  */
-@property (nonatomic, readonly) PYFrameworkShow pyfwShow;
-
+kPNAR PYFrameworkShow pyfwShow;
 /**
  是否在运动中
  */
 //===>
-@property (nonatomic, readonly) bool isRootAnimated;
-@property (nonatomic, readonly) bool isMenuAnimated;
+kPNAR bool isRootAnimated;
+kPNAR bool isMenuAnimated;
 ///<==
 
 /**
  控制器
  */
 //==>
-@property (nonatomic, strong, nonnull) UIViewController * rootController;
-@property (nonatomic, strong, nonnull) UIViewController * menuController;
+kPNSNN UIViewController * rootController;
+kPNSNN UIViewController * menuController;
 ///<==
 
 /**
- 显示和动作block设置
+ 显示控制
  */
 //==>
-@property (nonatomic, copy, nullable) void (^blockLayoutAnimate)(PYFrameworkShow pyfwShow, PYFwlayoutParams * _Nullable rootsParams, PYFwlayoutParams * _Nullable menusParams);
+-(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime;
+-(void) setShow:(PYFrameworkShow) show rootsParams:(PYFwlayoutParams) rootsParams menusParams:(PYFwlayoutParams) menusParams;
+-(void) refreshLayout;
 ///<==
 
--(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime;
 -(BOOL) removeRootController;
 -(BOOL) removeMenuController;
--(void) refreshLayout;
 @end

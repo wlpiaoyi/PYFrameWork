@@ -27,8 +27,8 @@
     [PYOrientationNotification instanceSingle];
     PYFrameworkUtileNavigationbar * nb =[PYFrameworkUtileNavigationbar defaut];
 //    nb.backgroundColor = [UIColor yellowColor];
-    nb.backgroundImage = [UIImage imageWithColor:[UIColor yellowColor]];
-    nb.lineButtomImage = [UIImage imageWithColor:[UIColor greenColor]];
+    nb.backgroundImage = [UIImage imageWithColor:[UIColor clearColor]];
+    nb.lineButtomImage = [UIImage imageWithColor:[UIColor clearColor]];
     nb.nameColor = [UIColor blueColor];
     nb.tintColor = [UIColor blueColor];
     nb.statusBarStyle = UIStatusBarStyleDefault;

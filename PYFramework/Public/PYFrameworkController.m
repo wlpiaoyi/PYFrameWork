@@ -68,7 +68,7 @@ kSOULDLAYOUTP
     [self.menuView setShadowColor:[UIColor grayColor].CGColor shadowRadius:4];
     [self.view addSubview:self.rootView];
     [self.view addSubview:self.menuView];
-    kNOTIF_ADD(self, refreshLayout, @"PYFWRefreshLayout", nil);
+    kNOTIF_ADD(self, @"PYFWRefreshLayout", refreshLayout);
 }
 -(BOOL) refreshChildControllerWithShow:(PYFrameworkShow) show delayTime:(NSTimeInterval) delayTime{
     if(delayTime > 0){
@@ -94,6 +94,20 @@ kSOULDLAYOUTP
         [self refreshLayout];
     }
     return YES;
+}
+-(void) setShow:(PYFrameworkShow) show rootsParams:(PYFwlayoutParams) rootsParams menusParams:(PYFwlayoutParams ) menusParams{
+    _pyfwShow = show;
+    self.rootView.layoutParams = rootsParams;
+    self.menuView.layoutParams = menusParams;
+}
+-(void) refreshLayout{
+    UIView * toBringView = self.rootView;
+    if(_pyfwShow & PYFrameworkMenuShow){
+        toBringView = self.menuView;
+    }
+    [self.view bringSubviewToFront:toBringView];
+    [self.view setNeedsLayout];
+    [self.view layoutIfNeeded];
 }
 
 -(BOOL) removeRootController{
@@ -155,8 +169,7 @@ kSOULDLAYOUTP
     }else if(self.blockLayoutAnimate){
         _blockLayoutAnimate(self.pyfwShow, &rootlp, &menulp);
     }
-    self.rootView.layoutParams = rootlp;
-    self.menuView.layoutParams = menulp;
+    [self setShow:self.pyfwShow rootsParams:rootlp menusParams:menulp];
 }
 -(UIViewController *) getEnableController{
     if(_pyfwShow & PYFrameworkRootFillShow || _pyfwShow & PYFrameworkRootFitShow){
@@ -210,15 +223,6 @@ kSOULDLAYOUTP
 }
 #pragma Orientations <==
 
--(void) refreshLayout{
-    UIView * toBringView = self.rootView;
-    if(_pyfwShow & PYFrameworkMenuShow){
-        toBringView = self.menuView;
-    }
-    [self.view bringSubviewToFront:toBringView];
-    [self.view setNeedsLayout];
-    [self.view layoutIfNeeded];
-}
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self excuteBlockLayout];

@@ -28,6 +28,6 @@ NSString * _Nonnull PYFwMenuBGImageNormal = @"{BGImageNormal}";
 NSString * _Nonnull PYFwMenuBGImageHigthlight = @"{BGImageHigthlight}";
 NSString * _Nonnull PYFwMenuBGImageSelected = @"{BGImageSelected}";
 
-NSString * _Nonnull PYFwMenuIsDownImgDirection = @"{IsDownImgDirection}";
+NSString * _Nonnull PYFwMenusImgDirection = @"{ImgDirection}";
 
 
