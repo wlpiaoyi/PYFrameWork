@@ -10,6 +10,7 @@
 #import "PYAsyImageView.h"
 #import "PYDisplayImageView.h"
 #import "PYSelectorBarView.h"
+#import "PYSliderView.h"
 
 #import "NSDate+Lunar.h"
 #import "PYCalendarParam.h"

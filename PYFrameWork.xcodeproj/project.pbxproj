@@ -46,6 +46,8 @@
 		157610881FD933A300522CF0 /* libpyinterflowa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 157610741FD933A200522CF0 /* libpyinterflowa.a */; };
 		157610891FD933A300522CF0 /* libpynetworka.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1576107E1FD933A300522CF0 /* libpynetworka.a */; };
 		15C376041FC1361D0076EFA6 /* PYFwMenuSlipController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C376031FC1361D0076EFA6 /* PYFwMenuSlipController.m */; };
+		15EABAF820A2D69C0073D4EF /* PYKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15EABAF620A2D69C0073D4EF /* PYKit.bundle */; };
+		15EABAF920A2D69C0073D4EF /* PYInterflow.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15EABAF720A2D69C0073D4EF /* PYInterflow.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +192,8 @@
 		157610841FD933A300522CF0 /* pynetworka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pynetworka.h; sourceTree = "<group>"; };
 		15C376021FC1361D0076EFA6 /* PYFwMenuSlipController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYFwMenuSlipController.h; sourceTree = "<group>"; };
 		15C376031FC1361D0076EFA6 /* PYFwMenuSlipController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYFwMenuSlipController.m; sourceTree = "<group>"; };
+		15EABAF620A2D69C0073D4EF /* PYKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYKit.bundle; sourceTree = "<group>"; };
+		15EABAF720A2D69C0073D4EF /* PYInterflow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYInterflow.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +306,8 @@
 		150C6DFC1F47E6BB00731FC7 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				15EABAF720A2D69C0073D4EF /* PYInterflow.bundle */,
+				15EABAF620A2D69C0073D4EF /* PYKit.bundle */,
 				157610731FD933A200522CF0 /* pyinterflow */,
 				1576105E1FD933A200522CF0 /* pykit */,
 				1576107D1FD933A300522CF0 /* pynetwork */,
@@ -629,9 +635,11 @@
 				157610871FD933A300522CF0 /* py_webview_hybird.js in Resources */,
 				155C61772057821600C8A9B4 /* icon.png in Resources */,
 				150C6E741F49929300731FC7 /* bill_pre@2x.png in Resources */,
+				15EABAF820A2D69C0073D4EF /* PYKit.bundle in Resources */,
 				150C6DD91F47E68600731FC7 /* LaunchScreen.storyboard in Resources */,
 				150C6DD61F47E68600731FC7 /* Assets.xcassets in Resources */,
 				150C6DD41F47E68600731FC7 /* Main.storyboard in Resources */,
+				15EABAF920A2D69C0073D4EF /* PYInterflow.bundle in Resources */,
 				150C6E761F49929300731FC7 /* me_pre@2x.png in Resources */,
 				150C6E731F49929300731FC7 /* bill@2x.png in Resources */,
 			);

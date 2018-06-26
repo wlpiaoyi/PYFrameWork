@@ -23,7 +23,7 @@
 -(BOOL) aftlerExcuteShouldAutorotateWithTarget:(nonnull UIViewController *) target;
 
 //重写父类方法判断支持的旋转方向
--(NSUInteger) afterExcuteSupportedInterfaceOrientationsWithTarget:(nonnull UIViewController *) target;
+-(UIInterfaceOrientationMask) afterExcuteSupportedInterfaceOrientationsWithTarget:(nonnull UIViewController *) target;
 
 //重写父类方法返回当前方向
 -(UIInterfaceOrientation) afterExcutePreferredInterfaceOrientationForPresentationWithTarget:(nonnull UIViewController *) target;
@@ -147,6 +147,7 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
     }else if (managerNavigationbarData.backgroundImage) {
         [navigationBar setBackgroundImage:managerNavigationbarData.backgroundImage forBarMetrics:managerNavigationbarData.barMetrics];
     }
+    
     if(managerNavigationbarData.lineButtomImage)navigationBar.shadowImage = managerNavigationbarData.lineButtomImage;
 }
 
@@ -157,40 +158,48 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
  #param direction:0 title在上 1 title在下
  */
 +(void) parseImagetitleForButton:(nonnull UIButton *) button offH:(CGFloat) offH maxHeight:(CGFloat) maxHeight direction:(short) direction{
+    UIImage * imageNormal;
+    UIImage * imageSelected;
+    UIImage * imageHigthlight;
+    UIImage * imageDisabled;
+    
     UIControlState state = UIControlStateNormal;
-    UIImage * image;
-    NSString * title;
-    image = [button imageForState:state];
-    title = [button titleForState:state];
-    if(image && [NSString isEnabled:title]){
-        image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:button.titleLabel.textColor image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
-        [button setTitle:@"" forState:state];
-        [button setImage:image forState:state];
-    }
+    imageNormal = [self pyfmu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
+    
     state = UIControlStateSelected;
-    image = [button imageForState:state];
-    title = [button titleForState:state];
-    if(image && [NSString isEnabled:title]){
-        image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:button.titleLabel.textColor image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
-        [button setTitle:@"" forState:state];
-        [button setImage:image forState:state];
-    }
+    imageSelected = [self pyfmu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
+    
     state = UIControlStateHighlighted;
-    image = [button imageForState:state];
-    title = [button titleForState:state];
-    if(image && [NSString isEnabled:title]){
-        image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:button.titleLabel.textColor image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
-        [button setTitle:@"" forState:state];
-        [button setImage:image forState:state];
-    }
+    imageHigthlight = [self pyfmu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
+    
     state = UIControlStateDisabled;
-    image = [button imageForState:state];
-    title = [button titleForState:state];
-    if(image && [NSString isEnabled:title]){
-        image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:button.titleLabel.textColor image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
+    imageDisabled = [self pyfmu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
+    
+    
+    state = UIControlStateNormal;
+    if(imageNormal){
         [button setTitle:@"" forState:state];
-        [button setImage:image forState:state];
+        [button setImage:imageNormal forState:state];
     }
+    
+    state = UIControlStateSelected;
+    if(imageSelected){
+        [button setTitle:@"" forState:state];
+        [button setImage:imageSelected forState:state];
+    }
+    
+    state = UIControlStateHighlighted;
+    if(imageHigthlight){
+        [button setTitle:@"" forState:state];
+        [button setImage:imageHigthlight forState:state];
+    }
+    
+    state = UIControlStateDisabled;
+    if(imageDisabled){
+        [button setTitle:@"" forState:state];
+        [button setImage:imageDisabled forState:state];
+    }
+
 }
 
 /**
@@ -248,6 +257,21 @@ static UIViewcontrollerHookViewDelegateImp * xUIViewcontrollerHookViewDelegateIm
     
     return true;
 }
+
++(nullable UIImage *) pyfmu_getImageForButton:(nonnull UIButton *) button state:(UIControlState) state offH:(CGFloat) offH maxHeight:(CGFloat) maxHeight direction:(short) direction{
+    UIImage * image = [button imageForState:state];
+    NSString * title = [button titleForState:state];
+    if(!image || ![NSString isEnabled:title]){
+        return nil;
+    }
+    if(state != UIControlStateNormal){
+        UIImage * imagen = [button imageForState:UIControlStateNormal];
+        NSString * titlen = [button titleForState:UIControlStateNormal];
+        if(imagen == image && title == titlen) return nil;
+    }
+    image = [PYFrameworkUtile createImageWithTitle:title font:button.titleLabel.font color:[button titleColorForState:state] image:image offH:offH imageOffH:maxHeight - image.size.height direction:direction];
+    return image;
+};
 @end
 void * UIViewControllerCurrentInterfaceOrientationPointer;
 @implementation UIViewController(currentInterfaceOrientation)
@@ -294,14 +318,14 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
                     [PYFrameworkUtile setBarButtonItemStyle:barButtonItem managerBarButtonItemData:data];
                 }
             };
-            if(navigationItem.backBarButtonItem){
-                block(self, navigationItem.backBarButtonItem);
-            }
             if(navigationItem.leftBarButtonItems){
                 for (UIBarButtonItem * barButtonItem in navigationItem.leftBarButtonItems) {
                     block(self, barButtonItem);
                 }
+            }else if(navigationItem.backBarButtonItem){
+                block(self, navigationItem.backBarButtonItem);
             }
+            
             if(navigationItem.rightBarButtonItems){
                 for (UIBarButtonItem * barButtonItem in navigationItem.rightBarButtonItems) {
                     block(self, barButtonItem);
@@ -367,8 +391,8 @@ void * UIViewControllerCurrentInterfaceOrientationPointer;
     }
 }
 //重写父类方法判断支持的旋转方向
--(NSUInteger) afterExcuteSupportedInterfaceOrientationsWithTarget:(nonnull UIViewController *) target{
-    if ([target isKindOfClass:[UINavigationController class]]) {
+-(UIInterfaceOrientationMask) afterExcuteSupportedInterfaceOrientationsWithTarget:(nonnull UIViewController *) target{
+    if ([target isKindOfClass:[UINavigationController class]] && ((UINavigationController *)target).viewControllers.count) {
         return [((UINavigationController*)target).viewControllers.lastObject supportedInterfaceOrientations];
     }else{
         return self.frameworkOrientation.supportedInterfaceOrientations;

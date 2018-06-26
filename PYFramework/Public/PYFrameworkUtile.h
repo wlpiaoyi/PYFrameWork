@@ -21,14 +21,15 @@
 
 @interface PYFrameworkUtileBarButtonItem : NSObject
 
-@property (nonatomic, assign) CGSize shadowOffset;      // offset in user space of the shadow from the original drawing
-@property (nonatomic, assign) CGFloat shadowBlurRadius; // blur radius of the shadow in default user space units
-@property (nullable, nonatomic, strong) id shadowColor;     // color used for the shadow (default is black with an alpha value of 1/3)
+kPNA CGSize shadowOffset;      // offset in user space of the shadow from the original drawing
+kPNA CGFloat shadowBlurRadius; // blur radius of the shadow in default user space units
+kPNSNA id shadowColor;     // color used for the shadow (default is black with an alpha value of 1/3)
 
-@property (nonatomic, strong, nullable) UIColor * nameColor;
-@property (nonatomic, strong, nullable) UIFont * nameFont;
+kPNSNA UIColor * nameColor;
+kPNSNA UIFont * nameFont;
 
-@property (nonatomic) UIControlState currentState;
+kPNA UIControlState currentState;
+
 
 +(nullable instancetype) defaut;
 
@@ -36,20 +37,22 @@
 
 @interface PYFrameworkUtileNavigationbar : NSObject
 
-@property (nonatomic, assign) CGSize shadowOffset;      // offset in user space of the shadow from the original drawing
-@property (nonatomic, assign) CGFloat shadowBlurRadius; // blur radius of the shadow in default user space units
-@property (nullable, nonatomic, strong) UIColor * shadowColor;     // color used for the shadow (default is black with an alpha value of 1/3)
+kPNA CGSize shadowOffset;      // offset in user space of the shadow from the original drawing
+kPNA CGFloat shadowBlurRadius; // blur radius of the shadow in default user space units
+kPNSNA UIColor * shadowColor;     // color used for the shadow (default is black with an alpha value of 1/3)
 
-@property (nonatomic, strong, nullable) UIColor * nameColor;
-@property (nonatomic, strong, nullable) UIFont * nameFont;
+kPNSNA UIColor * nameColor;
+kPNSNA UIFont * nameFont;
 
-@property (nonatomic, strong, nullable) UIColor * tintColor;
-@property (nonatomic, strong, nullable) UIColor * backgroundColor;
-@property (nonatomic, strong, nullable) UIImage * backgroundImage;
-@property (nonatomic, strong, nullable) UIImage * lineButtomImage;
-@property (nonatomic, assign) UIBarMetrics barMetrics;
+kPNSNA UIColor * tintColor;
+kPNSNA UIColor * backgroundColor;
+kPNSNA UIImage * backgroundImage;
+kPNSNA UIImage * lineButtomImage;
 
-@property (nonatomic, assign)UIStatusBarStyle statusBarStyle;
+kPNA UIBarMetrics barMetrics;
+
+kPNA UIStatusBarStyle statusBarStyle;
+
 +(nullable instancetype) defaut;
 
 @end
@@ -86,7 +89,7 @@
 +(void) parseImagetitleForButton:(nonnull UIButton *) button offH:(CGFloat) offH maxHeight:(CGFloat) maxHeight direction:(short) direction;
 /**
  创建上下结构的文字图片结构
- direction：(0:top, 1:left, 2:bottom, 3:right)
+ direction：(0:top, 1:bottom)
  */
 +(nonnull UIImage *) createImageWithTitle:(nonnull NSString *) title font:(nonnull UIFont *) font color:(nonnull UIColor *) color image:(nonnull UIImage *) image offH:(CGFloat) offH imageOffH:(CGFloat) imageOffH direction:(short) direction;
 @end
