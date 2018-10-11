@@ -61,6 +61,7 @@ kSOULDLAYOUTP
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.rootAnimationTransition = UIViewAnimationTransitionNone;
     self.rootView = [PYFWView new];
     self.rootView.backgroundColor = [UIColor clearColor];
     self.menuView = [PYFWView new];
@@ -169,7 +170,15 @@ kSOULDLAYOUTP
     }else if(self.blockLayoutAnimate){
         _blockLayoutAnimate(self.pyfwShow, &rootlp, &menulp);
     }
-    [self setShow:self.pyfwShow rootsParams:rootlp menusParams:menulp];
+    if(self.rootAnimationTransition != UIViewAnimationTransitionNone){
+        [UIView beginAnimations:@"py_framwork_root" context:nil];
+        [UIView setAnimationTransition:self.rootAnimationTransition forView:self.rootView cache:YES];
+        [UIView setAnimationDuration:.5]; //动画时长
+        [self setShow:self.pyfwShow rootsParams:rootlp menusParams:menulp];
+        [UIView commitAnimations];
+    }else{
+        [self setShow:self.pyfwShow rootsParams:rootlp menusParams:menulp];
+    }
 }
 -(UIViewController *) getEnableController{
     if(_pyfwShow & PYFrameworkRootFillShow || _pyfwShow & PYFrameworkRootFitShow){

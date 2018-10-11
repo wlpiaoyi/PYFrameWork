@@ -9,12 +9,17 @@
 #ifndef PYParams_h
 #define PYParams_h
 #import <UIKit/UIKit.h>
-#import "PYUtile.h"
+#import "pyutilea.h"
 
 extern void (^_Nullable BlockDialogButtonStyle)(UIButton * _Nonnull button);
 
+extern CGFloat PYPopupEffectCpuUsage;
+
 extern CGFloat PYPopupAnimationTime;
 extern CGFloat PYPopupAnimationTimeOffset;
+
+extern NSString * STATIC_POPUP_EFFECTE_NOTIFY;
+extern BOOL STATIC_POPUP_HASEFFECT;
 
 extern CGFloat STATIC_POPUP_BORDERWIDTH;
 extern CGFloat STATIC_POPUP_WIDTH;
@@ -60,6 +65,7 @@ typedef void (^BlockTouchView)(CGPoint touhMove, UIView  * _Nonnull touchView);
 typedef void (^BlockPopupEndAnmation) (UIView * _Nonnull view);
 typedef void (^BlockPopupAnimation) (UIView * _Nonnull view, BlockPopupEndAnmation _Nullable block);
 typedef void(^BlockDialogOpt)(UIView * _Nonnull view, NSUInteger index);
+
 
 @interface PYParams : NSObject
 +(void) loadInterflowParamsData;

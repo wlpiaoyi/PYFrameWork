@@ -98,6 +98,8 @@ static UIViewcontrollerHookViewDelegateFWC * xUIViewcontrollerHookViewDelegateFW
 @interface PYFwMenuTabController ()
 kPNSNN UIView * viewOutSafe;
 kPNSNN UIViewControllerPyfwController * superDelegate;
+kPNSNA NSArray<NSDictionary *> * menuStyle;
+kPNA int preIndex;
 @end
 
 @implementation PYFwMenuTabController
@@ -160,16 +162,32 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
                               PYFwMenuImageSelected:[UIImage imageNamed:@"me_pre.png"],
                               PYFwMenusImgDirection: @(1)
                              };
-    [self setMenuStyle:@[style1, style2]];
+    [self setMenuStyle:@[style1, style2] maxHeight:0];
     [self setColorSeletedBg:[UIColor orangeColor]];
     self.imageMenuBg = [UIImage imageNamed:@"tab_bg.jpg"];
     kAssign(self);
     [self setBlockOnclickMenu:^BOOL (id _Nullable menuIdentify){
         kStrong(self);
+        int index = 0;
+        for (NSDictionary * style in self.menuStyle) {
+            if([style[PYFwMenuIdentify] isEqual:menuIdentify]){
+                break;
+            }
+            index++;
+        }
+        if(index > self.preIndex){
+            self.rootAnimationTransition = UIViewAnimationTransitionCurlUp;
+        }else if(index < self.preIndex){
+            self.rootAnimationTransition = UIViewAnimationTransitionCurlDown;
+        }else{
+            self.rootAnimationTransition = UIViewAnimationTransitionNone;
+        }
+        self.preIndex = index;
         UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
         UIViewController * rv  = [storyboard instantiateViewControllerWithIdentifier:@"rv"];
         self.rootController = rv;
         [self refreshChildControllerWithShow:PYFrameworkRootFitShow | PYFrameworkMenuShow delayTime:0];
+        self.rootAnimationTransition = UIViewAnimationTransitionNone;
         return YES;
     }];
     self.view.backgroundColor = [UIColor lightGrayColor];
@@ -187,9 +205,9 @@ kPNSNN UIViewControllerPyfwController * superDelegate;
     ((PYFwMenuController*)self.menuController).colorSeletedHeight = self.colorSeletedHeight;
     ((PYFwMenuController*)self.menuController).colorSeletedBg = _colorSeletedBg;
 }
--(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle{
+-(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle maxHeight:(CGFloat) maxHeight{
     _menuStyle = menuStyle;
-    ((PYFwMenuController*)self.menuController).menuStyle = _menuStyle;
+    [((PYFwMenuController*)self.menuController) setMenuStyle:menuStyle maxHeight:maxHeight];
 }
 -(void) setBlockOnclickMenu:(BOOL (^)(id _Nullable))blockOnclickMenu{
     _blockOnclickMenu = blockOnclickMenu;

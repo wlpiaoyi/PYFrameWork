@@ -30,7 +30,8 @@ kPNSNA UIImage * imageMenuBg;
 /**
  目录样式
  */
-kPNSNA NSArray<NSDictionary *> * menuStyle;
 kPNCNA BOOL (^blockOnclickMenu)(id _Nullable menuIdentify);
 -(void) showMenu:(nonnull id)menuIdentify;
+-(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle maxHeight:(CGFloat) maxHeight;
+
 @end

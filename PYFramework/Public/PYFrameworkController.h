@@ -45,6 +45,7 @@ kPNAR bool isMenuAnimated;
 kPNSNN UIViewController * rootController;
 kPNSNN UIViewController * menuController;
 ///<==
+kPNA UIViewAnimationTransition rootAnimationTransition;
 
 /**
  显示控制

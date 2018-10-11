@@ -169,7 +169,6 @@
 		157610691FD933A200522CF0 /* PYCalendarParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYCalendarParam.h; sourceTree = "<group>"; };
 		1576106A1FD933A200522CF0 /* PYCalendarTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYCalendarTimeView.h; sourceTree = "<group>"; };
 		1576106B1FD933A200522CF0 /* PYCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYCalendarView.h; sourceTree = "<group>"; };
-		1576106C1FD933A200522CF0 /* PYCalenderDateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYCalenderDateView.h; sourceTree = "<group>"; };
 		1576106D1FD933A200522CF0 /* PYDisplayImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYDisplayImageView.h; sourceTree = "<group>"; };
 		1576106E1FD933A200522CF0 /* PYHybirdUtile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYHybirdUtile.h; sourceTree = "<group>"; };
 		1576106F1FD933A200522CF0 /* pykita.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pykita.h; sourceTree = "<group>"; };
@@ -443,7 +442,6 @@
 				157610691FD933A200522CF0 /* PYCalendarParam.h */,
 				1576106A1FD933A200522CF0 /* PYCalendarTimeView.h */,
 				1576106B1FD933A200522CF0 /* PYCalendarView.h */,
-				1576106C1FD933A200522CF0 /* PYCalenderDateView.h */,
 				1576106D1FD933A200522CF0 /* PYDisplayImageView.h */,
 				1576106E1FD933A200522CF0 /* PYHybirdUtile.h */,
 				1576106F1FD933A200522CF0 /* pykita.h */,

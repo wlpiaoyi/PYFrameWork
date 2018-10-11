@@ -18,4 +18,5 @@ kPNA CGFloat colorSeletedHeight;
 @property (nonatomic, strong, nullable) NSArray<NSDictionary *> * menuStyle;
 @property (nonatomic, copy, nullable) BOOL (^blockOnclickMenu)(id _Nullable menuIdentify);
 -(void) setSelectedMenuWithIdentify:(nonnull id) identify;
+-(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle maxHeight:(CGFloat) maxHeight;
 @end

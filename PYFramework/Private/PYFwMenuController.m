@@ -34,6 +34,9 @@ kPNSNN PYSelectorBarView *  menus;
     self.menus.selectorTag = [[UIImageView alloc] initWithImage:[UIImage imageWithColor:_colorSeletedBg]];
 }
 -(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle{
+    [self setMenuStyle:menuStyle maxHeight:0];
+}
+-(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle maxHeight:(CGFloat) maxHeight{
     _menuStyle = menuStyle;
     NSMutableArray * buttons = [NSMutableArray new];
     for (NSDictionary * style in menuStyle) {
@@ -42,15 +45,21 @@ kPNSNN PYSelectorBarView *  menus;
         UIColor * color = style[PYFwMenuTitleColorNormal];
         UIImage * image = style[PYFwMenuImageNormal];
         NSNumber * imgDirection = style[PYFwMenusImgDirection] ? : @(YES);
-        UIImage * imageNormal = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5 imageOffH:0 direction:imgDirection.boolValue];
+        CGFloat imageOffH = 0;
+        if(maxHeight > 0) imageOffH = maxHeight - image.size.height;
+        UIImage * imageNormal = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5 imageOffH:imageOffH direction:imgDirection.boolValue];
         if(style[PYFwMenuTitleFontHigthlight]) font = style[PYFwMenuTitleFontHigthlight];
         if(style[PYFwMenuTitleColorHigthlight]) color = style[PYFwMenuTitleColorHigthlight];
         if(style[PYFwMenuImageHigthlight]) image = style[PYFwMenuImageHigthlight];
-        UIImage * imageHigthlight = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5 imageOffH:0 direction:imgDirection.boolValue];
+        imageOffH = 0;
+        if(maxHeight > 0) imageOffH = maxHeight - image.size.height;
+        UIImage * imageHigthlight = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5 imageOffH:imageOffH direction:imgDirection.boolValue];
         if(style[PYFwMenuTitleFontSelected]) font = style[PYFwMenuTitleFontSelected];
         if(style[PYFwMenuTitleColorSelected]) color = style[PYFwMenuTitleColorSelected];
         if(style[PYFwMenuImageSelected]) image = style[PYFwMenuImageSelected];
-        UIImage * imageSelected = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5 imageOffH:0 direction:imgDirection.boolValue];
+        imageOffH = 0;
+        if(maxHeight > 0) imageOffH = maxHeight - image.size.height;
+        UIImage * imageSelected = [PYFrameworkUtile createImageWithTitle:title font:font color:color image:image offH:5 imageOffH:imageOffH direction:imgDirection.boolValue];
         PYFwnmMemuButton * button = [PYFwnmMemuButton buttonWithType:UIButtonTypeCustom];
         [button setImage:imageNormal forState:UIControlStateNormal];
         [button setImage:imageHigthlight forState:UIControlStateHighlighted];
@@ -68,7 +77,7 @@ kPNSNN PYSelectorBarView *  menus;
     @unsafeify(self);
     [self.menus setBlockSelecteItem:^BOOL(NSUInteger index){
         @strongify(self);
-        PYFwnmMemuButton * button  =self.menus.buttons[index];
+        PYFwnmMemuButton * button  = self.menus.buttons[index];
         return self.blockOnclickMenu ? self.blockOnclickMenu(button.identify) : NO;
     }];
 }

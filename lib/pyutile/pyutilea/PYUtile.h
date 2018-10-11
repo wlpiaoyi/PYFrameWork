@@ -198,6 +198,11 @@ NSString * _Nullable PYUUID(NSUInteger length);
  */
 float app_cpu_usage(void);
 
+/**
+ 连续控制
+ */
+void controlsUdptype(NSTimeInterval timeInterval, dispatch_block_t block);
+
 @interface PYUtile : NSObject
 
 /**
