@@ -19,13 +19,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    PYFrameworkUtileOrientation *data = [PYFrameworkUtileOrientation new];
+    PYFrameworkParamOrientation *data = [PYFrameworkParamOrientation new];
     data.shouldAutorotate = YES;
     data.supportedInterfaceOrientations = UIInterfaceOrientationMaskAll;
     data.preferredInterfaceOrientationForPresentation = UIInterfaceOrientationPortrait;
     [PYFrameworkUtile setViewControllerOrientationData:data];
+    
     [PYOrientationNotification instanceSingle];
-    PYFrameworkUtileNavigationbar * nb =[PYFrameworkUtileNavigationbar defaut];
+    PYFrameworkParamNavigationBar * nb =[PYFrameworkParamNavigationBar defaut];
 //    nb.backgroundColor = [UIColor yellowColor];
     nb.backgroundImage = [UIImage imageWithColor:[UIColor clearColor]];
     nb.lineButtomImage = [UIImage imageWithColor:[UIColor clearColor]];
@@ -33,7 +34,7 @@
     nb.tintColor = [UIColor blueColor];
     nb.statusBarStyle = UIStatusBarStyleDefault;
     [PYFrameworkUtile setViewControllerNavigationbarData:@[nb]];
-    PYFrameworkUtileBarButtonItem * bbi = [PYFrameworkUtileBarButtonItem defaut];
+    PYFrameworkParamNavigationItem * bbi = [PYFrameworkParamNavigationItem defaut];
     bbi.nameColor = [UIColor orangeColor];
     bbi.nameFont = [UIFont systemFontOfSize:16 weight:UIFontWeightBold];
     [PYFrameworkUtile setViewControllertBarButtonItemData:@[bbi]];

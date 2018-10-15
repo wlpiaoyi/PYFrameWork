@@ -78,7 +78,7 @@
         [((PYFwMenuSlipController*)[UIApplication sharedApplication].keyWindow.rootViewController) refreshChildControllerWithShow:PYFrameworkMenuShow delayTime:((PYFwMenuSlipController*)[UIApplication sharedApplication].keyWindow.rootViewController).delayTime];
     }else{
         NSMutableString * str = [NSMutableString stringWithUTF8String:"vc"];
-        [str appendString:@(self.navigationController.viewControllers.count).stringValue];
+        [str appendString:@(self.navigationController.viewControllers.count + 1).stringValue];
         [self performSegueWithIdentifier:str sender:nil];
     }
 }

@@ -35,6 +35,28 @@
 		150C6ED41F4A964500731FC7 /* PYFwMenuTabController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6E451F49135700731FC7 /* PYFwMenuTabController.h */; };
 		150C6ED51F4A964500731FC7 /* PYFrameworkController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 150C6E321F47EB2400731FC7 /* PYFrameworkController.h */; };
 		150C6ED61F4A968400731FC7 /* PYFwMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 150C6E4A1F4913DC00731FC7 /* PYFwMenuController.m */; };
+		151015032174D9D4002C0C11 /* PYFrameworkParamOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015022174D9D4002C0C11 /* PYFrameworkParamOrientation.m */; };
+		151015062174D9FD002C0C11 /* PYFrameworkParamNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015052174D9FD002C0C11 /* PYFrameworkParamNavigationItem.m */; };
+		151015092174DA53002C0C11 /* PYFrameworkParamNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015082174DA53002C0C11 /* PYFrameworkParamNavigationBar.m */; };
+		1510150D2174DB9D002C0C11 /* PYGestureRecognizerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510150C2174DB9D002C0C11 /* PYGestureRecognizerDelegate.m */; };
+		151015102174DBE7002C0C11 /* UIResponderHookBaseDelegateFWK.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510150F2174DBE7002C0C11 /* UIResponderHookBaseDelegateFWK.m */; };
+		151015132174DC7C002C0C11 /* UIViewcontrollerHookViewDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015122174DC7C002C0C11 /* UIViewcontrollerHookViewDelegateImp.m */; };
+		151015162174DD3C002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015152174DD3C002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.m */; };
+		151015192174DE63002C0C11 /* UIViewController+CurrentInterfaceOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015182174DE63002C0C11 /* UIViewController+CurrentInterfaceOrientation.m */; };
+		1510151A2174E0A4002C0C11 /* PYGestureRecognizerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510150C2174DB9D002C0C11 /* PYGestureRecognizerDelegate.m */; };
+		1510151B2174E0A4002C0C11 /* UIResponderHookBaseDelegateFWK.m in Sources */ = {isa = PBXBuildFile; fileRef = 1510150F2174DBE7002C0C11 /* UIResponderHookBaseDelegateFWK.m */; };
+		1510151C2174E0A4002C0C11 /* UIViewcontrollerHookViewDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015122174DC7C002C0C11 /* UIViewcontrollerHookViewDelegateImp.m */; };
+		1510151D2174E0A4002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015152174DD3C002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.m */; };
+		1510151E2174E0A4002C0C11 /* UIViewController+CurrentInterfaceOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015182174DE63002C0C11 /* UIViewController+CurrentInterfaceOrientation.m */; };
+		1510151F2174E0A4002C0C11 /* PYFrameworkParamOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015022174D9D4002C0C11 /* PYFrameworkParamOrientation.m */; };
+		151015202174E0A4002C0C11 /* PYFrameworkParamNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015052174D9FD002C0C11 /* PYFrameworkParamNavigationItem.m */; };
+		151015212174E0A4002C0C11 /* PYFrameworkParamNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 151015082174DA53002C0C11 /* PYFrameworkParamNavigationBar.m */; };
+		151015222174E0B3002C0C11 /* PYFrameworkParamOrientation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 151015012174D9D4002C0C11 /* PYFrameworkParamOrientation.h */; };
+		151015232174E0B3002C0C11 /* PYFrameworkParamNavigationItem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 151015042174D9FD002C0C11 /* PYFrameworkParamNavigationItem.h */; };
+		151015242174E0B3002C0C11 /* PYFrameworkParamNavigationBar.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 151015072174DA53002C0C11 /* PYFrameworkParamNavigationBar.h */; };
+		1534C479217242F700775C07 /* PYKeybordHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1534C477217242F700775C07 /* PYKeybordHeadView.m */; };
+		1534C47C21724CB800775C07 /* View2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1534C47B21724CB800775C07 /* View2Controller.m */; };
+		1534C47D21725C8A00775C07 /* PYKeybordHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1534C477217242F700775C07 /* PYKeybordHeadView.m */; };
 		1557989E2058ED49005F7276 /* PYFwMenuSlipController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C376031FC1361D0076EFA6 /* PYFwMenuSlipController.m */; };
 		1557989F2058ED69005F7276 /* PYFwMenuSlipController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 15C376021FC1361D0076EFA6 /* PYFwMenuSlipController.h */; };
 		155C61772057821600C8A9B4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 155C61762057821600C8A9B4 /* icon.png */; };
@@ -74,6 +96,9 @@
 			dstPath = "$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				151015222174E0B3002C0C11 /* PYFrameworkParamOrientation.h in CopyFiles */,
+				151015232174E0B3002C0C11 /* PYFrameworkParamNavigationItem.h in CopyFiles */,
+				151015242174E0B3002C0C11 /* PYFrameworkParamNavigationBar.h in CopyFiles */,
 				1557989F2058ED69005F7276 /* PYFwMenuSlipController.h in CopyFiles */,
 				150C6ED21F4A964500731FC7 /* PYFrameworkUtile.h in CopyFiles */,
 				150C6ED31F4A964500731FC7 /* PYFrameworkParam.h in CopyFiles */,
@@ -120,6 +145,30 @@
 		150C6EB51F4A81C000731FC7 /* PYFrameworkUtile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYFrameworkUtile.m; sourceTree = "<group>"; };
 		150C6EC51F4A95AE00731FC7 /* libpyframeworka.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libpyframeworka.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		150C6EC71F4A95AE00731FC7 /* pyframeworka.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pyframeworka.h; sourceTree = "<group>"; };
+		151015012174D9D4002C0C11 /* PYFrameworkParamOrientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYFrameworkParamOrientation.h; sourceTree = "<group>"; };
+		151015022174D9D4002C0C11 /* PYFrameworkParamOrientation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYFrameworkParamOrientation.m; sourceTree = "<group>"; };
+		151015042174D9FD002C0C11 /* PYFrameworkParamNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYFrameworkParamNavigationItem.h; sourceTree = "<group>"; };
+		151015052174D9FD002C0C11 /* PYFrameworkParamNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYFrameworkParamNavigationItem.m; sourceTree = "<group>"; };
+		151015072174DA53002C0C11 /* PYFrameworkParamNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYFrameworkParamNavigationBar.h; sourceTree = "<group>"; };
+		151015082174DA53002C0C11 /* PYFrameworkParamNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYFrameworkParamNavigationBar.m; sourceTree = "<group>"; };
+		1510150B2174DB9D002C0C11 /* PYGestureRecognizerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYGestureRecognizerDelegate.h; sourceTree = "<group>"; };
+		1510150C2174DB9D002C0C11 /* PYGestureRecognizerDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYGestureRecognizerDelegate.m; sourceTree = "<group>"; };
+		1510150E2174DBE7002C0C11 /* UIResponderHookBaseDelegateFWK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIResponderHookBaseDelegateFWK.h; sourceTree = "<group>"; };
+		1510150F2174DBE7002C0C11 /* UIResponderHookBaseDelegateFWK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIResponderHookBaseDelegateFWK.m; sourceTree = "<group>"; };
+		151015112174DC7C002C0C11 /* UIViewcontrollerHookViewDelegateImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewcontrollerHookViewDelegateImp.h; sourceTree = "<group>"; };
+		151015122174DC7C002C0C11 /* UIViewcontrollerHookViewDelegateImp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewcontrollerHookViewDelegateImp.m; sourceTree = "<group>"; };
+		151015142174DD3C002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewcontrollerHookOrientationDelegateImp.h; sourceTree = "<group>"; };
+		151015152174DD3C002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewcontrollerHookOrientationDelegateImp.m; sourceTree = "<group>"; };
+		151015172174DE63002C0C11 /* UIViewController+CurrentInterfaceOrientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CurrentInterfaceOrientation.h"; sourceTree = "<group>"; };
+		151015182174DE63002C0C11 /* UIViewController+CurrentInterfaceOrientation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CurrentInterfaceOrientation.m"; sourceTree = "<group>"; };
+		151A297B2171A7100053E432 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		151A297C2171A7100053E432 /* UIView+Notify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Notify.h"; sourceTree = "<group>"; };
+		151A297D2171A7100053E432 /* PYInterflowParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYInterflowParams.h; sourceTree = "<group>"; };
+		151A297E2171A7100053E432 /* PYMoveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYMoveView.h; sourceTree = "<group>"; };
+		1534C476217242F700775C07 /* PYKeybordHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYKeybordHeadView.h; sourceTree = "<group>"; };
+		1534C477217242F700775C07 /* PYKeybordHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PYKeybordHeadView.m; sourceTree = "<group>"; };
+		1534C47A21724CB800775C07 /* View2Controller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = View2Controller.h; sourceTree = "<group>"; };
+		1534C47B21724CB800775C07 /* View2Controller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = View2Controller.m; sourceTree = "<group>"; };
 		155C61762057821600C8A9B4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		155C6178205782BB00C8A9B4 /* tab_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tab_bg.jpg; sourceTree = "<group>"; };
 		155C617A2057D37B00C8A9B4 /* PYTestNormalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYTestNormalViewController.h; sourceTree = "<group>"; };
@@ -141,8 +190,6 @@
 		1576104B1FD933A200522CF0 /* PYKeyboardNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYKeyboardNotification.h; sourceTree = "<group>"; };
 		1576104C1FD933A200522CF0 /* PYMotionNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYMotionNotification.h; sourceTree = "<group>"; };
 		1576104D1FD933A200522CF0 /* PYOrientationNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYOrientationNotification.h; sourceTree = "<group>"; };
-		1576104E1FD933A200522CF0 /* PYReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYReachability.h; sourceTree = "<group>"; };
-		1576104F1FD933A200522CF0 /* PYReachabilityNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYReachabilityNotification.h; sourceTree = "<group>"; };
 		157610501FD933A200522CF0 /* PYUncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYUncaughtExceptionHandler.h; sourceTree = "<group>"; };
 		157610511FD933A200522CF0 /* PYUtile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYUtile.h; sourceTree = "<group>"; };
 		157610521FD933A200522CF0 /* pyutilea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pyutilea.h; sourceTree = "<group>"; };
@@ -177,12 +224,9 @@
 		157610721FD933A200522CF0 /* UITextField+PYCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+PYCheck.h"; sourceTree = "<group>"; };
 		157610741FD933A200522CF0 /* libpyinterflowa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpyinterflowa.a; sourceTree = "<group>"; };
 		157610761FD933A200522CF0 /* pyinterflowa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pyinterflowa.h; sourceTree = "<group>"; };
-		157610771FD933A200522CF0 /* PYParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYParams.h; sourceTree = "<group>"; };
 		157610781FD933A200522CF0 /* UIView+Dialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Dialog.h"; sourceTree = "<group>"; };
 		157610791FD933A200522CF0 /* UIView+Popup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Popup.h"; sourceTree = "<group>"; };
-		1576107A1FD933A200522CF0 /* UIView+Remove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Remove.h"; sourceTree = "<group>"; };
 		1576107B1FD933A200522CF0 /* UIView+Sheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sheet.h"; sourceTree = "<group>"; };
-		1576107C1FD933A200522CF0 /* UIView+Topbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Topbar.h"; sourceTree = "<group>"; };
 		1576107E1FD933A300522CF0 /* libpynetworka.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpynetworka.a; sourceTree = "<group>"; };
 		157610801FD933A300522CF0 /* PYNetDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYNetDownload.h; sourceTree = "<group>"; };
 		157610811FD933A300522CF0 /* PYNetNormal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PYNetNormal.h; sourceTree = "<group>"; };
@@ -265,6 +309,8 @@
 				150C6DCD1F47E68600731FC7 /* AppDelegate.m */,
 				150C6DCF1F47E68600731FC7 /* ViewController.h */,
 				150C6DD01F47E68600731FC7 /* ViewController.m */,
+				1534C47A21724CB800775C07 /* View2Controller.h */,
+				1534C47B21724CB800775C07 /* View2Controller.m */,
 				150C6E3E1F48498400731FC7 /* TMController.h */,
 				150C6E3F1F48498400731FC7 /* TMController.m */,
 				150C6DD21F47E68600731FC7 /* Main.storyboard */,
@@ -318,6 +364,7 @@
 		150C6E2B1F47E70800731FC7 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				151015002174D9B4002C0C11 /* Param */,
 				150C6E321F47EB2400731FC7 /* PYFrameworkController.h */,
 				150C6E331F47EB2400731FC7 /* PYFrameworkController.m */,
 				150C6E6B1F49601700731FC7 /* PYFrameworkParam.h */,
@@ -335,8 +382,12 @@
 		150C6E481F4913C400731FC7 /* Private */ = {
 			isa = PBXGroup;
 			children = (
+				1510150A2174DB70002C0C11 /* Delegate */,
+				1534C474217242F700775C07 /* Keybord */,
 				150C6E491F4913DC00731FC7 /* PYFwMenuController.h */,
 				150C6E4A1F4913DC00731FC7 /* PYFwMenuController.m */,
+				151015172174DE63002C0C11 /* UIViewController+CurrentInterfaceOrientation.h */,
+				151015182174DE63002C0C11 /* UIViewController+CurrentInterfaceOrientation.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -360,6 +411,43 @@
 				150C6EC71F4A95AE00731FC7 /* pyframeworka.h */,
 			);
 			path = pyframeworka;
+			sourceTree = "<group>";
+		};
+		151015002174D9B4002C0C11 /* Param */ = {
+			isa = PBXGroup;
+			children = (
+				151015012174D9D4002C0C11 /* PYFrameworkParamOrientation.h */,
+				151015022174D9D4002C0C11 /* PYFrameworkParamOrientation.m */,
+				151015042174D9FD002C0C11 /* PYFrameworkParamNavigationItem.h */,
+				151015052174D9FD002C0C11 /* PYFrameworkParamNavigationItem.m */,
+				151015072174DA53002C0C11 /* PYFrameworkParamNavigationBar.h */,
+				151015082174DA53002C0C11 /* PYFrameworkParamNavigationBar.m */,
+			);
+			path = Param;
+			sourceTree = "<group>";
+		};
+		1510150A2174DB70002C0C11 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				1510150B2174DB9D002C0C11 /* PYGestureRecognizerDelegate.h */,
+				1510150C2174DB9D002C0C11 /* PYGestureRecognizerDelegate.m */,
+				1510150E2174DBE7002C0C11 /* UIResponderHookBaseDelegateFWK.h */,
+				1510150F2174DBE7002C0C11 /* UIResponderHookBaseDelegateFWK.m */,
+				151015112174DC7C002C0C11 /* UIViewcontrollerHookViewDelegateImp.h */,
+				151015122174DC7C002C0C11 /* UIViewcontrollerHookViewDelegateImp.m */,
+				151015142174DD3C002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.h */,
+				151015152174DD3C002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.m */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		1534C474217242F700775C07 /* Keybord */ = {
+			isa = PBXGroup;
+			children = (
+				1534C476217242F700775C07 /* PYKeybordHeadView.h */,
+				1534C477217242F700775C07 /* PYKeybordHeadView.m */,
+			);
+			path = Keybord;
 			sourceTree = "<group>";
 		};
 		155C617D2057D39400C8A9B4 /* Test */ = {
@@ -399,8 +487,6 @@
 				1576104B1FD933A200522CF0 /* PYKeyboardNotification.h */,
 				1576104C1FD933A200522CF0 /* PYMotionNotification.h */,
 				1576104D1FD933A200522CF0 /* PYOrientationNotification.h */,
-				1576104E1FD933A200522CF0 /* PYReachability.h */,
-				1576104F1FD933A200522CF0 /* PYReachabilityNotification.h */,
 				157610501FD933A200522CF0 /* PYUncaughtExceptionHandler.h */,
 				157610511FD933A200522CF0 /* PYUtile.h */,
 				157610521FD933A200522CF0 /* pyutilea.h */,
@@ -464,13 +550,14 @@
 		157610751FD933A200522CF0 /* pyinterflowa */ = {
 			isa = PBXGroup;
 			children = (
+				151A297D2171A7100053E432 /* PYInterflowParams.h */,
+				151A297E2171A7100053E432 /* PYMoveView.h */,
+				151A297C2171A7100053E432 /* UIView+Notify.h */,
+				151A297B2171A7100053E432 /* UIView+Toast.h */,
 				157610761FD933A200522CF0 /* pyinterflowa.h */,
-				157610771FD933A200522CF0 /* PYParams.h */,
 				157610781FD933A200522CF0 /* UIView+Dialog.h */,
 				157610791FD933A200522CF0 /* UIView+Popup.h */,
-				1576107A1FD933A200522CF0 /* UIView+Remove.h */,
 				1576107B1FD933A200522CF0 /* UIView+Sheet.h */,
-				1576107C1FD933A200522CF0 /* UIView+Topbar.h */,
 			);
 			path = pyinterflowa;
 			sourceTree = "<group>";
@@ -664,16 +751,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				151015102174DBE7002C0C11 /* UIResponderHookBaseDelegateFWK.m in Sources */,
 				15C376041FC1361D0076EFA6 /* PYFwMenuSlipController.m in Sources */,
+				1534C47C21724CB800775C07 /* View2Controller.m in Sources */,
 				150C6DD11F47E68600731FC7 /* ViewController.m in Sources */,
+				151015062174D9FD002C0C11 /* PYFrameworkParamNavigationItem.m in Sources */,
 				150C6E6D1F49601700731FC7 /* PYFrameworkParam.m in Sources */,
+				151015162174DD3C002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.m in Sources */,
 				150C6E471F49135700731FC7 /* PYFwMenuTabController.m in Sources */,
 				150C6E4B1F4913DC00731FC7 /* PYFwMenuController.m in Sources */,
+				151015092174DA53002C0C11 /* PYFrameworkParamNavigationBar.m in Sources */,
 				150C6EB61F4A81C000731FC7 /* PYFrameworkUtile.m in Sources */,
 				150C6DCE1F47E68600731FC7 /* AppDelegate.m in Sources */,
 				155C617C2057D37B00C8A9B4 /* PYTestNormalViewController.m in Sources */,
+				1534C479217242F700775C07 /* PYKeybordHeadView.m in Sources */,
+				151015032174D9D4002C0C11 /* PYFrameworkParamOrientation.m in Sources */,
+				151015132174DC7C002C0C11 /* UIViewcontrollerHookViewDelegateImp.m in Sources */,
 				150C6DCB1F47E68600731FC7 /* main.m in Sources */,
+				151015192174DE63002C0C11 /* UIViewController+CurrentInterfaceOrientation.m in Sources */,
 				150C6E401F48498400731FC7 /* TMController.m in Sources */,
+				1510150D2174DB9D002C0C11 /* PYGestureRecognizerDelegate.m in Sources */,
 				150C6E341F47EB2400731FC7 /* PYFrameworkController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +795,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1510151A2174E0A4002C0C11 /* PYGestureRecognizerDelegate.m in Sources */,
+				1510151B2174E0A4002C0C11 /* UIResponderHookBaseDelegateFWK.m in Sources */,
+				1510151C2174E0A4002C0C11 /* UIViewcontrollerHookViewDelegateImp.m in Sources */,
+				1510151D2174E0A4002C0C11 /* UIViewcontrollerHookOrientationDelegateImp.m in Sources */,
+				1510151E2174E0A4002C0C11 /* UIViewController+CurrentInterfaceOrientation.m in Sources */,
+				1510151F2174E0A4002C0C11 /* PYFrameworkParamOrientation.m in Sources */,
+				151015202174E0A4002C0C11 /* PYFrameworkParamNavigationItem.m in Sources */,
+				151015212174E0A4002C0C11 /* PYFrameworkParamNavigationBar.m in Sources */,
+				1534C47D21725C8A00775C07 /* PYKeybordHeadView.m in Sources */,
 				1557989E2058ED49005F7276 /* PYFwMenuSlipController.m in Sources */,
 				150C6ED61F4A968400731FC7 /* PYFwMenuController.m in Sources */,
 				150C6ECE1F4A961800731FC7 /* PYFrameworkUtile.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PYParams.h"
+#import "PYInterflowParams.h"
 
 extern CGFloat PYPopupAnimationTime;
 //typedef NS_ENUM(NSInteger, PYPopupEnum) {
@@ -53,6 +53,5 @@ extern CGFloat PYPopupAnimationTime;
 
 -(void) resetTransform;
 -(void) resetAutoLayout;
--(void) removeParam;
 
 @end

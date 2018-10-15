@@ -13,7 +13,7 @@ extern BOOL PYMAP_IGNORE_ERRO_MESSAGE;
 extern NSString * PYMAP_ANNOTATION_IDENTIFY;
 
 @interface PYMapView : UIView
-
+kPNA MKCoordinateRegion regionPervalue;
 /**
  当前定位位置信息
  */
@@ -86,6 +86,7 @@ kPNCNA void (^blockUserLocationChanged)(PYMapView * _Nonnull map);
  通过标注数据缩放位移地图
  */
 -(void) regioinForAnnitaions:(nullable NSArray<id<MKAnnotation>> *) annotaitons animated:(BOOL)animated;
+-(MKCoordinateRegion) getRegioinWithAnnitaions:(nullable NSArray<id<MKAnnotation>> *) annotaitons;
 
 -(void) setRegion:(MKCoordinateRegion) region animated:(BOOL)animated;
 -(void) setZoomLevel:(NSUInteger) zoomLevel animated:(BOOL) animated;

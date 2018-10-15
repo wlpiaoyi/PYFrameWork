@@ -8,78 +8,36 @@
 
 #import <UIKit/UIKit.h>
 #import "PYFrameworkParam.h"
-
-@interface PYFrameworkUtileOrientation : NSObject
-@property (nonatomic) BOOL shouldAutorotate;
-@property (nonatomic) UIInterfaceOrientationMask supportedInterfaceOrientations;
-@property (nonatomic) UIInterfaceOrientation preferredInterfaceOrientationForPresentation;
-@end
-
-@interface UIViewController(currentInterfaceOrientation)
-@property (nonatomic, readwrite) UIInterfaceOrientation currentInterfaceOrientation;
-@end
-
-@interface PYFrameworkUtileBarButtonItem : NSObject
-
-kPNA CGSize shadowOffset;      // offset in user space of the shadow from the original drawing
-kPNA CGFloat shadowBlurRadius; // blur radius of the shadow in default user space units
-kPNSNA id shadowColor;     // color used for the shadow (default is black with an alpha value of 1/3)
-
-kPNSNA UIColor * nameColor;
-kPNSNA UIFont * nameFont;
-
-kPNA UIControlState currentState;
-
-
-+(nullable instancetype) defaut;
-
-@end
-
-@interface PYFrameworkUtileNavigationbar : NSObject
-
-kPNA CGSize shadowOffset;      // offset in user space of the shadow from the original drawing
-kPNA CGFloat shadowBlurRadius; // blur radius of the shadow in default user space units
-kPNSNA UIColor * shadowColor;     // color used for the shadow (default is black with an alpha value of 1/3)
-
-kPNSNA UIColor * nameColor;
-kPNSNA UIFont * nameFont;
-
-kPNSNA UIColor * tintColor;
-kPNSNA UIColor * backgroundColor;
-kPNSNA UIImage * backgroundImage;
-kPNSNA UIImage * lineButtomImage;
-
-kPNA UIBarMetrics barMetrics;
-
-kPNA UIStatusBarStyle statusBarStyle;
-
-+(nullable instancetype) defaut;
-
-@end
-
+#import "PYFrameworkParamOrientation.h"
+#import "PYFrameworkParamNavigationBar.h"
+#import "PYFrameworkParamNavigationItem.h"
 
 
 @interface PYFrameworkUtile : NSObject
 /**
+ 返回按钮图片
+ */
++(void) setBackItemForPopvc:(nullable UIImage *) popvc dismissvc:(nullable UIImage *) dismissvc;
+/**
  旋转默认设置
  */
-+(void) setViewControllerOrientationData:(nullable PYFrameworkUtileOrientation *) frameworkOrientation;
++(void) setViewControllerOrientationData:(nullable PYFrameworkParamOrientation *) frameworkOrientation;
 /**
  导航栏默认设置
  */
-+(void) setViewControllerNavigationbarData:(nullable NSArray<PYFrameworkUtileNavigationbar*> *) managerNavigationbarDatas;
++(void) setViewControllerNavigationbarData:(nullable NSArray<PYFrameworkParamNavigationBar*> *) managerNavigationbarDatas;
 /**
  导航栏默认设置
  */
-+(void) setViewControllertBarButtonItemData:(nullable NSArray<PYFrameworkUtileBarButtonItem*> *) managerBarButtonItemData;
++(void) setViewControllertBarButtonItemData:(nullable NSArray<PYFrameworkParamNavigationItem*> *) managerBarButtonItemData;
 /**
  设置导航栏按钮样式
  */
-+(void) setBarButtonItemStyle:(nonnull UIBarButtonItem *) barButtonItem managerBarButtonItemData:(nonnull PYFrameworkUtileBarButtonItem *) managerBarButtonItemData;
++(void) setBarButtonItemStyle:(nonnull UIBarButtonItem *) barButtonItem managerBarButtonItemData:(nonnull PYFrameworkParamNavigationItem *) managerBarButtonItemData;
 /**
  设置导航栏样式
  */
-+(void) setNavigationBarStyle:(nonnull UINavigationBar *) navigationBar managerNavigationbarData:(nonnull PYFrameworkUtileNavigationbar *) managerNavigationbarData;
++(void) setNavigationBarStyle:(nonnull UINavigationBar *) navigationBar managerNavigationbarData:(nonnull PYFrameworkParamNavigationBar *) managerNavigationbarData;
 /**
  将button的image和title纵向显示
  #param offH:间距

@@ -13,3 +13,7 @@
 #import "PYFwMenuTabController.h"
 #import "PYFwMenuSlipController.h"
 #import "PYFrameworkController.h"
+
+#import "PYFrameworkParamOrientation.h"
+#import "PYFrameworkParamNavigationBar.h"
+#import "PYFrameworkParamNavigationItem.h"

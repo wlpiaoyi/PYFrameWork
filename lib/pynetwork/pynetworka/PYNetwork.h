@@ -92,15 +92,28 @@ kPNSNA NSString * certificationPassword;
 -(nullable NSURLSession*) createSession;
 -(nullable NSURLSessionTask *) createSessionTask;
 
+/**
+ 创建网络请求
+ @param urlString 请求地址
+ @param httpMethod 请求类型
+ @param heads 请求头信息
+ @param outTime 超时时间
+ */
 +(nonnull NSURLRequest *) createRequestWithUrlString:(nonnull NSString*) urlString
-                                                              httpMethod:(nullable NSString*) httpMethod
-                                                                     heads:(nullable NSDictionary<NSString *, NSString *> *) heads
-                                                                   params:(nullable NSData *) params
-                                                                  outTime:(CGFloat) outTime;
+                                            httpMethod:(nullable NSString*) httpMethod
+                                            heads:(nullable NSDictionary<NSString *, NSString *> *) heads
+                                            params:(nullable NSData *) params
+                                            outTime:(CGFloat) outTime;
 /**
  将键值对转换成对应的数据结构
+ @param params 支持 NSString , NSDictionary, NSData
+ @param contentType 支持
+ application/x-www-form-urlencoded
+ application/json
+ application/xml
+ @param keySorts 参数排序,仅当参数类型是form表单时有用
  */
-+(nonnull NSData *) parseDictionaryToHttpBody:(NSDictionary<NSString*, id> *) params
-                                                  contentType:(NSString *) contentType
-                                                       keySorts:(nullable NSArray<NSString *> *) keySorts;
++(nonnull NSData *) parseParamsToHttpBody:(nullable id) params
+                                            contentType:(NSString *) contentType
+                                            keySorts:(nullable NSArray<NSString *> *) keySorts;
 @end

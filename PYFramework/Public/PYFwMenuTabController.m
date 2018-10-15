@@ -32,9 +32,11 @@ kPNSNN NSMutableDictionary * mdict;
 @end
 @implementation UIViewcontrollerHookViewDelegateFWC
 +(void) initialize{
-    [UIResponder hookWithMethodNames:nil];
-    xUIResponderHookBaseDelegateFWC = [UIResponderHookBaseDelegateFWC new];
-    [[UIViewController delegateBase] addObject:xUIResponderHookBaseDelegateFWC];
+    static dispatch_once_t onceToken; dispatch_once(&onceToken, ^{
+        [UIResponder hookWithMethodNames:nil];
+        xUIResponderHookBaseDelegateFWC = [UIResponderHookBaseDelegateFWC new];
+        [[UIViewController delegateBase] addObject:xUIResponderHookBaseDelegateFWC];
+    });
 }
 -(instancetype) init{
     self = [super init];
