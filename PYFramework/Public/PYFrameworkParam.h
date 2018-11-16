@@ -82,6 +82,7 @@ kUTILE_STATIC_INLINE PYFwlayoutParams PYFwlayoutParamsMake(CGRect frame, CGFloat
 @protocol PYFrameworkOrientationTag <NSObject> @end
 @protocol PYKeyboradShowtag @end
 @protocol PYFrameworkBackItem <NSObject> @end
-@protocol PYFrameworkAllTag <PYFrameworkNormalTag, PYFrameworkOrientationTag, PYKeyboradShowtag, PYFrameworkBackItem> @end
+@protocol PYFrameworkUnsafeAreaFit <NSObject> @end
+@protocol PYFrameworkAllTag <PYFrameworkNormalTag, PYFrameworkOrientationTag, PYKeyboradShowtag, PYFrameworkBackItem,PYFrameworkUnsafeAreaFit> @end
 
 

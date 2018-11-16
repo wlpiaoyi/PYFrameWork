@@ -11,8 +11,11 @@
 #import "UIViewController+CurrentInterfaceOrientation.h"
 #import "PYGestureRecognizerDelegate.h"
 #import "PYFrameworkUtile.h"
+#import <objc/runtime.h>
 
 void * PYFWKeyboardPointer = &PYFWKeyboardPointer;
+void * PYFWViewBottomTagPointer = &PYFWViewBottomTagPointer;
+void * PYFWImageBottomPointer = &PYFWImageBottomPointer;
 
 UIImage * xImageFrameworkPopvc;
 UIImage * xImageFrameworkdismissvc;
@@ -25,7 +28,9 @@ void __py_framework_dismissvc(UIViewController * self, SEL _cmd){
     [(self.navigationController ? : self) dismissViewControllerAnimated:YES completion:^{}];
 }
 
-@implementation UIViewcontrollerHookViewDelegateImp
+static Class __PY_FM_TEMP_CLASS;
+@implementation UIViewcontrollerHookViewDelegateImp{
+}
 
 +(PYKeybordHeadView *) keybordHead:(UIViewController *) target{
     PYKeybordHeadView * keybordHead = objc_getAssociatedObject(target, PYFWKeyboardPointer);
@@ -33,15 +38,21 @@ void __py_framework_dismissvc(UIViewController * self, SEL _cmd){
         keybordHead = [PYKeybordHeadView new];
         objc_setAssociatedObject(target, PYFWKeyboardPointer, keybordHead, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
+    if(!__PY_FM_TEMP_CLASS){
+        __PY_FM_TEMP_CLASS = NSClassFromString(@"PYInterflowController");
+    }
     return keybordHead;
 }
+
 
 -(void) afterExcuteViewDidLoadWithTarget:(nonnull UIViewController *) target{
     
     if([target conformsToProtocol:@protocol(PYKeyboradShowtag)]){
         PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
         keybordHead.frameOrigin = CGPointMake(boundsWidth() - keybordHead.frameWidth, boundsHeight());
-        [[UIApplication sharedApplication].delegate.window addSubview:keybordHead];
+        UIWindow * window =  [UIApplication sharedApplication].delegate.window;
+        [window addSubview:keybordHead];
+        
         kAssign(target);
         [PYKeyboardNotification setKeyboardNotificationWithResponder:keybordHead showDoing:^(UIResponder * _Nonnull responder, CGRect keyBoardFrame) {
             kStrong(target);
@@ -237,6 +248,36 @@ void __py_framework_dismissvc(UIViewController * self, SEL _cmd){
         return false;
     }
     return true;
+}
+
+-(void) afterExcuteViewDidLayoutSubviewsWithTarget:(nonnull UIViewController *) target{
+    if (@available(iOS 11.0, *)) {
+        if(target.view.safeAreaInsets.bottom > 0){
+            if([target conformsToProtocol:@protocol(PYFrameworkUnsafeAreaFit)]){
+                UIView * viewBottomTag = objc_getAssociatedObject(target, PYFWViewBottomTagPointer);
+                if(viewBottomTag == nil){
+                    viewBottomTag = [UIView new];
+                    viewBottomTag.backgroundColor = [UIColor clearColor];
+                    [target.view addSubview:viewBottomTag];
+                    [viewBottomTag setAutotLayotDict:@{@"bottom":@(0), @"left":@(0), @"right":@(0), @"bottomActive":@(YES), @"h":@(.5)}];
+                    objc_setAssociatedObject(target, PYFWViewBottomTagPointer, viewBottomTag, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                }
+                UIImageView * imageBottom = objc_getAssociatedObject(target, PYFWImageBottomPointer);
+                if(imageBottom == nil){
+                    imageBottom = [UIImageView new];
+                    imageBottom.backgroundColor = [UIColor clearColor];
+                    imageBottom.contentMode = UIViewContentModeScaleToFill;
+                    [target.view addSubview:imageBottom];
+                    [imageBottom setAutotLayotDict:@{@"top":@(0), @"left":@(0), @"bottom":@(0), @"right":@(0),@"topPoint":viewBottomTag}];
+                    objc_setAssociatedObject(target, PYFWImageBottomPointer, imageBottom, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                }
+                CGRect bounds = CGRectMake(0, boundsHeight() - ABS(target.view.safeAreaInsets.bottom ) - 1, target.view.frameWidth, 1);
+                imageBottom.image = [[UIApplication sharedApplication].delegate.window drawViewWithBounds:bounds];
+                [target.view bringSubviewToFront:viewBottomTag];
+                [target.view bringSubviewToFront:imageBottom];
+            }
+        }
+    }
 }
 
 @end
