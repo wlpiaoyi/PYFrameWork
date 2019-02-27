@@ -31,7 +31,14 @@ kPNSNN PYSelectorBarView *  menus;
 -(void) setColorSeletedBg:(UIColor *)colorSeletedBg{
     _colorSeletedBg = colorSeletedBg;
     self.menus.selectorTagHeight = self.colorSeletedHeight;
-    self.menus.selectorTag = [[UIImageView alloc] initWithImage:[UIImage imageWithColor:_colorSeletedBg]];
+    self.menus.selectorTag = [UIView new];
+    UIView * view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    self.menus.selectorTag = view;
+    view = [UIView new];
+    view.backgroundColor = self.colorSeletedBg;
+    [self.menus.selectorTag addSubview:view];
+    [view setAutotLayotDict:@{@"top":@0, @"left":@0, @"right":@0, @"bottom":@1}];
 }
 -(void) setMenuStyle:(NSArray<NSDictionary *> *)menuStyle{
     [self setMenuStyle:menuStyle maxHeight:0];

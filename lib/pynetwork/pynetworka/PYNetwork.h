@@ -18,9 +18,12 @@ typedef enum _PYNetworkState {
 } PYNetworkState;
 
 
-static NSTimeInterval   PYNetworkOutTime;
+extern NSTimeInterval PYNET_OUTTIME;
 
-extern NSString * _Nonnull  PYNetWorkDatePattern;
+extern NSString * _Nonnull  PYNET_DATE_PATTERN;
+
+extern CFStringRef PYNET_PERCENT_PARAM;
+extern CFStringRef PYNET_PERCENT_FIELD;
 
 //==>传输方法
 extern NSString * _Nonnull PYNET_HTTP_GET;

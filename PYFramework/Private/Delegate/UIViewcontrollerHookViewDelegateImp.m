@@ -271,7 +271,7 @@ static Class __PY_FM_TEMP_CLASS;
                     [imageBottom setAutotLayotDict:@{@"top":@(0), @"left":@(0), @"bottom":@(0), @"right":@(0),@"topPoint":viewBottomTag}];
                     objc_setAssociatedObject(target, PYFWImageBottomPointer, imageBottom, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 }
-                CGRect bounds = CGRectMake(0, boundsHeight() - ABS(target.view.safeAreaInsets.bottom ) - 1, target.view.frameWidth, 1);
+                CGRect bounds = CGRectMake(0, boundsHeight() - ABS(target.view.safeAreaInsets.bottom ) - .5, target.view.frameWidth, .5);
                 imageBottom.image = [[UIApplication sharedApplication].delegate.window drawViewWithBounds:bounds];
                 [target.view bringSubviewToFront:viewBottomTag];
                 [target.view bringSubviewToFront:imageBottom];

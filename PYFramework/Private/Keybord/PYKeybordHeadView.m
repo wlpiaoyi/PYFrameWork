@@ -9,6 +9,8 @@
 #import "PYKeybordHeadView.h"
 #import "pyutilea.h"
 
+UIFont * PY_FW_KBHV_FONT;
+
 @implementation PYKeybordHeadView{
 @private
     UIView *viewBorder;
@@ -17,12 +19,16 @@
     UIButton * buttonNext;
     UIButton * buttonPre;
 }
-
++(void) initialize{
+    static dispatch_once_t onceToken; dispatch_once(&onceToken,^{
+        PY_FW_KBHV_FONT = [UIFont systemFontOfSize:12];
+    });
+}
 kINITPARAMSForType(PYKeybordHeadView){
     
     self.backgroundColor = [UIColor clearColor];
     [self setShadowColor:[UIColor grayColor].CGColor shadowRadius:4];
-    self.frameSize = CGSizeMake(105, 30);
+    self.frameSize = CGSizeMake(180, 30);
     
     viewBorder = [UIView new];
     viewBorder.backgroundColor = [UIColor whiteColor];
@@ -34,34 +40,35 @@ kINITPARAMSForType(PYKeybordHeadView){
     viewContent.backgroundColor = [UIColor whiteColor];
     [self addSubview:viewContent];
     [viewContent setAutotLayotDict:@{@"top":@(0),@"left":@(self.frameHeight/2),@"bottom":@(0),@"right":@(0)}];
-    
-    UIButton * b = [UIButton buttonWithType:UIButtonTypeCustom];
-    [b setTitle:@"▼" forState:UIControlStateNormal];
-    [b.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [b setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    UIButton * b = [self.class __PY_CREATE_BUTTON];
+    [b setTitle:@"隐藏🔽" forState:UIControlStateNormal];
     [b addTarget:self action:@selector(onclickHidden:) forControlEvents:UIControlEventTouchUpInside];
     [viewContent addSubview:b];
     buttonHidden = b;
     
-    b = [UIButton buttonWithType:UIButtonTypeCustom];
-    [b setTitle:@"↓" forState:UIControlStateNormal];
-    [b.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [b setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    b = [self.class __PY_CREATE_BUTTON];
+    [b setTitle:@"下一个⬇️" forState:UIControlStateNormal];
     [b addTarget:self action:@selector(onclickNext:) forControlEvents:UIControlEventTouchUpInside];
     [viewContent addSubview:b];
     buttonNext = b;
     
-    b = [UIButton buttonWithType:UIButtonTypeCustom];
-    [b setTitle:@"↑" forState:UIControlStateNormal];
-    [b.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    [b setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    b = [self.class __PY_CREATE_BUTTON];
+    [b setTitle:@"上一个⬆️" forState:UIControlStateNormal];
     [b addTarget:self action:@selector(onclickPre:) forControlEvents:UIControlEventTouchUpInside];
     [viewContent addSubview:b];
     buttonPre = b;
     
     [PYViewAutolayoutCenter persistConstraintHorizontal:@[buttonPre, buttonNext, buttonHidden] relationmargins:UIEdgeInsetsZero relationToItems:PYEdgeInsetsItemNull() offset:0];
     
-    
+}
++(UIButton *) __PY_CREATE_BUTTON{
+    UIButton * b =  [UIButton buttonWithType:UIButtonTypeCustom];
+    [b.titleLabel setFont:PY_FW_KBHV_FONT];
+    [b setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [b setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [b setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+    [b setBackgroundImage:[UIImage imageWithColor:[UIColor orangeColor]] forState:UIControlStateHighlighted];
+    return b;
 }
 
 - (void)onclickHidden:(id)sender {
