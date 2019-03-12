@@ -145,51 +145,59 @@ static Class __PY_FM_TEMP_CLASS;
     }
     
     if([target isKindOfClass:[UINavigationController class]]){
-        UINavigationBar *navigationBar = ((UINavigationController *) target).navigationBar;
-        if(navigationBar)
-            for (PYFrameworkParamNavigationBar * data in self.managerNavigationbarDatas) {
-                [PYFrameworkUtile setNavigationBarStyle:navigationBar managerNavigationbarData:data];
-            }
+        if([target.childViewControllers.lastObject conformsToProtocol:@protocol(PYFrameworkNormalTag)]){
+            UINavigationBar *navigationBar = ((UINavigationController *) target).navigationBar;
+            if(navigationBar)
+                for (PYFrameworkParamNavigationBar * data in self.managerNavigationbarDatas) {
+                    [PYFrameworkUtile setNavigationBarStyle:navigationBar managerNavigationbarData:data];
+                }
+        }
     }else{
-        UINavigationBar *navigationBar = target.navigationController.navigationBar;
-        if(navigationBar)
-            for (PYFrameworkParamNavigationBar * data in self.managerNavigationbarDatas) {
-                [PYFrameworkUtile setNavigationBarStyle:navigationBar managerNavigationbarData:data];
-            }
-        
-        UINavigationItem *navigationItem = target.navigationItem;
-        if(navigationItem){
-            void (^block) (UIViewcontrollerHookViewDelegateImp * imp, UIBarButtonItem * barButtonItem) = ^ (UIViewcontrollerHookViewDelegateImp * imp, UIBarButtonItem * barButtonItem){
-                for (PYFrameworkParamNavigationItem * data in imp.managerBarButtonItemDatas) {
-                    [PYFrameworkUtile setBarButtonItemStyle:barButtonItem managerBarButtonItemData:data];
+        if([target conformsToProtocol:@protocol(PYFrameworkNormalTag)]){
+            UINavigationBar *navigationBar = target.navigationController.navigationBar;
+            if(navigationBar)
+                for (PYFrameworkParamNavigationBar * data in self.managerNavigationbarDatas) {
+                    [PYFrameworkUtile setNavigationBarStyle:navigationBar managerNavigationbarData:data];
                 }
-            };
-            if(navigationItem.leftBarButtonItems){
-                for (UIBarButtonItem * barButtonItem in navigationItem.leftBarButtonItems) {
-                    block(self, barButtonItem);
+        }
+        if([target conformsToProtocol:@protocol(PYFrameworkBackItem)]){
+            UINavigationItem *navigationItem = target.navigationItem;
+            if(navigationItem){
+                void (^block) (UIViewcontrollerHookViewDelegateImp * imp, UIBarButtonItem * barButtonItem) = ^ (UIViewcontrollerHookViewDelegateImp * imp, UIBarButtonItem * barButtonItem){
+                    for (PYFrameworkParamNavigationItem * data in imp.managerBarButtonItemDatas) {
+                        [PYFrameworkUtile setBarButtonItemStyle:barButtonItem managerBarButtonItemData:data];
+                    }
+                };
+                if(navigationItem.leftBarButtonItems){
+                    for (UIBarButtonItem * barButtonItem in navigationItem.leftBarButtonItems) {
+                        block(self, barButtonItem);
+                    }
+                }else if(navigationItem.backBarButtonItem){
+                    block(self, navigationItem.backBarButtonItem);
                 }
-            }else if(navigationItem.backBarButtonItem){
-                block(self, navigationItem.backBarButtonItem);
-            }
-            
-            if(navigationItem.rightBarButtonItems){
-                for (UIBarButtonItem * barButtonItem in navigationItem.rightBarButtonItems) {
-                    block(self, barButtonItem);
+                
+                if(navigationItem.rightBarButtonItems){
+                    for (UIBarButtonItem * barButtonItem in navigationItem.rightBarButtonItems) {
+                        block(self, barButtonItem);
+                    }
                 }
             }
         }
     }
-    
 }
-
+-(void) hiddenKeyboard{
+    [PYKeyboardNotification hiddenKeyboard];
+}
 -(void) afterExcuteViewDidAppearWithTarget:(nonnull UIViewController *) target{
     
     if([target conformsToProtocol:@protocol(PYKeyboradShowtag)]){
         PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
+        if(keybordHead.tapGestureRecognizer)[target.view removeGestureRecognizer:keybordHead.tapGestureRecognizer];
         keybordHead.hasAppeared = true;
         keybordHead.hidden = NO;
         if(keybordHead.hasShowKeyboard)
             keybordHead.frameY = boundsHeight() - keybordHead.keyBoardFrame.size.height - keybordHead.frameHeight;
+        keybordHead.tapGestureRecognizer = [target.view py_addTarget:self action:@selector(hiddenKeyboard)];
     }
     
     target.navigationController.interactivePopGestureRecognizer.enabled =  [UIViewController isSameOrientationInParentForTargetController:target];
