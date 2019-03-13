@@ -52,59 +52,11 @@ static Class __PY_FM_TEMP_CLASS;
         keybordHead.frameOrigin = CGPointMake(boundsWidth() - keybordHead.frameWidth, boundsHeight());
         UIWindow * window =  [UIApplication sharedApplication].delegate.window;
         [window addSubview:keybordHead];
-        
-        kAssign(target);
-        [PYKeyboardNotification setKeyboardNotificationWithResponder:keybordHead showDoing:^(UIResponder * _Nonnull responder, CGRect keyBoardFrame) {
-            kStrong(target);
-            if(!keybordHead.hasAppeared) return;
-            keybordHead.hasShowKeyboard = true;
-            keybordHead.keyBoardFrame = keyBoardFrame;
-            
-            [[UIApplication sharedApplication].delegate.window bringSubviewToFront:keybordHead];
-            NSMutableArray<id<UITextInput>> * inputs = [NSMutableArray new];
-            UIView * view = [PYKeybordHeadView getCurFirstResponder:target.view inputs:inputs];
-            if(!view) return;
-            if(inputs && inputs.count){
-                [inputs sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                    UIView * view1 = obj1;
-                    UIView * view2 = obj2;
-                    CGPoint p1 = [view1 getAbsoluteOrigin:[UIApplication sharedApplication].delegate.window];
-                    CGPoint p2 = [view2 getAbsoluteOrigin:[UIApplication sharedApplication].delegate.window];
-                    if(p1.y < p2.y) return NSOrderedAscending;
-                    else return NSOrderedDescending;
-                }];
-            }
-            keybordHead.responder = view;
-            keybordHead.responders = (NSArray<UIView *> *)inputs;
-            keybordHead.frameY = boundsHeight() - keyBoardFrame.size.height - keybordHead.frameHeight;
-            CGPoint p = [view getAbsoluteOrigin:[UIApplication sharedApplication].delegate.window];
-            CGFloat value = (boundsHeight() - p.y - view.frameHeight) - keyBoardFrame.size.height - keybordHead.frameHeight;
-            CGRect bounds = target.view.bounds;
-            if(value > 0){
-                if(bounds.origin.y != 0){
-                    bounds.origin.y = 0;
-                    target.view.bounds = bounds;
-                }
-                return;
-            }
-            bounds.origin.y = -value;
-            target.view.bounds = bounds;
-        } hiddenDoing:^(UIResponder * _Nonnull responder, CGRect keyBoardFrame) {
-            kStrong(target);
-            if(!keybordHead.hasAppeared) return;
-            keybordHead.frameY = boundsHeight();
-            if(!keybordHead.hasShowKeyboard) return;
-            keybordHead.hasShowKeyboard = false;
-            CGRect bounds = target.view.bounds;
-            bounds.origin.y = 0;
-            target.view.bounds = bounds;
-        }];
     }
     
 }
 
 -(void) afterExcuteViewWillAppearWithTarget:(UIViewController *)target{
-    
     if([target conformsToProtocol:@protocol(PYKeyboradShowtag)]){
         PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
         keybordHead.hasAppeared = true;
@@ -112,7 +64,6 @@ static Class __PY_FM_TEMP_CLASS;
         if(keybordHead.hasShowKeyboard)
             keybordHead.frameY = boundsHeight() - keybordHead.keyBoardFrame.size.height - keybordHead.frameHeight;
     }
-    
     if([target conformsToProtocol:@protocol(PYFrameworkBackItem)]){
         if(objc_getAssociatedObject(target, (__bridge const void * _Nonnull)(target)) == nil){
             if(xImageFrameworkPopvc
@@ -189,9 +140,9 @@ static Class __PY_FM_TEMP_CLASS;
     [PYKeyboardNotification hiddenKeyboard];
 }
 -(void) afterExcuteViewDidAppearWithTarget:(nonnull UIViewController *) target{
-    
     if([target conformsToProtocol:@protocol(PYKeyboradShowtag)]){
         PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
+        [keybordHead addKeyBoardNotifyForTargetView:target.view];
         if(keybordHead.tapGestureRecognizer)[target.view removeGestureRecognizer:keybordHead.tapGestureRecognizer];
         keybordHead.hasAppeared = true;
         keybordHead.hidden = NO;
@@ -226,6 +177,7 @@ static Class __PY_FM_TEMP_CLASS;
 -(void) afterExcuteViewDidDisappearWithTarget:(nonnull UIViewController *) target{
     if([target conformsToProtocol:@protocol(PYKeyboradShowtag)]){
         PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
+        [keybordHead removeKeybordNotify];
         keybordHead.hasAppeared = false;
         keybordHead.hidden = YES;
     }
