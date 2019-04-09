@@ -80,9 +80,13 @@ kUTILE_STATIC_INLINE PYFwlayoutParams PYFwlayoutParamsMake(CGRect frame, CGFloat
 
 @protocol PYFrameworkNormalTag <NSObject> @end
 @protocol PYFrameworkOrientationTag <NSObject> @end
-@protocol PYKeyboradShowtag @end
 @protocol PYFrameworkBackItem <NSObject> @end
 @protocol PYFrameworkUnsafeAreaFit <NSObject> @end
+@protocol PYKeyboradShowtag
+@optional
+-(BOOL) isTouchForKeyboradHidden;
+-(BOOL) isMoveForKeyboradShow;
+@end
 @protocol PYFrameworkAllTag <PYFrameworkNormalTag, PYFrameworkOrientationTag, PYKeyboradShowtag, PYFrameworkBackItem,PYFrameworkUnsafeAreaFit> @end
 
 

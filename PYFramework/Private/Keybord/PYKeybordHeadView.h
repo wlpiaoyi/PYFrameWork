@@ -19,6 +19,7 @@
 @end
 
 @interface PYKeybordHeadView : UIView
+kPNA BOOL isMoveForKeyboard;
 kPNSNA id tapGestureRecognizer;
 kPNANA id<PYKeybordHeadDelegate> delegate;
 kPNSNA NSArray<UIView *> * responders;

@@ -28,7 +28,7 @@ UIFont * PY_FW_KBHV_FONT;
 }
 
 kINITPARAMSForType(PYKeybordHeadView){
-    
+    self.isMoveForKeyboard = YES;
     self.backgroundColor = [UIColor clearColor];
     [self setShadowColor:[UIColor grayColor].CGColor shadowRadius:4];
     self.frameSize = CGSizeMake(190, 30);
@@ -81,6 +81,7 @@ kINITPARAMSForType(PYKeybordHeadView){
     }
 }
 - (void)onclickNext:(id)sender {
+    if(!forKeyboardView) return;
     NSUInteger index = (self.responder && self.responders && [self.responders containsObject:self.responder]) ? [self.responders indexOfObject:self.responder] : -1;
     if(index != -1){
         if(index < self.responders.count - 1){
@@ -103,6 +104,7 @@ kINITPARAMSForType(PYKeybordHeadView){
     }
 }
 - (void)onclickPre:(id)sender {
+    if(!forKeyboardView) return;
     NSUInteger index = (self.responder && self.responders && [self.responders containsObject:self.responder]) ? [self.responders indexOfObject:self.responder] : -1;
     if(index != -1){
         if(index > 0){
@@ -148,7 +150,11 @@ kINITPARAMSForType(PYKeybordHeadView){
     [timerKeyboardShow invalidate];
     timerKeyboardShow = nil;
     self.hasShowKeyboard = true;
+    self.keyBoardFrame = keyboradFrame;
     [[UIApplication sharedApplication].delegate.window bringSubviewToFront:self];
+    self.frameY = boundsHeight() - keyboradFrame.size.height - self.frameHeight;
+    
+    
     NSMutableArray<id<UITextInput>> * inputs = [NSMutableArray new];
     if(!inputView) inputView = [PYKeybordHeadView getCurFirstResponder:forKeyboardView inputs:inputs];
     else [PYKeybordHeadView getCurFirstResponder:forKeyboardView inputs:inputs];
@@ -164,21 +170,22 @@ kINITPARAMSForType(PYKeybordHeadView){
         }];
     }
     self.responder = inputView;
-    self.keyBoardFrame = keyboradFrame;
     self.responders = (NSArray<UIView *> *)inputs;
-    self.frameY = boundsHeight() - keyboradFrame.size.height - self.frameHeight;
-    CGPoint p = [inputView getAbsoluteOrigin:[UIApplication sharedApplication].delegate.window];
-    CGFloat value = (boundsHeight() - p.y - inputView.frameHeight) - keyboradFrame.size.height - self.frameHeight;
-    CGRect bounds = forKeyboardView.bounds;
-    if(value > 0){
-        if(bounds.origin.y != 0){
-            bounds.origin.y = 0;
-            forKeyboardView.bounds = bounds;
+    
+    if(self.isMoveForKeyboard){
+        CGPoint p = [inputView getAbsoluteOrigin:[UIApplication sharedApplication].delegate.window];
+        CGFloat value = (boundsHeight() - p.y - inputView.frameHeight) - keyboradFrame.size.height - self.frameHeight;
+        CGRect bounds = forKeyboardView.bounds;
+        if(value > 0){
+            if(bounds.origin.y != 0){
+                bounds.origin.y = 0;
+                forKeyboardView.bounds = bounds;
+            }
+            return;
         }
-        return;
+        bounds.origin.y = -value;
+        forKeyboardView.bounds = bounds;
     }
-    bounds.origin.y = -value;
-    forKeyboardView.bounds = bounds;
 }
 
 -(void) addKeyBoardNotifyForTargetView:(nonnull UIView *) targetView{

@@ -142,13 +142,19 @@ static Class __PY_FM_TEMP_CLASS;
 -(void) afterExcuteViewDidAppearWithTarget:(nonnull UIViewController *) target{
     if([target conformsToProtocol:@protocol(PYKeyboradShowtag)]){
         PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
+        keybordHead.isMoveForKeyboard = ![target respondsToSelector:@selector(isMoveForKeyboradShow)] || ((NSNumber *)[target performSelector:@selector(isMoveForKeyboradShow)]).boolValue;
         [keybordHead addKeyBoardNotifyForTargetView:target.view];
-        if(keybordHead.tapGestureRecognizer)[target.view removeGestureRecognizer:keybordHead.tapGestureRecognizer];
+        if(keybordHead.tapGestureRecognizer){
+            [target.view removeGestureRecognizer:keybordHead.tapGestureRecognizer];
+            keybordHead.tapGestureRecognizer = nil;
+        };
         keybordHead.hasAppeared = true;
         keybordHead.hidden = NO;
         if(keybordHead.hasShowKeyboard)
             keybordHead.frameY = boundsHeight() - keybordHead.keyBoardFrame.size.height - keybordHead.frameHeight;
-        keybordHead.tapGestureRecognizer = [target.view py_addTarget:self action:@selector(hiddenKeyboard)];
+        if(![target respondsToSelector:@selector(isTouchForKeyboradHidden)] || ((NSNumber *)[target performSelector:@selector(isTouchForKeyboradHidden)]).boolValue){
+            keybordHead.tapGestureRecognizer = [target.view py_addTarget:self action:@selector(hiddenKeyboard)];
+        }
     }
     
     target.navigationController.interactivePopGestureRecognizer.enabled =  [UIViewController isSameOrientationInParentForTargetController:target];
