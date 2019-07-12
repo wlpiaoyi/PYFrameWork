@@ -10,67 +10,111 @@
 #import "pyutilea.h"
 
 UIFont * PY_FW_KBHV_FONT;
+PYKeybordHeadView * __X_PY_KEYBORD_HEADVIEW;
+
+@interface UITextField(__PY_KEYBORD)
+- (BOOL)exchangeBecomeFirstResponder;
+@end
+@interface UITextView(__PY_KEYBORD)
+- (BOOL)exchangeBecomeFirstResponder;
+@end
 
 @implementation PYKeybordHeadView{
 @private
-    UIView *viewBorder;
-    UIView *viewContent;
+    UIView * viewShadown;
+    UIView * viewContentLeft;
+    UIView * viewContentRight;
     UIButton * buttonHidden;
     UIButton * buttonNext;
     UIButton * buttonPre;
     NSTimer * timerKeyboardShow;
+    UILabel * labelPlacetext;
     __weak UIView * forKeyboardView;
 }
 +(void) initialize{
     static dispatch_once_t onceToken; dispatch_once(&onceToken,^{
-        PY_FW_KBHV_FONT = [UIFont systemFontOfSize:12];
+        PY_FW_KBHV_FONT = [UIFont systemFontOfSize:14];
+        [UITextField hookInstanceMethodName:@"becomeFirstResponder"];
+        [UITextView hookInstanceMethodName:@"becomeFirstResponder"];
     });
 }
 
 kINITPARAMSForType(PYKeybordHeadView){
     self.isMoveForKeyboard = YES;
     self.backgroundColor = [UIColor clearColor];
-    [self setShadowColor:[UIColor grayColor].CGColor shadowRadius:4];
-    self.frameSize = CGSizeMake(190, 30);
+    self.frameSize = CGSizeMake(boundsWidth(), 30);
     
-    viewBorder = [UIView new];
-    viewBorder.backgroundColor = [UIColor whiteColor];
-    [self addSubview:viewBorder];
-    [viewBorder setAutotLayotDict:@{@"top":@(0),@"left":@(0),@"bottom":@(0),@"right":@(0)}];
-    [viewBorder setCornerRadiusAndBorder:self.frameHeight/2 borderWidth:0 borderColor:[UIColor clearColor]];
+    UIView * tempView = [UIView new];
+    tempView.backgroundColor = [UIColor colorWithRGBHex:0xefeff4ff];
+    [self addSubview:tempView];
+    [tempView setShadowColor:[UIColor grayColor].CGColor shadowRadius:1];
+    [tempView setAutotLayotDict:@{@"top":@(0),@"left":@(66),@"bottom":@(0),@"right":@(44)}];
     
-    viewContent = [UIView new];
-    viewContent.backgroundColor = [UIColor whiteColor];
-    [self addSubview:viewContent];
-    [viewContent setAutotLayotDict:@{@"top":@(0),@"left":@(self.frameHeight/2),@"bottom":@(0),@"right":@(0)}];
+    labelPlacetext = [UILabel new];
+    labelPlacetext.textColor = [UIColor lightGrayColor];
+    labelPlacetext.backgroundColor = [UIColor clearColor];
+    labelPlacetext.textAlignment = NSTextAlignmentCenter;
+    labelPlacetext.font = [UIFont systemFontOfSize:12];
+    labelPlacetext.numberOfLines = 2;
+    [tempView addSubview:labelPlacetext];
+    [labelPlacetext setAutotLayotDict:@{@"top":@(0),@"left":@(self.frameHeight/2),@"bottom":@(0),@"right":@(self.frameHeight/2)}];
+    
+    viewShadown = [UIView new];
+    viewShadown.backgroundColor = [UIColor clearColor];
+    [viewShadown setShadowColor:[UIColor grayColor].CGColor shadowRadius:4];
+    [self addSubview:viewShadown];
+    [viewShadown setAutotLayotDict:@{@"top":@(0),@"left":@(0),@"bottom":@(0),@"right":@(0)}];
+    
+    viewContentLeft = [UIView new];
+    viewContentLeft.backgroundColor = [UIColor whiteColor];
+    [viewShadown addSubview:viewContentLeft];
+    [viewContentLeft setAutotLayotDict:@{@"top":@(0),@"w":@(44 + self.frameHeight),@"bottom":@(0),@"right":@(-self.frameHeight/2)}];
+    [viewContentLeft setCornerRadiusAndBorder:self.frameHeight/2 borderWidth:0 borderColor:[UIColor clearColor]];
+    
     UIButton * b = [self.class __PY_CREATE_BUTTON];
-    [b setTitle:@"隐藏🔽" forState:UIControlStateNormal];
+    [b setTitle:@"• • • " forState:UIControlStateNormal];
     [b addTarget:self action:@selector(onclickHidden:) forControlEvents:UIControlEventTouchUpInside];
-    [viewContent addSubview:b];
+    [viewContentLeft addSubview:b];
+    [b setAutotLayotDict:@{@"top":@(0),@"left":@(self.frameHeight/2),@"bottom":@(0),@"right":@(self.frameHeight/2)}];
     buttonHidden = b;
     
+    viewContentRight = [UIView new];
+    viewContentRight.backgroundColor = [UIColor whiteColor];
+    [viewShadown addSubview:viewContentRight];
+    [viewContentRight setAutotLayotDict:@{@"top":@(0),@"w":@(66 + self.frameHeight),@"bottom":@(0),@"left":@(-self.frameHeight/2)}];
+    [viewContentRight setCornerRadiusAndBorder:self.frameHeight/2 borderWidth:0 borderColor:[UIColor clearColor]];
     b = [self.class __PY_CREATE_BUTTON];
-    [b setTitle:@" 下一个⬇️ " forState:UIControlStateNormal];
-    [b addTarget:self action:@selector(onclickNext:) forControlEvents:UIControlEventTouchUpInside];
-    [viewContent addSubview:b];
-    buttonNext = b;
-    
-    b = [self.class __PY_CREATE_BUTTON];
-    [b setTitle:@" 上一个⬆️ " forState:UIControlStateNormal];
+    [b setTitle:@" ▲" forState:UIControlStateNormal];
     [b addTarget:self action:@selector(onclickPre:) forControlEvents:UIControlEventTouchUpInside];
-    [viewContent addSubview:b];
+    [viewContentRight addSubview:b];
     buttonPre = b;
     
-    [PYViewAutolayoutCenter persistConstraintHorizontal:@[buttonPre, buttonNext, buttonHidden] relationmargins:UIEdgeInsetsZero relationToItems:PYEdgeInsetsItemNull() offset:0];
-
+    b = [self.class __PY_CREATE_BUTTON];
+    [b setTitle:@"▼ " forState:UIControlStateNormal];
+    [b addTarget:self action:@selector(onclickNext:) forControlEvents:UIControlEventTouchUpInside];
+    [viewContentRight addSubview:b];
+    buttonNext = b;
+    [PYViewAutolayoutCenter persistConstraintHorizontal:@[buttonPre, buttonNext] relationmargins:UIEdgeInsetsMake(0, self.frameHeight/2, 0, self.frameHeight/2) relationToItems:PYEdgeInsetsItemNull() offset:0];
+    self.placeholder = nil;
+    
+    kNOTIF_ADD(self, @"PY_KEYBORD_SET_PLACEHLODER", notifySetPlaceholder:);
+    
+}
+-(void) notifySetPlaceholder:(NSNotification *) notify{
+    NSString * obj = notify.object;
+    self.placeholder = obj;
+}
+-(void) setPlaceholder:(NSString *)placeholder{
+    _placeholder = placeholder;
+    labelPlacetext.text = placeholder ?  : @"";
 }
 +(UIButton *) __PY_CREATE_BUTTON{
     UIButton * b =  [UIButton buttonWithType:UIButtonTypeCustom];
     [b.titleLabel setFont:PY_FW_KBHV_FONT];
-    [b setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [b setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [b setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
-    [b setBackgroundImage:[UIImage imageWithColor:[UIColor orangeColor]] forState:UIControlStateHighlighted];
+    [b setTitleColor:[UIColor colorWithRGBHex:0x167ffbff] forState:UIControlStateNormal];
+    [b setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+    [b setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    [b setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateHighlighted];
     return b;
 }
 
@@ -171,7 +215,6 @@ kINITPARAMSForType(PYKeybordHeadView){
     }
     self.responder = inputView;
     self.responders = (NSArray<UIView *> *)inputs;
-    
     if(self.isMoveForKeyboard){
         CGPoint p = [inputView getAbsoluteOrigin:[UIApplication sharedApplication].delegate.window];
         CGFloat value = (boundsHeight() - p.y - inputView.frameHeight) - keyboradFrame.size.height - self.frameHeight;
@@ -215,6 +258,7 @@ kINITPARAMSForType(PYKeybordHeadView){
     [PYKeyboardNotification removeKeyboardNotificationWithResponder:self];
 }
 -(void) dealloc {
+    kNOTIF_REMV(self, @"PY_KEYBORD_SET_PLACEHLODER");
     [self removeKeybordNotify];
 }
 /*
@@ -225,4 +269,25 @@ kINITPARAMSForType(PYKeybordHeadView){
 }
 */
 
+@end
+
+
+@implementation UITextField(__PY_KEYBORD)
+- (BOOL)exchangeBecomeFirstResponder{
+    BOOL flag = [self exchangeBecomeFirstResponder];
+    if(flag){
+        kNOTIF_POST(@"PY_KEYBORD_SET_PLACEHLODER", self.placeholder);
+    }
+    return flag;
+}
+@end
+
+@implementation UITextView(__PY_KEYBORD)
+- (BOOL)exchangeBecomeFirstResponder{
+    BOOL flag = [self exchangeBecomeFirstResponder];
+    if(flag){
+        kNOTIF_POST(@"PY_KEYBORD_SET_PLACEHLODER", nil);
+    }
+    return flag;
+}
 @end

@@ -236,6 +236,7 @@
 		157610841FD933A300522CF0 /* pynetworka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pynetworka.h; sourceTree = "<group>"; };
 		15C376021FC1361D0076EFA6 /* PYFwMenuSlipController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PYFwMenuSlipController.h; sourceTree = "<group>"; };
 		15C376031FC1361D0076EFA6 /* PYFwMenuSlipController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PYFwMenuSlipController.m; sourceTree = "<group>"; };
+		15CECCAE228BE050008173E0 /* NSObject+Hook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Hook.h"; sourceTree = "<group>"; };
 		15EABAF620A2D69C0073D4EF /* PYKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYKit.bundle; sourceTree = "<group>"; };
 		15EABAF720A2D69C0073D4EF /* PYInterflow.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PYInterflow.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -434,6 +435,7 @@
 		150D2782221E817800F8185E /* pyutilea */ = {
 			isa = PBXGroup;
 			children = (
+				15CECCAE228BE050008173E0 /* NSObject+Hook.h */,
 				150D2783221E817800F8185E /* EXTScope.h */,
 				150D2784221E817800F8185E /* metamacros.h */,
 				150D2785221E817800F8185E /* NSArray+Expand.h */,
@@ -704,6 +706,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

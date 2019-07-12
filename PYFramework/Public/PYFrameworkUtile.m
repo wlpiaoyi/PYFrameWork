@@ -163,16 +163,16 @@ static UIResponderHookBaseDelegateFWK * xUIResponderHookBaseDelegateFWK;
     UIImage * imageDisabled;
     
     UIControlState state = UIControlStateNormal;
-    imageNormal = [self pyfmu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
+    imageNormal = [self PYIPAu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
     
     state = UIControlStateSelected;
-    imageSelected = [self pyfmu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
+    imageSelected = [self PYIPAu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
     
     state = UIControlStateHighlighted;
-    imageHigthlight = [self pyfmu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
+    imageHigthlight = [self PYIPAu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
     
     state = UIControlStateDisabled;
-    imageDisabled = [self pyfmu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
+    imageDisabled = [self PYIPAu_getImageForButton:button state:state offH:offH maxHeight:maxHeight direction:direction];
     
     
     state = UIControlStateNormal;
@@ -238,7 +238,7 @@ static UIResponderHookBaseDelegateFWK * xUIResponderHookBaseDelegateFWK;
     return image;
 }
 
-+(nullable UIImage *) pyfmu_getImageForButton:(nonnull UIButton *) button state:(UIControlState) state offH:(CGFloat) offH maxHeight:(CGFloat) maxHeight direction:(short) direction{
++(nullable UIImage *) PYIPAu_getImageForButton:(nonnull UIButton *) button state:(UIControlState) state offH:(CGFloat) offH maxHeight:(CGFloat) maxHeight direction:(short) direction{
     UIImage * image = [button imageForState:state];
     NSString * title = [button titleForState:state];
     if(!image || ![NSString isEnabled:title]){

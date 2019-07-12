@@ -48,12 +48,18 @@ static Class __PY_FM_TEMP_CLASS;
 -(void) afterExcuteViewDidLoadWithTarget:(nonnull UIViewController *) target{
     
     if([target conformsToProtocol:@protocol(PYKeyboradShowtag)]){
-        PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
-        keybordHead.frameOrigin = CGPointMake(boundsWidth() - keybordHead.frameWidth, boundsHeight());
         UIWindow * window =  [UIApplication sharedApplication].delegate.window;
+//        Class wClass = NSClassFromString(@"PYInterflowWindow");
+//        for (UIWindow * wd in [UIApplication sharedApplication].windows) {
+//            if([wd isKindOfClass:wClass]){
+//                window = wd;
+//            }
+//        }
+        PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
+        keybordHead.frameOrigin = CGPointMake(0, boundsHeight());
+        keybordHead.frameWidth = boundsWidth();
         [window addSubview:keybordHead];
     }
-    
 }
 
 -(void) afterExcuteViewWillAppearWithTarget:(UIViewController *)target{
@@ -141,11 +147,18 @@ static Class __PY_FM_TEMP_CLASS;
 }
 -(void) afterExcuteViewDidAppearWithTarget:(nonnull UIViewController *) target{
     if([target conformsToProtocol:@protocol(PYKeyboradShowtag)]){
+        UIViewController * vc = target;
+//        Class wClass = NSClassFromString(@"PYInterflowWindow");
+//        for (UIWindow * wd in [UIApplication sharedApplication].windows) {
+//            if([wd isKindOfClass:wClass]){
+//                vc = wd.rootViewController;
+//            }
+//        }
         PYKeybordHeadView * keybordHead = [self.class keybordHead:target];
         keybordHead.isMoveForKeyboard = ![target respondsToSelector:@selector(isMoveForKeyboradShow)] || ((NSNumber *)[target performSelector:@selector(isMoveForKeyboradShow)]).boolValue;
-        [keybordHead addKeyBoardNotifyForTargetView:target.view];
+        [keybordHead addKeyBoardNotifyForTargetView:vc.view];
         if(keybordHead.tapGestureRecognizer){
-            [target.view removeGestureRecognizer:keybordHead.tapGestureRecognizer];
+            [vc.view removeGestureRecognizer:keybordHead.tapGestureRecognizer];
             keybordHead.tapGestureRecognizer = nil;
         };
         keybordHead.hasAppeared = true;
@@ -153,7 +166,7 @@ static Class __PY_FM_TEMP_CLASS;
         if(keybordHead.hasShowKeyboard)
             keybordHead.frameY = boundsHeight() - keybordHead.keyBoardFrame.size.height - keybordHead.frameHeight;
         if(![target respondsToSelector:@selector(isTouchForKeyboradHidden)] || ((NSNumber *)[target performSelector:@selector(isTouchForKeyboradHidden)]).boolValue){
-            keybordHead.tapGestureRecognizer = [target.view py_addTarget:self action:@selector(hiddenKeyboard)];
+            keybordHead.tapGestureRecognizer = [vc.view py_addTarget:self action:@selector(hiddenKeyboard)];
         }
     }
     

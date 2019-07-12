@@ -28,9 +28,10 @@ kPNSNA UIView * responder;
 kPNA BOOL hasAppeared;
 kPNA BOOL hasShowKeyboard;
 kPNA CGRect keyBoardFrame;
+kPNSNA NSString * placeholder;
 
 -(void) addKeyBoardNotifyForTargetView:(nonnull UIView *) targetView;
 -(void) removeKeybordNotify;
 
-+(UIView *) getCurFirstResponder:(UIView *) superView inputs:(NSMutableArray<id<UITextInput>> *) inputs;
++(nullable UIView *) getCurFirstResponder:(nonnull UIView *) superView inputs:(nonnull NSMutableArray<id<UITextInput>> *) inputs;
 @end
