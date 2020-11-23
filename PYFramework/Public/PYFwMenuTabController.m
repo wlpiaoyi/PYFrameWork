@@ -35,7 +35,7 @@ kPNSNN NSMutableDictionary * mdict;
     static dispatch_once_t onceToken; dispatch_once(&onceToken, ^{
         [UIResponder hookWithMethodNames:nil];
         xUIResponderHookBaseDelegateFWC = [UIResponderHookBaseDelegateFWC new];
-        [[UIViewController delegateBase] addObject:xUIResponderHookBaseDelegateFWC];
+        [[UIViewController delegateBaseHook] addObject:xUIResponderHookBaseDelegateFWC];
     });
 }
 -(instancetype) init{

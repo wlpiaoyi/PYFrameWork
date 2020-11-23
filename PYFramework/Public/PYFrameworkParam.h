@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "pyutilea.h"
+#import "pykita.h"
 #import <objc/runtime.h>
 
 typedef enum _PYFrameworkShow{
@@ -41,29 +42,6 @@ extern NSString * _Nonnull PYFwMenuBGImageSelected;
 
 extern NSString * _Nonnull PYFwMenusImgDirection;
 
-//typedef struct PYFwlayoutContent {
-//    UIEdgeInsets ei;
-//    CGPoint point;
-//    CGSize size;
-//    PYEdgeInsetsItem eii;
-//} PYFwlayoutContent;
-//kUTILE_STATIC_INLINE PYFwlayoutContent PYFwlayoutContentMack(UIEdgeInsets ei, CGPoint point, CGSize size, PYEdgeInsetsItem eii) {
-//    PYFwlayoutContent layoutContent;
-//    layoutContent.ei = ei;
-//    layoutContent.point = point;
-//    layoutContent.size = size;
-//    layoutContent.eii = eii;
-//    return layoutContent;
-//}
-//kUTILE_STATIC_INLINE PYFwlayoutContent PYFwlayoutContentNull() {
-//    PYFwlayoutContent layoutContent;
-//    CGFloat disValue = DisableConstrainsValueMAX;
-//    layoutContent.ei = UIEdgeInsetsMake(disValue, disValue, disValue, disValue);
-//    layoutContent.point = CGPointMake(disValue, disValue);
-//    layoutContent.size = CGSizeMake(disValue, disValue);
-//    layoutContent.eii = PYEdgeInsetsItemNull();
-//    return layoutContent;
-//}
 
 typedef struct PYFwlayoutParams {
 //    BOOL isAutoLayout;
@@ -78,15 +56,11 @@ kUTILE_STATIC_INLINE PYFwlayoutParams PYFwlayoutParamsMake(CGRect frame, CGFloat
     return params;
 }
 
-@protocol PYFrameworkNormalTag <NSObject> @end
+@protocol PYFrameworkNormalTag <PYNavigationSetterTag> @end
 @protocol PYFrameworkOrientationTag <NSObject> @end
-@protocol PYFrameworkBackItem <NSObject> @end
+
 @protocol PYFrameworkUnsafeAreaFit <NSObject> @end
-@protocol PYKeyboradShowtag
-@optional
--(BOOL) isTouchForKeyboradHidden;
--(BOOL) isMoveForKeyboradShow;
-@end
-@protocol PYFrameworkAllTag <PYFrameworkNormalTag, PYFrameworkOrientationTag, PYKeyboradShowtag, PYFrameworkBackItem,PYFrameworkUnsafeAreaFit> @end
+
+@protocol PYFrameworkAllTag <PYFrameworkNormalTag, PYFrameworkOrientationTag, PYFrameworkUnsafeAreaFit> @end
 
 

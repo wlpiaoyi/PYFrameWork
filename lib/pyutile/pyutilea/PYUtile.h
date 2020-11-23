@@ -26,6 +26,10 @@ typedef long long                           kInt64;
 typedef kInt64                             kLong64;
 #endif
 
+bool py_isPrisonBreakByPath(void);
+bool py_isPrisonBreakByDyldimage(void);
+bool py_isPrisonBreakByScheme(void);
+
 #pragma mark 常用沙盒路径
 extern const NSString * _Nonnull documentDir;
 extern const NSString * _Nonnull cachesDir;
@@ -93,6 +97,11 @@ float app_cpu_usage(void);
  获取正在显示的window
  */
 +(nullable UIWindow *) getCurrenWindow;
+
+/**
+ 获取最顶层的View
+ */
++(nonnull UIView *) getTopView:(nonnull UIView *) subView;
 
 /**
  获取当前正在显示的controller(直接从window遍历)

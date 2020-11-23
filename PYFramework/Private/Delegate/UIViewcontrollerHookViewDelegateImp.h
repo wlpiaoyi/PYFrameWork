@@ -7,17 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PYFrameworkParamNavigationBar.h"
-#import "PYFrameworkParamNavigationItem.h"
-#import "PYKeybordHeadView.h"
+#import "pyutilea.h"
+//#import "PYFrameworkParamNavigationItem.h"
 
-extern UIImage * xImageFrameworkPopvc;
-extern UIImage * xImageFrameworkdismissvc;
 
 @interface UIViewcontrollerHookViewDelegateImp : NSObject<UIViewcontrollerHookViewDelegate>
-@property (nonatomic, strong, nullable) NSArray<PYFrameworkParamNavigationBar*> * managerNavigationbarDatas;
-@property (nonatomic, strong, nullable) NSArray<PYFrameworkParamNavigationItem*> * managerBarButtonItemDatas;
--(void) afterExcuteViewWillAppearWithTarget:(UIViewController *)target;
+//@property (nonatomic, strong, nullable) NSArray<PYFrameworkParamNavigationItem*> * managerBarButtonItemDatas;
 -(void) afterExcuteViewDidAppearWithTarget:(nonnull UIViewController *) target;
-+(PYKeybordHeadView *) keybordHead:(UIViewController *) target;
 @end

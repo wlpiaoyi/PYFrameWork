@@ -8,6 +8,7 @@
 
 #import "View2Controller.h"
 #import "PYFrameworkUtile.h"
+#import "pyinterflowa.h"
 
 @interface View2Controller ()<PYFrameworkAllTag>
 
@@ -17,18 +18,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+
+    UITextView * textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 300, 200)];
+    [textView dialogShowWithTitle:nil block:^(UIView * _Nonnull view, NSUInteger index) {
+        [view dialogHidden];
+    } buttonNames:@[@"确定"]];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
--(BOOL) isMoveForKeyboradShow;{
-    return NO;
+//-(BOOL) isMoveForKeyboradShow;{
+//    return NO;
+//}
+
+-(void) dealloc{
 }
-
-
 /*
 #pragma mark - Navigation
 

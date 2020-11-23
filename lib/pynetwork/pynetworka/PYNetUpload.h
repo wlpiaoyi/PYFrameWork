@@ -9,6 +9,8 @@
 #import "PYNetwork.h"
 
 @interface PYNetUpload : PYNetwork
+
+kPNCNA void (^blockCancel)(id _Nullable data, NSError * _Nullable error, PYNetwork * _Nonnull target);
 /**
  分段压缩上传
  */

@@ -10,6 +10,7 @@
 #import <WebKit/WebKit.h>
 
 @interface PYWebView : WKWebView
+@property(nonatomic, assign) BOOL isShowProgress;
 //==>加载web
 - (nullable WKNavigation *)loadRequest:(nonnull NSURLRequest *)request;
 - (nullable WKNavigation *)loadFileURL:(nonnull NSURL *)URL allowingReadAccessToURL:(nullable NSURL *)readAccessURL;
@@ -18,4 +19,5 @@
 -(void) addJavascriptInterface:(nonnull NSObject *) interface name:(nullable NSString *) name;
 -(void) removeJavascriptInterfaceWithName:(nullable NSString *) name;
 -(void) reloadInjectJS;
+-(void) clearConfigure;
 @end

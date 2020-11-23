@@ -22,8 +22,8 @@ extern NSTimeInterval PYNET_OUTTIME;
 
 extern NSString * _Nonnull  PYNET_DATE_PATTERN;
 
-extern CFStringRef PYNET_PERCENT_PARAM;
-extern CFStringRef PYNET_PERCENT_FIELD;
+extern CFStringRef _Nonnull PYNET_PERCENT_PARAM;
+extern CFStringRef _Nonnull PYNET_PERCENT_FIELD;
 
 //==>传输方法
 extern NSString * _Nonnull PYNET_HTTP_GET;
@@ -33,9 +33,6 @@ extern NSString * _Nonnull PYNET_HTTP_DELETE;
 ///<==
 
 @class PYNetwork;
-@interface PYNetworkDelegate:NSObject<NSURLSessionDelegate>
-kPNA PYNetwork * network;
-@end
 
 @interface PYNetwork : NSObject
 
@@ -70,7 +67,9 @@ kPNCNA void (^blockComplete)(id _Nullable data, NSURLResponse * _Nullable respon
 //=========================================>
 kPNSNA NSString * certificationName;
 kPNSNA NSString * certificationPassword;
-///<=========================================)
+///<=========================================
+
+-(nullable instancetype) initWithSession:(nullable NSURLSession *) session;
 
 //=========================================>
 /**
@@ -86,14 +85,14 @@ kPNSNA NSString * certificationPassword;
  */
 -(BOOL) cancel;
 /**
- 强制中断请求
- 不可短点恢复
+ 终止请求和会话
  */
--(void) interrupt;
+-(void) stop;
+-(void) interrupt PY_API_DEPRECATED("Please use - [PYNetwork stop] instances");
 ///<=========================================
 
--(nullable NSURLSession*) createSession;
--(nullable NSURLSessionTask *) createSessionTask;
+-(nullable NSURLSession*) createDefaultSession;
+-(nullable NSURLSessionTask *) createDefaultSessionTask;
 
 /**
  创建网络请求
@@ -107,6 +106,10 @@ kPNSNA NSString * certificationPassword;
                                             heads:(nullable NSDictionary<NSString *, NSString *> *) heads
                                             params:(nullable NSData *) params
                                             outTime:(CGFloat) outTime;
+@end
+
+@interface PYNetwork(DataParse)
+
 /**
  将键值对转换成对应的数据结构
  @param params 支持 NSString , NSDictionary, NSData
@@ -114,9 +117,29 @@ kPNSNA NSString * certificationPassword;
  application/x-www-form-urlencoded
  application/json
  application/xml
- @param keySorts 参数排序,仅当参数类型是form表单时有用
+ @param keySorts 参数排序,仅当c参数类型是form表单时有用
  */
 +(nonnull NSData *) parseParamsToHttpBody:(nullable id) params
-                                            contentType:(NSString *) contentType
-                                            keySorts:(nullable NSArray<NSString *> *) keySorts;
+                              contentType:(nullable NSString *) contentType
+                                 keySorts:(nullable NSArray<NSString *> *) keySorts;
+/**
+ 将键值对转换成对应的数据结构
+ @param params 支持 NSString , NSDictionary, NSData
+ @param contentType 支持
+ application/x-www-form-urlencoded
+ application/json
+ application/xml
+ */
++(nonnull NSData *) parseParamsToHttpBody:(nullable id) params
+                              contentType:(nullable NSString *) contentType;
+
+/**
+ 将键值对转换成对应的数据结构
+ @param params 参数
+ @param keySorts 参数排序
+ */
++(nonnull NSData *) parseParamsToFormBody:(nullable NSDictionary *) params
+                                 keySorts:(nullable NSArray<NSString *> *) keySorts;
+
+
 @end

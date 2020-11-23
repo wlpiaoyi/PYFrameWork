@@ -7,8 +7,34 @@
 //
 
 #import "AppDelegate.h"
+#import "pyinterflowa.h"
+#import "pykita.h"
 #import "PYFrameworkUtile.h"
 #import "PYOrientationNotification.h"
+
+@interface UIViewController(HookInitM)
+
+@end
+@implementation UIViewController(HookInitM)
+
+
+- (instancetype)exchangeInitWithNibName:(nullable NSString *)nibNameOrNil bundle:(nullable NSBundle *)nibBundleOrNil{
+    typeof(self) obj = [self exchangeInitWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    obj.modalPresentationStyle = UIModalPresentationFullScreen;
+    return obj;
+}
+- (nullable instancetype)exchangeInitWithCoder:(NSCoder *)coder{
+    typeof(self) obj = [self exchangeInitWithCoder:coder];
+    obj.modalPresentationStyle = UIModalPresentationFullScreen;
+    return obj;
+}
+
++(void) hookInitM{
+    [self hookInstanceMethodName:@"initWithCoder:"];
+    [self hookInstanceMethodName:@"initWithNibName:bundle:"];
+}
+
+@end
 
 @interface AppDelegate ()
 
@@ -18,7 +44,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    STATIC_POPUP_HASEFFECT = YES;
     
+    [UIViewController hookInitM];
+    PYNavigationStyleModel * styleModel = [[PYNavigationStyleModel alloc] initForDefault];
+    styleModel.popItemimage = [UIImage imageNamed:@"arrow-hidden"];
+    styleModel.dismissItemimage = [UIImage imageNamed:@"arrow-down"];
+    [PYNavigationControll setNavigationWithBarStyle:styleModel];
+    [PYInterflowParams loadInterflowParamsData];
     PYFrameworkParamOrientation *data = [PYFrameworkParamOrientation new];
     data.shouldAutorotate = YES;
     data.supportedInterfaceOrientations = UIInterfaceOrientationMaskAll;
@@ -26,18 +59,10 @@
     [PYFrameworkUtile setViewControllerOrientationData:data];
     
     [PYOrientationNotification instanceSingle];
-    PYFrameworkParamNavigationBar * nb =[PYFrameworkParamNavigationBar defaut];
-//    nb.backgroundColor = [UIColor yellowColor];
-    nb.backgroundImage = [UIImage imageWithColor:[UIColor clearColor]];
-    nb.lineButtomImage = [UIImage imageWithColor:[UIColor clearColor]];
-    nb.nameColor = [UIColor blueColor];
-    nb.tintColor = [UIColor blueColor];
-    nb.statusBarStyle = UIStatusBarStyleDefault;
-    [PYFrameworkUtile setViewControllerNavigationbarData:@[nb]];
-    PYFrameworkParamNavigationItem * bbi = [PYFrameworkParamNavigationItem defaut];
-    bbi.nameColor = [UIColor orangeColor];
-    bbi.nameFont = [UIFont systemFontOfSize:16 weight:UIFontWeightBold];
-    [PYFrameworkUtile setViewControllertBarButtonItemData:@[bbi]];
+//    PYFrameworkParamNavigationItem * bbi = [PYFrameworkParamNavigationItem defaut];
+//    bbi.nameColor = [UIColor orangeColor];
+//    bbi.nameFont = [UIFont systemFontOfSize:16 weight:UIFontWeightBold];
+//    [PYFrameworkUtile setViewControllertBarButtonItemData:@[bbi]];
     return YES;
 }
 

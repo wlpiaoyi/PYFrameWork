@@ -18,15 +18,17 @@ extern CGFloat PYPopupAnimationTime;
 extern CGFloat PYPopupAnimationTimeOffset;
 extern CGFloat PYPopupEffectBlur;
 
-extern NSString * STATIC_POPUP_SHOW_NOTIFY;
-extern NSString * STATIC_POPUP_HIDEEN_NOTIFY;
-extern NSString * STATIC_POPUP_EFFECTE_NOTIFY;
+extern NSString * _Nonnull STATIC_POPUP_SHOW_NOTIFY;
+extern NSString * _Nonnull STATIC_POPUP_HIDEEN_NOTIFY;
+extern NSString * _Nonnull STATIC_POPUP_EFFECTE_NOTIFY;
 extern BOOL STATIC_POPUP_HASEFFECT;
+
+extern CGFloat STATIC_POPUP_BORDERWIDTH;
+extern UIColor * _Nonnull STATIC_POPUP_HIGHLIGHTC;
 
 extern UIColor * _Nonnull STATIC_CONTENT_BACKGROUNDCLOLOR;
 
-extern UIColor * _Nonnull STATIC_DIALOG_BACKGROUNDCLOLOR;
-extern UIColor * _Nonnull STATIC_DIALOG_BORDERCLOLOR;
+extern UIColor * _Nonnull STATIC_DIALOG_BACKGROUNDC;
 extern UIColor * _Nonnull STATIC_DIALOG_TEXTCLOLOR;
 extern UIFont * _Nonnull STATIC_DIALOG_TITLEFONT;
 extern UIFont * _Nonnull STATIC_DIALOG_MESSAGEFONT;
@@ -35,7 +37,6 @@ extern CGFloat STATIC_DIALOG_OFFSETBORDER;
 extern CGFloat STATIC_DIALOG_MINWIDTH;
 extern CGFloat STATIC_DIALOG_MAXWIDTH;
 extern CGFloat STATIC_DIALOG_MAXHEIGHT;
-extern CGFloat STATIC_DIALOG_BORDERWIDTH;
 extern CGFloat STATIC_DIALOG_WIDTH;
 extern CGFloat STATIC_DIALOG_OFFSETWIDTH;
 extern CGFloat STATIC_DIALOG_TITLE_HEIGHT;
@@ -43,34 +44,36 @@ extern CGFloat STATIC_DIALOG_BUTTON_HEIGHT;
 
 
 extern UIColor * _Nonnull STATIC_EFFECT_TINTC;
+extern UIColor * _Nonnull STATIC_SHEET_BACKGROUNDH;
+extern UIColor * _Nonnull STATIC_SHEET_BACKGROUNDC;
 extern UIColor * _Nonnull STATIC_SHEET_TITLEC;
-extern UIColor * _Nonnull STATIC_SHEET_TITLEBGC;
-extern UIColor * _Nonnull STATIC_SHEET_CONTEXTNORMALC;
-extern UIColor * _Nonnull STATIC_SHEET_CONTEXTNORMALBGC;
-extern UIColor * _Nonnull STATIC_SHEET_CONTEXTHIGHTLIGHTC;
-extern UIColor * _Nonnull STATIC_SHEET_CONTEXTHIGHTLIGHTBGC;
-extern UIColor * _Nonnull STATIC_SHEET_CANCELNORMALC;
-extern UIColor * _Nonnull STATIC_SHEET_CANCELNORMALBGC;
-extern UIColor * _Nonnull STATIC_SHEET_CANCELHIGHTLIGHTC;
-extern UIColor * _Nonnull STATIC_SHEET_CANCELHIGHTLIGHTBGC;
-extern UIFont * _Nonnull STATIC_SHEET_TITLEFONT;
-extern UIFont * _Nonnull STATIC_SHEET_CONTEXTFONT;
-extern UIFont * _Nonnull STATIC_SHEET_CANCELFONT;
+extern UIColor * _Nonnull STATIC_SHEET_ITEMC;
+extern UIColor * _Nonnull STATIC_SHEET_ITEMSElECTEDC;
+extern UIColor * _Nonnull STATIC_POPUP_REDC;
+extern UIColor * _Nonnull STATIC_POPUP_BLUEC;
 
+extern UIFont * _Nonnull STATIC_SHEET_TITLEFONT;
+extern UIFont * _Nonnull STATIC_SHEET_ITEMFONT;
+extern UIFont * _Nonnull STATIC_SHEET_CONFIRMFONT;
+extern UIFont * _Nonnull STATIC_SHEET_CANCELFONT;
 
 extern UIColor * _Nonnull STATIC_TOPBAR_MESSAGEC;
 extern UIColor * _Nonnull STATIC_TOPBAR_BGC;
 extern UIFont * _Nonnull STATIC_TOPBAR_MESSAGEFONT;
 
+extern NSBundle * _Nonnull STATIC_INTERFLOW_BUNDEL;
 
-typedef void (^BlockTouchView)(CGPoint touhMove, UIView  * _Nonnull touchView);
-typedef void (^BlockPopupEndAnmation) (UIView * _Nonnull view);
-typedef void (^BlockPopupAnimation) (UIView * _Nonnull view, BlockPopupEndAnmation _Nullable block);
-typedef void(^BlockDialogOpt)(UIView * _Nonnull view, NSUInteger index);
+typedef void (^PYBlockPopupV_P_P_V)(CGPoint touhMove, UIView  * _Nonnull touchView);
+typedef void (^PYBlockPopupV_P_V) (UIView * _Nonnull view);
+typedef BOOL (^PYBlockPopupB_P_V) (UIView * _Nonnull view);
+typedef void (^PYBlockPopupV_P_V_BK) (UIView * _Nonnull view, PYBlockPopupV_P_V _Nullable block);
+typedef void(^PYBlockPopupV_P_V_I)(UIView * _Nonnull view, NSUInteger index);
+typedef void(^PYBlockPopupV_P_V_B)(UIView * _Nonnull view, BOOL isConfirm);
 
 
 @interface PYInterflowParams : NSObject
 +(void) loadInterflowParamsData;
++(void) loadInterflowParamsData:(nonnull NSBundle *) bundlePath;
 //+(void) setView:(nonnull UIView *) view shadowOffset:(CGSize) size;
 @end
 

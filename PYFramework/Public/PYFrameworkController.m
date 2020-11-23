@@ -9,7 +9,7 @@
 #import "PYFrameworkController.h"
 #import "PYViewAutolayoutCenter.h"
 #import "PYFwMenuController.h"
-#import "UIView+Expand.h"
+#import "UIView+PYExpand.h"
 
 @interface PYFWView:UIView
 kPNA PYFwlayoutParams layoutParams;
@@ -188,11 +188,6 @@ kSOULDLAYOUTP
         return self.menuController;
     }
     return nil;
-}
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    UIViewController * vc = [self getEnableController];
-    if(vc) return [vc preferredStatusBarStyle];
-    return [super preferredStatusBarStyle];
 }
 #pragma Orientations ==>
 - (BOOL)shouldAutorotate{
